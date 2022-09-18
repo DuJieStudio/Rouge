@@ -22,7 +22,7 @@ public class BaseMove : MonoBehaviour
         jumpcount = 2;
         toward = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
-        speed = 0.15f;
+        speed = 0.015f;
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         collder_of_player = GetComponent<BoxCollider2D>();
