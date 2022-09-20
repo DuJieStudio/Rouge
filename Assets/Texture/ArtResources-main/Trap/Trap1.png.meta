@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: c2c7dce89d1175848b956ce3ae86514c
+guid: 380deb5ccd9e57445bc22cb0d5d91c84
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3565969520830084303
-    second: shift3_0
+      213: 209865082185218111
+    second: Trap1_0
+  - first:
+      213: 8291630910164914116
+    second: Trap1_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -45,11 +48,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,22 +98,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shift3_0
+      name: Trap1_0
       rect:
         serializedVersion: 2
-        x: 330
-        y: 58
-        width: 1192
-        height: 552
+        x: 20
+        y: 830
+        width: 89
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13b8d073d91238ec0800000000000000
-      internalID: -3565969520830084303
+      spriteID: f38786a2e2799e200800000000000000
+      internalID: 209865082185218111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_1
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 649
+        width: 181
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf4701c16ac11370800000000000000
+      internalID: 8291630910164914116
       vertices: []
       indices: 
       edges: []
