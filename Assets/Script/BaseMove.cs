@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BaseMove : MonoBehaviour
 {
     public GameObject Player;
-    private float speed;
+    public float speed;
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
     private BoxCollider2D collder_of_player;
@@ -19,18 +19,9 @@ public class BaseMove : MonoBehaviour
     public bool isGround;//是否在地面
     private bool shift_or_not;
     private float shifttime;//shift计时器
-
-
-    [Header("显示残影的持续时间")]
-    public float durationTime;
-    [Header("生成残影与残影之间的时间间隔")]
-    public float spawnTimeval;
-    private float spawnTimer;//生成残影的时间计时器
-
-    [Header("残影颜色")]
-    public Color ghostColor;
-    [Header("残影层级")]
-    public int ghostSortingOrder;
+    public CharacterStats PlayerData;//获取playdata里的数据
+    public Slider Healthline;
+    public BoxCollider2D enemy;
 
     private SpriteRenderer sr;//SpriteRenderer
     private List<GameObject> ghostList = new List<GameObject>();//残影列表
@@ -46,10 +37,11 @@ public class BaseMove : MonoBehaviour
         jumpcount = 2;
         toward = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
-        speed = 0.012f;
+        speed =PlayerData.MoveSpeed;
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         collder_of_player = GetComponent<BoxCollider2D>();
+        PlayerData.CurrentHealth = 100;
 
 
     }
@@ -59,6 +51,8 @@ public class BaseMove : MonoBehaviour
     {
         Move();
         Isground();
+        change_health_line();
+        test1();
 
     }
     private void Move()
@@ -127,48 +121,20 @@ public class BaseMove : MonoBehaviour
             animator_of_player.SetBool("fall", false);
         }
     }
-    private void DrawGhost()
+    private void change_health_line()
     {
-        if (spawnTimer >= spawnTimeval)
-        {
-            spawnTimer = 0;
-
-            GameObject _ghost = new GameObject();
-            ghostList.Add(_ghost);
-            _ghost.name = "ghost";
-            _ghost.AddComponent<SpriteRenderer>();
-            _ghost.transform.position = transform.position;
-            _ghost.transform.localScale = transform.localScale;
-            SpriteRenderer _sr = _ghost.GetComponent<SpriteRenderer>();
-            _sr.sprite = sr.sprite;
-            _sr.sortingOrder = ghostSortingOrder;
-            _sr.color = ghostColor;
-
-            
-        }
-        spawnTimer += Time.deltaTime;
-
+        Healthline.value = PlayerData.CurrentHealth/100;
     }
-
-
-    private void Fade()
+    private void test1()//用于测试血条是否变更，无意义可删除
     {
-        for (int i = 0; i < ghostList.Count; i++)
+        if (rigidbody_of_player.IsTouching(enemy))
         {
-            SpriteRenderer ghostSR = ghostList[i].GetComponent<SpriteRenderer>();
-            if (ghostSR.color.a <= 0)
-            {
-                GameObject tempGhost = ghostList[i];
-                ghostList.Remove(tempGhost);
-                Destroy(tempGhost);
-            }
-            else
-            {
-                float fadePerSecond = (ghostColor.a / durationTime);
-                Color tempColor = ghostSR.color;
-                tempColor.a -= fadePerSecond * Time.deltaTime;
-                ghostSR.color = tempColor;
-            }
+            PlayerData.CurrentHealth -= 10;
+            rigidbody_of_player.AddForce(new Vector2(-1, 0) * 10f);
         }
     }
+
+
+
+
 }
