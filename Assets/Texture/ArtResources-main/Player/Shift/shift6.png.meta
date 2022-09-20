@@ -98,10 +98,10 @@ TextureImporter:
       name: shift6_0
       rect:
         serializedVersion: 2
-        x: 2221
-        y: 21
-        width: 260
-        height: 579
+        x: 2219
+        y: 20
+        width: 262
+        height: 583
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
