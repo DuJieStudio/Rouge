@@ -21,8 +21,9 @@ public class BaseMove : MonoBehaviour
     private float shifttime;//shift计时器
     public CharacterStats PlayerData;//获取playdata里的数据
     public Slider Healthline;
+    public Image yellowline;
+    public float accllerhealth;//黄血延迟速度
     public BoxCollider2D enemy;
-
     private SpriteRenderer sr;//SpriteRenderer
     private List<GameObject> ghostList = new List<GameObject>();//残影列表
     private void Awake()
@@ -42,6 +43,7 @@ public class BaseMove : MonoBehaviour
         animator_of_player = GetComponent<Animator>();
         collder_of_player = GetComponent<BoxCollider2D>();
         PlayerData.CurrentHealth = 100;
+        accllerhealth = 0.3f;
 
 
     }
@@ -52,7 +54,7 @@ public class BaseMove : MonoBehaviour
         Move();
         Isground();
         change_health_line();
-        test1();
+        //test1();
 
     }
     private void Move()
@@ -63,12 +65,14 @@ public class BaseMove : MonoBehaviour
             transform.transform.Translate(Vector3.left * speed, Space.Self);
             Player.transform.localScale = new Vector3(-1, 1, 1);
             toward = -1;
+            rigidbody_of_player.AddForce(new Vector2(0,0));
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.transform.Translate(Vector3.right * speed, Space.Self);
             Player.transform.localScale = new Vector3(1, 1, 1);
             toward = 1;
+            rigidbody_of_player.AddForce(new Vector2(0, 0));
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -124,6 +128,8 @@ public class BaseMove : MonoBehaviour
     private void change_health_line()
     {
         Healthline.value = PlayerData.CurrentHealth/100;
+        if (yellowline.fillAmount > Healthline.value)
+        { yellowline.fillAmount -= accllerhealth * Time.deltaTime; }
     }
     private void test1()//用于测试血条是否变更，无意义可删除
     {
@@ -131,6 +137,18 @@ public class BaseMove : MonoBehaviour
         {
             PlayerData.CurrentHealth -= 10;
             rigidbody_of_player.AddForce(new Vector2(-1, 0) * 10f);
+
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            PlayerData.CurrentHealth -= 10;
+            rigidbody_of_player.AddForce(new Vector2(-toward,0.5f)*400f);
+
+            Player.GetComponent<Image>().color=new Color(255,255,255,0);
+
         }
     }
 
