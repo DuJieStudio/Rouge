@@ -61,4 +61,75 @@ public class CharacterStats : MonoBehaviour
             PlayerData.moveSpeed = value;
         }
     }
+    public PlayerDataofAttack_SO Attackdata;
+    public float MinDamage
+    {
+        get
+        {
+            if (PlayerData != null)
+            { return Attackdata.MinDamage; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            PlayerData.maxhealth = value;
+        }
+    }
+    public float MaxDamage
+    {
+        get
+        {
+            if (PlayerData != null)
+            { return Attackdata.MaxDamage; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            PlayerData.maxhealth = value;
+        }
+    }
+    public float CoolDown
+    {
+        get
+        {
+            if (PlayerData != null)
+            { return Attackdata.CoolDown; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            PlayerData.maxhealth = value;
+        }
+    }
+    public float Critical_Multiplierh
+    {
+        get
+        {
+            if (PlayerData != null)
+            { return Attackdata.Critical_Multiplier; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            PlayerData.maxhealth = value;
+        }
+    }
+    public float Critical_Chance
+    {
+        get
+        {
+            if (PlayerData != null)
+            { return Attackdata.Critical_Chance; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            PlayerData.maxhealth = value;
+        }
+    }
 }
