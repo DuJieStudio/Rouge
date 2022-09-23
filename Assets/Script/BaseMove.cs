@@ -2,33 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaseMove : MonoBehaviour
 {
     public GameObject Player;
-    public float speed;
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
     private BoxCollider2D collder_of_player;
-    private int toward;
     [Header("环境检测")]
     public float checkRadius;//检测地面偏移
     public LayerMask whatIsGround;//地面图层
-    public int jumpcount;
-    public Slider shiftline;
     public bool isGround;//是否在地面
+    public LayerMask platform;
+    [Header("血条与能量条")]
+    public Slider shiftline;
     private bool shift_or_not;
     private float shifttime;//shift计时器
-    public CharacterStats PlayerData;//获取playdata里的数据
-    public Slider Healthline;
     public Image yellowline;
     public float accllerhealth;//黄血延迟速度
+    [Header("玩家数值")]
+    public CharacterStats PlayerData;//获取playdata里的数据
+    public Slider Healthline;
     public BoxCollider2D enemy;
-    private SpriteRenderer sr;//SpriteRenderer
-    private List<GameObject> ghostList = new List<GameObject>();//残影列表
+    public int jumpcount;
+    public float speed;
+    private int toward;
     private void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -55,6 +56,8 @@ public class BaseMove : MonoBehaviour
         Isground();
         change_health_line();
         //test1();
+        dead();
+        one_way_platform();
 
     }
     private void Move()
@@ -112,10 +115,11 @@ public class BaseMove : MonoBehaviour
                 shifttime = 0;
             }
         }
+    
     }
     private void Isground()
     {
-        if (rigidbody_of_player.IsTouchingLayers(whatIsGround))
+        if (rigidbody_of_player.IsTouchingLayers(whatIsGround)|| rigidbody_of_player.IsTouchingLayers(platform))
         {
             animator_of_player.SetBool("fall", true);
             jumpcount = 2;
@@ -152,7 +156,29 @@ public class BaseMove : MonoBehaviour
         }
     }
 
+    private void dead()
+    {
+        if (PlayerData.CurrentHealth <= 0)
+        {
+            animator_of_player.SetBool("dead", true);
+            Invoke("regame",5);
+        }
+    }
+    private void regame()
+    {
+        SceneManager.LoadScene(0);
+    }
+    private void one_way_platform()//单向砖块
+    {
+        if (rigidbody_of_player.IsTouchingLayers(platform) && Input.GetKey(KeyCode.S))
+        {
+            collder_of_player.isTrigger = true;
+        }
+        if (rigidbody_of_player.IsTouchingLayers(platform) == false)
+        {
+            collder_of_player.isTrigger = false;
+        }
 
-
+    }
 
 }
