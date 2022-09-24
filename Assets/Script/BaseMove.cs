@@ -85,7 +85,7 @@ public class BaseMove : MonoBehaviour
             }
             
         }
-        CDImage.fillAmount -= 1.0f / DashCoolDown * Time.deltaTime;
+        //CDImage.fillAmount -= 1.0f / DashCoolDown * Time.deltaTime;
     }
 
     void SwitchAnim()
@@ -158,7 +158,6 @@ public class BaseMove : MonoBehaviour
         {
             jumpcount = 1;
         }
-            _sr.color = ghostColor;
 
 
         if (Input.GetKeyDown(KeyCode.Space)&&jumpcount>0)
