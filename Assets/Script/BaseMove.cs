@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BaseMove : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class BaseMove : MonoBehaviour
     private float LastDash = -10;
     public float DashCoolDown;
     public  bool isDashing;
+    public float shiftcheck = 2f;
     //public float DashSpeed;
     public AudioSource DashAudio;
     public float horizontalmove;
@@ -59,6 +61,7 @@ public class BaseMove : MonoBehaviour
         Dash();
         Jump();
         SwitchAnim();
+        //ShiftCheck();
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);       
     }
     private void Move()
@@ -98,6 +101,15 @@ public class BaseMove : MonoBehaviour
 
         }
         //CDImage.fillAmount -= 1.0f / DashCoolDown * Time.deltaTime;
+
+        //RaycastHit2D LeftshiftCheck = Raycast(transform.position, Vector2.left, 2f, IsGround);
+        //RaycastHit2D RightshiftCheck = Raycast(transform.position, Vector2.right, 2f, IsGround);
+        //if (LeftshiftCheck || RightshiftCheck)
+        //{
+            
+        //    rigidbody_of_player.velocity = new Vector2(2f, 0);
+        //}
+
     }
 
     void SwitchAnim()
@@ -140,15 +152,32 @@ public class BaseMove : MonoBehaviour
             if (DashTimeLetf > 0)
             {
 
+                //transform.DOMoveX(Player.transform.position.x + 1 * rigidbody_of_player.transform.localScale.x,Dashtime);
+                Player.transform.position = new Vector2(Player.transform.position.x + 0.07f * rigidbody_of_player.transform.localScale.x, Player.transform.position.y);
+                //rigidbody_of_player.velocity = new Vector2(12f * rigidbody_of_player.transform.localScale.x, rigidbody_of_player.velocity.y);               
                 
-                Player.transform.position = new Vector2(Player.transform.position.x + 0.16f * rigidbody_of_player.transform.localScale.x, Player.transform.position.y);
-                //rigidbody_of_player.velocity = new Vector2(8f * rigidbody_of_player.transform.localScale.x, rigidbody_of_player.velocity.y);               
-
                 animator_of_player.SetBool("shift", true);
               //  anim2.SetBool("effect", true);
                 DashTimeLetf -= Time.deltaTime;
                
                 ShadowPool.instance.GetFormPool();
+
+                //RaycastHit2D hit;
+
+                //Vector2 p1 = transform.position;
+                //Vector2 p2 = p1 + Vector2.up * 0.5f;
+                //if(Physics2D.CapsuleCast(p1,p2,0f,))
+                //Physics2D.CapsuleCast()
+                //if (Physics2D.CapsuleCast(p1, p2, 0f, transform.forward, out hit, 0.2f))
+                //{
+
+                //}
+                //RaycastHit2D LeftshiftCheck = Raycast(new Vector2(rigidbody_of_player.transform.position.x, 0f), Vector2.left, 0.2f, IsGround);
+                //RaycastHit2D RightshiftCheck = Raycast(new Vector2(rigidbody_of_player.transform.position.x, 0f), Vector2.right, 0.2f, IsGround);
+                //if (LeftshiftCheck || RightshiftCheck)
+                //{
+                //    rigidbody_of_player.velocity = new Vector2(0, 0);
+                //}
             }
             if (DashTimeLetf <= 0)
             {
@@ -215,21 +244,31 @@ public class BaseMove : MonoBehaviour
                 float curveValue = curve.Evaluate(normalizedTime);
 
                 rigidbody_of_player.velocity = new Vector2(rigidbody_of_player.velocity.x, JumpForce * curveValue);
-                //while (!onGround)
-                //{
-                //    speed = jumpspeed;
-                //}
-                //speed = 3f;
-                //if (horizontalmove!=0)
-                //{
-                //    //rigidbody_of_player.AddForce(new Vector2(-50f * rigidbody_of_player.transform.localScale.x, 0));
-                //    rigidbody_of_player.velocity -=
-                //}
+              
                 animator_of_player.SetBool("jumping", true);
                 yield return null;
             }
         }
 
     }
+    //RaycastHit2D Raycast(Vector2 rayDiraction,float length,LayerMask layer)
+    //{
+    //    Vector2 pos = transform.position;
 
+    //    RaycastHit2D hit = Physics2D.Raycast(pos , rayDiraction, length, layer);
+        
+    //    Debug.DrawRay(pos , rayDiraction * length);
+
+    //    return hit;
+    //}
+    //void ShiftCheck()
+    //{
+    //    RaycastHit2D LeftshiftCheck = Raycast( Vector2.left, 0.8f, IsGround);
+    //    RaycastHit2D RightshiftCheck = Raycast( Vector2.right, 0.8f, IsGround);
+    //    if (LeftshiftCheck || RightshiftCheck)
+    //    {
+            
+    //        //rigidbody_of_player.velocity = new Vector2(0, 0);
+    //    }
+    //}
 }
