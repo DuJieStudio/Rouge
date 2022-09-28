@@ -10,13 +10,13 @@ public class BaseMove : MonoBehaviour
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
     public Animator anim2;
-
     public Image CDImage;
+    public PlayerData_SO playerdata;
     [Header("环境检测")]
     public LayerMask IsGround;//地面图层
     public Collider2D coll;
     public int jumpcount;
-    private bool onGround;
+    public bool onGround;
     public Transform GroundCheck;
     private float shifttime;//shift计时器
 
@@ -47,18 +47,24 @@ public class BaseMove : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
+        speed = playerdata.moveSpeed;
+      //  jumpcount = 1;
+        Debug.Log(IsGround);
     }
 
+
     void Update()
-    {          
-        Move();
+    {   Move();   
         Dash();
         Jump();
         SwitchAnim();
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);       
+        cdline();
+        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
+        
     }
+
     private void Move()
-    {   
+    {  
         float horizontalmove = Input.GetAxis("Horizontal"); //定义浮点型变量horizontalmove获取Axi中Horizontal（控制移动方向，值为1，0，-1及中间小数）的数值     
         float facedirection = Input.GetAxisRaw("Horizontal");//GetAxisRaw与GetAxis的区别，前者直接获取10-1三个数，后者可获取中间小数
 
@@ -106,14 +112,13 @@ public class BaseMove : MonoBehaviour
             animator_of_player.SetBool("idle", true);          
         }
     }
-
+     
 
     void ReadyToDash()
     {
         isDashing = true;
         DashTimeLetf = Dashtime;
         LastDash = Time.time;
-        CDImage.fillAmount = 1;
         anim2.SetBool("effect", true);
         
     }
@@ -185,7 +190,6 @@ public class BaseMove : MonoBehaviour
                 float normalizedTime = (time / Totaltime);
                 time += Time.deltaTime;
                 float curveValue = curve.Evaluate(normalizedTime);
-
                 rigidbody_of_player.velocity = new Vector2(rigidbody_of_player.velocity.x, JumpForce * curveValue);
                 animator_of_player.SetBool("jumping", true);
                 yield return null;
@@ -194,4 +198,8 @@ public class BaseMove : MonoBehaviour
 
     }
 
+    void cdline()
+    {
+        CDImage.fillAmount = (Time.time - LastDash) / DashCoolDown;
+    }
 }
