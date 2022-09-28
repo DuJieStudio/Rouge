@@ -12,8 +12,8 @@ public class BaseMove : MonoBehaviour
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
     public Animator anim2;
-
     public Image CDImage;
+    public PlayerData_SO playerdata;
     [Header("环境检测")]
     public LayerMask IsGround;//地面图层
     public Collider2D coll;
@@ -53,17 +53,21 @@ public class BaseMove : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
+        speed = playerdata.moveSpeed;
+      //  jumpcount = 1;
+        Debug.Log(IsGround);
     }
 
+
     void Update()
-    {          
-        Move();
+    {   Move();   
         Dash();
         Jump();
         SwitchAnim();
         //ShiftCheck();
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);       
     }
+
     private void Move()
     {   
         horizontalmove = Input.GetAxis("Horizontal"); //定义浮点型变量horizontalmove获取Axi中Horizontal（控制移动方向，值为1，0，-1及中间小数）的数值     
@@ -131,7 +135,7 @@ public class BaseMove : MonoBehaviour
             
         }
     }
-
+     
 
     void ReadyToDash()
     {
@@ -242,7 +246,6 @@ public class BaseMove : MonoBehaviour
                 float normalizedTime = (time / Totaltime);
                 time += Time.deltaTime;
                 float curveValue = curve.Evaluate(normalizedTime);
-
                 rigidbody_of_player.velocity = new Vector2(rigidbody_of_player.velocity.x, JumpForce * curveValue);
               
                 animator_of_player.SetBool("jumping", true);

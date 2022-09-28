@@ -15,4 +15,4 @@ MonoBehaviour:
   maxhealth: 100
   currenthealth: 100
   baseDefence: 5
-  moveSpeed: 0.012
+  moveSpeed: 10
