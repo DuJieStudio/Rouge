@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 454a03f6aff676141b33381cae55faf0, type: 3}
-  m_Name: AttackData
+  m_Name: PlayerAttack
   m_EditorClassIdentifier: 
   MinDamage: 5
   MaxDamage: 10
