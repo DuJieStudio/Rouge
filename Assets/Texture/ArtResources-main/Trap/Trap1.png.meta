@@ -8,6 +8,30 @@ TextureImporter:
   - first:
       213: 8291630910164914116
     second: Trap1_1
+  - first:
+      213: 6289636171332077316
+    second: Trap1_2
+  - first:
+      213: 9191297385686533169
+    second: Trap1_3
+  - first:
+      213: 6454599659669134217
+    second: Trap1_4
+  - first:
+      213: 4380243626357205050
+    second: Trap1_5
+  - first:
+      213: 4379762795771746776
+    second: Trap1_6
+  - first:
+      213: -8703376075278520675
+    second: Trap1_7
+  - first:
+      213: -3710857666960940419
+    second: Trap1_8
+  - first:
+      213: 2780454843642997035
+    second: Trap1_9
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -135,6 +159,174 @@ TextureImporter:
       bones: []
       spriteID: 4cf4701c16ac11370800000000000000
       internalID: 8291630910164914116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 190
+        width: 180
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40742be16c6494750800000000000000
+      internalID: 6289636171332077316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_3
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 200
+        width: 170
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13482d2564c0e8f70800000000000000
+      internalID: 9191297385686533169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_4
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 49
+        width: 439
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b9fe94138539950800000000000000
+      internalID: 6454599659669134217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_5
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 821
+        width: 221
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38a0b2ee50c9cc30800000000000000
+      internalID: 4380243626357205050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530
+        width: 306
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9527ace0b08cc30800000000000000
+      internalID: 4379762795771746776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 610
+        width: 91
+        height: 203
+      alignment: 9
+      pivot: {x: 0.5200521, y: 1.2165864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ee36e6295673780800000000000000
+      internalID: -8703376075278520675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_8
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 860
+        width: 221
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7222c4ec92608cc0800000000000000
+      internalID: -3710857666960940419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trap1_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 505
+        width: 301
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29ea55e2f8269620800000000000000
+      internalID: 2780454843642997035
       vertices: []
       indices: 
       edges: []

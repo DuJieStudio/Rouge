@@ -11,13 +11,16 @@ public class BaseMove : MonoBehaviour
     private Animator animator_of_player;
     public Animator anim2;
     public Image CDImage;
+    public Image HPline;
     public PlayerData_SO playerdata;
+    public CharacterStats Characterstats;
     [Header("环境检测")]
     public LayerMask IsGround;//地面图层
     public Collider2D coll;
     public int jumpcount;
     public bool onGround;
     public Transform GroundCheck;
+    public float currectHealth;
     private float shifttime;//shift计时器
 
 
@@ -34,12 +37,10 @@ public class BaseMove : MonoBehaviour
     public float DashCoolDown;
     public  bool isDashing;
     public AudioSource DashAudio;
- 
+    public bool IsinvIncible;
+    public float InvincibleTime=2.0f;
+    public float CurrectInvincibleTime;
 
-    private void Awake()
-    {
-
-    }
 
     void Start()
     {
@@ -50,16 +51,21 @@ public class BaseMove : MonoBehaviour
         speed = playerdata.moveSpeed;
       //  jumpcount = 1;
         Debug.Log(IsGround);
+        playerdata.currenthealth = 100;
+        IsinvIncible = true;
+        
     }
 
 
     void Update()
     {   Move();   
         Dash();
+        changehp();
         Jump();
         SwitchAnim();
         cdline();
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
+        
         
     }
 
@@ -119,7 +125,7 @@ public class BaseMove : MonoBehaviour
         isDashing = true;
         DashTimeLetf = Dashtime;
         LastDash = Time.time;
-        anim2.SetBool("effect", true);
+        //anim2.SetBool("effect", true);
         
     }
 
@@ -140,7 +146,7 @@ public class BaseMove : MonoBehaviour
             if (DashTimeLetf <= 0)
             {
                 isDashing = false;
-                anim2.SetBool("effect", false);
+                //anim2.SetBool("effect", false);
 
                 if (rigidbody_of_player.IsTouchingLayers(IsGround))
                 {
@@ -201,5 +207,31 @@ public class BaseMove : MonoBehaviour
     void cdline()
     {
         CDImage.fillAmount = (Time.time - LastDash) / DashCoolDown;
+        HPline.fillAmount = playerdata.currenthealth / playerdata.maxhealth;
     }
+
+    public void Isinvincible()
+    {
+        if (IsinvIncible)
+        {
+            CurrectInvincibleTime -= Time.deltaTime;
+
+        }
+        if (CurrectInvincibleTime < 0)
+        {
+            IsinvIncible = false;
+
+        }
+    }
+    public void changehp()
+    {
+        currectHealth = playerdata.currenthealth;
+        if (IsinvIncible)
+        {
+            playerdata.currenthealth = currectHealth;
+            
+        }
+    }
+
+
 }

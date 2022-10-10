@@ -7,6 +7,8 @@ TagManager:
   - ground
   - enemy
   - Platform
+  - fireball
+  - trap
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - ground
   - platform
   - player
-  - 
+  - trap
   - 
   - 
   - 

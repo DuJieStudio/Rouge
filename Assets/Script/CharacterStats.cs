@@ -16,7 +16,8 @@ public class CharacterStats : MonoBehaviour
         }
         set
         {
-            PlayerData.maxhealth = value;
+            PlayerData.maxhealth = value; 
+
         }
     }
     public float CurrentHealth
@@ -28,11 +29,15 @@ public class CharacterStats : MonoBehaviour
             else
             { return 0; }
         }
+        
         set
         {
-            PlayerData.currenthealth = value;
+
+             PlayerData.currenthealth = value; 
+
         }
     }
+
     public float BaseDefence
     {
         get
