@@ -15,13 +15,16 @@ public class BaseMove : MonoBehaviour
     private Animator animator_of_player;
     public Animator anim2;
     public Image CDImage;
+    public Image HPline;
     public PlayerData_SO playerdata;
+    public CharacterStats Characterstats;
     [Header("环境检测")]
     public LayerMask IsGround;//地面图层
     public Collider2D coll;
     public int jumpcount;
     public bool onGround;
     public Transform GroundCheck;
+    public float currectHealth;
     private float shifttime;//shift计时器
 
 
