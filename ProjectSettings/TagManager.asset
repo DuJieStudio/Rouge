@@ -19,6 +19,7 @@ TagManager:
   - ground
   - platform
   - player
+  - enemy
   - trap
   - 
   - 
