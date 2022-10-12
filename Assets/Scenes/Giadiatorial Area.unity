@@ -1105,7 +1105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972027141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.220995, y: 5.0317693, z: -10}
+  m_LocalPosition: {x: -17.220995, y: 5.0317526, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337374570}
@@ -1697,7 +1697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1652945067
 Transform:
   m_ObjectHideFlags: 0
@@ -10802,12 +10802,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4578fad352bad244f89e56a3eb7e7657, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfd0edb772dee5b42a69181e065237c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.3703704, y: 2.3703704}
+  m_Size: {x: 5, y: 2.1333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11085,10 +11085,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   speed: 0
+  acceration: 8
   jumpspeed: 0
   anim2: {fileID: 2032473971}
   CDImage: {fileID: 1604350390}
+  HPline: {fileID: 0}
   playerdata: {fileID: 11400000, guid: 06e57feaab8deef4db83799f063c7284, type: 2}
+  Characterstats: {fileID: 0}
   IsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -11096,6 +11099,7 @@ MonoBehaviour:
   jumpcount: 0
   onGround: 0
   GroundCheck: {fileID: 155205214}
+  currectHealth: 0
   curve:
     serializedVersion: 2
     m_Curve:
@@ -11134,10 +11138,12 @@ MonoBehaviour:
   JumpForce: 24
   Dashtime: 0.2
   DashCoolDown: 3
+  canDash: 1
   isDashing: 0
-  shiftcheck: 2
+  DashPower: 0
   DashAudio: {fileID: 0}
   horizontalmove: 0
+  facedirection: 0
 --- !u!95 &2032473971
 Animator:
   serializedVersion: 3
