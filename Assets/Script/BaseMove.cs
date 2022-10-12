@@ -88,7 +88,7 @@ public class BaseMove : MonoBehaviour
         //ShiftCheck();
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            StartCoroutine(Dash());         
+            StartCoroutine(Dash());
             //DashTimeLetf = Dashtime;
         }
         
