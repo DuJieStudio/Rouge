@@ -198,7 +198,7 @@ public class BaseMove : MonoBehaviour
         //if (DashTimeLetf > 0)
         //{
         //    DashTimeLetf -= Time.deltaTime;
-        ShadowPool.instance.GetFormPool();
+       // ShadowPool.instance.GetFormPool();
         //}
         //ShadowPool.instance.GetFormPool();
         //if (isDashing )
@@ -210,6 +210,7 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player.gravityScale = dashingGravity;
 
         isDashing = false;
+
         if (rigidbody_of_player.IsTouchingLayers(IsGround))
         {
             animator_of_player.SetBool("shift", false);
