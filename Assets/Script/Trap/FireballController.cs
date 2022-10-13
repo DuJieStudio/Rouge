@@ -7,15 +7,14 @@ public class FireballController : MonoBehaviour
     public Rigidbody2D rig;
     public PlayerData_SO playerdata;
     public LayerMask player;
-    private bool ishit;
     [Header("»ðÇòËÙ¶È")]
     public float bulletspeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(GameObject.FindGameObjectWithTag("fireball"),1);
         rig.velocity =  Vector2.left * bulletspeed;
-        Destroy(GameObject.FindGameObjectWithTag("fireball"), 1);
         
     }
      void Update()

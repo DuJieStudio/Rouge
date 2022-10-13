@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrapController : MonoBehaviour
 {
     public GameObject fireball;
+    public GameObject createfireball;
     [Header("Éä»÷ÊôÐÔ")]
     public float firerate = 1f;
     public float nextfire = 0f;
@@ -20,7 +21,7 @@ public class TrapController : MonoBehaviour
         if (Time.time > nextfire)
         {
             nextfire = Time.time + firerate;
-            Instantiate(fireball, transform.position, transform.rotation);
+            Instantiate(fireball, createfireball.transform.position, transform.rotation);
         }
         
     }
