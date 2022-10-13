@@ -133,7 +133,7 @@ public class BaseMove : MonoBehaviour
             }
             else
             {
-                if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1"))
+                if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2"))
                 {
                     rigidbody_of_player.velocity = new Vector2(horizontalmove * speed, rigidbody_of_player.velocity.y);
                 }
@@ -236,14 +236,19 @@ public class BaseMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
         {
-            StartCoroutine(StartCurve());
-            //speed = jumpspeed;
-            //if (!onGround)
-            //{
-            //    speed = jumpspeed;
-            //}
-            jumpcount--;
-            animator_of_player.SetBool("jumping", true);
+            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2"))
+            {
+                StartCoroutine(StartCurve());
+                //speed = jumpspeed;
+                //if (!onGround)
+                //{
+                //    speed = jumpspeed;
+                //}
+
+                jumpcount--;
+                animator_of_player.SetBool("jumping", true);
+            }
+        
         }
         if (Input.GetKeyDown(KeyCode.Space) && jumpcount == 0 && onGround)
         {
