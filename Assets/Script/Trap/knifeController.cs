@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class knifeController : MonoBehaviour
 {
-    public GameObject rope;
     public GameObject knife;
     private Vector2 direction;
     private float scale_direction;
+    public Vector3 startarea;
+    public GameObject trigger;
+    public LayerMask player;
+    public bool isfall;
     // Start is called before the first frame update
     void Start()
     {
-        direction = new Vector2(0, -0.02f);
-        scale_direction = 0.02f;
+        trigger = GameObject.FindGameObjectWithTag("trigger");
+        startarea = knife.transform.position;
+        isfall = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        knife.transform.Translate(direction);
-        rope.transform.localScale = new Vector3(1, rope.transform.localScale.y+scale_direction, 1);
-        if (knife.transform.position.y >= 5)
+        if (Physics2D.OverlapCircle(trigger.transform.position, 0.2f, player))
         { 
-            direction = new Vector2(0, -0.02f);
-            scale_direction = 0.02f;
+            isfall = true;
+        }
+        if (!isfall)
+        { knife.transform.position = startarea; }
+        else
+        {
 
-            
+            knife.transform.Translate(new Vector2(0, Mathf.Lerp(-1, 0.05f, -5)));
+            Destroy(knife, 2);
         }
-        if (knife.transform.position.y <= 0)
-        { direction = new Vector2(0, 0.02f);
-            scale_direction = -0.02f;
-        }
+
+        
 
 
 
