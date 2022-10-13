@@ -441,7 +441,7 @@ SpriteRenderer:
   m_Size: {x: 16.23, y: 5.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &584772956
@@ -480,6 +480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   speed: 0
+  acceration: 8
+  jumpspeed: 0
   anim2: {fileID: 584772958}
   CDImage: {fileID: 1202646570}
   HPline: {fileID: 1269670786}
@@ -527,15 +529,16 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Totaltime: 0.17
-  fallMultiplier: 2.5
+  fallMultiplier: 8
   JumpForce: 24
   Dashtime: 0.2
-  DashCoolDown: 3
+  DashCoolDown: 1
+  canDash: 1
   isDashing: 0
+  DashPower: 35
   DashAudio: {fileID: 0}
-  IsinvIncible: 0
-  InvincibleTime: 0
-  CurrectInvincibleTime: 0
+  horizontalmove: 0
+  facedirection: 0
 --- !u!95 &584772958
 Animator:
   serializedVersion: 3
@@ -568,7 +571,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 767461e9edcf3dc43977045b1fffdb5f, type: 2}
@@ -656,7 +659,7 @@ Transform:
   m_Children:
   - {fileID: 1243071057}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &584772963
 MonoBehaviour:
@@ -872,7 +875,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1202646568
 GameObject:
@@ -1186,7 +1189,7 @@ Transform:
   m_Children:
   - {fileID: 1722653351}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460607420
 GameObject:
@@ -1519,7 +1522,7 @@ SpriteRenderer:
   m_Size: {x: 16.23, y: 5.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1649667292
@@ -1687,7 +1690,7 @@ Transform:
   m_Children:
   - {fileID: 6342915}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1669777806
 MonoBehaviour:
@@ -13612,7 +13615,7 @@ Transform:
   m_Children:
   - {fileID: 1580761092}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1814982008
 GameObject:
@@ -13672,7 +13675,37 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1920265561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2350767677563756325, guid: c240215523eed1c4d92dd890112f44fd, type: 3}
+  m_PrefabInstance: {fileID: 661870333}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920265562}
+  m_Layer: 0
+  m_Name: 'Trap1_4 (Missing Prefab with guid: c240215523eed1c4d92dd890112f44fd)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920265562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2350767677563756314, guid: c240215523eed1c4d92dd890112f44fd, type: 3}
+  m_PrefabInstance: {fileID: 661870333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920265561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936120580
 GameObject:
@@ -13706,11 +13739,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2001446867 stripped
+--- !u!1 &2001446867
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 1843378221679216655, guid: df69c07e64c7e85448c0512ce963d141, type: 3}
   m_PrefabInstance: {fileID: 694848904}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001446869}
+  - component: {fileID: 2001446868}
+  m_Layer: 0
+  m_Name: Placeholder for referenced GameObject in Prefab instance (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!61 &2001446868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13737,6 +13782,81 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6580982, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &2001446869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 9223372036854775807, guid: df69c07e64c7e85448c0512ce963d141, type: 3}
+  m_PrefabInstance: {fileID: 694848904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001446867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2022848503}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2022848502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1843378221679216655, guid: df69c07e64c7e85448c0512ce963d141, type: 3}
+  m_PrefabInstance: {fileID: 694848904}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022848503}
+  m_Layer: 0
+  m_Name: 'Trap1_0 (Missing Prefab with guid: df69c07e64c7e85448c0512ce963d141)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022848503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1843378221679216652, guid: df69c07e64c7e85448c0512ce963d141, type: 3}
+  m_PrefabInstance: {fileID: 694848904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022848502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2001446869}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2033461660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 9165549910641991901, guid: 0a0b4dc5cc3e067439153ebdc9878233, type: 3}
+  m_PrefabInstance: {fileID: 9165549910715669556}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033461661}
+  m_Layer: 0
+  m_Name: 'Trap1_5 (Missing Prefab with guid: 0a0b4dc5cc3e067439153ebdc9878233)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2033461661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 9165549910641991896, guid: 0a0b4dc5cc3e067439153ebdc9878233, type: 3}
+  m_PrefabInstance: {fileID: 9165549910715669556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033461660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9165549910715669556
 PrefabInstance:
   m_ObjectHideFlags: 0
