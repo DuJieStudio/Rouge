@@ -38,7 +38,11 @@ public class Attack : MonoBehaviour
 
             isAttack = true;
             anim.SetTrigger("attack");
-            rb.velocity = new Vector2(rb.transform.localScale.x * attackSpeed, rb.velocity.y);            
+            float facedirection = Input.GetAxisRaw("Horizontal");
+            if (facedirection != 0)
+            {
+                rb.velocity = new Vector2(rb.transform.localScale.x * attackSpeed, rb.velocity.y);
+            }
         }
     }
    

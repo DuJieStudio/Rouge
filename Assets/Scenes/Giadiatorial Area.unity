@@ -1105,7 +1105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972027141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.007545, y: 5.0491495, z: -10}
+  m_LocalPosition: {x: -17.220995, y: 5.0317526, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337374570}
@@ -11086,7 +11086,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   speed: 0
   acceration: 8
-  jumpspeed: 2
+  jumpspeed: 7
   anim2: {fileID: 2032473971}
   CDImage: {fileID: 1604350390}
   HPline: {fileID: 0}
@@ -11134,13 +11134,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Totaltime: 0.17
-  fallMultiplier: 2.4
+  fallMultiplier: 8.8
   JumpForce: 24
   Dashtime: 0.2
-  DashCoolDown: 3
+  DashCoolDown: 1
   canDash: 1
   isDashing: 0
-  DashPower: 0
+  DashPower: 35
   DashAudio: {fileID: 0}
   horizontalmove: 0
   facedirection: 0
@@ -11176,7 +11176,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.9309082
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 767461e9edcf3dc43977045b1fffdb5f, type: 2}

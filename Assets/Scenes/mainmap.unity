@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda01d0ace90256429f884946b1cea84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 6539386168640911537, guid: 1b4c026b1ea567749af63d25e9df1294, type: 3}
+  fireball: {fileID: 6539386168640911537, guid: 1a3b9b67a6a78db49a7fdc1eb99ac61f, type: 3}
   firerate: 1
   nextfire: 0
 --- !u!1 &129207607

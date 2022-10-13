@@ -7,9 +7,9 @@ using DG.Tweening;
 public class BaseMove : MonoBehaviour
 {
     public GameObject Player;
-    public  float speed;
- //   public float currentSpeed;
-    public float acceration=8f;
+    public float speed;
+    //   public float currentSpeed;
+    public float acceration = 8f;
     public float jumpspeed;
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
@@ -28,7 +28,7 @@ public class BaseMove : MonoBehaviour
     private float shifttime;//shift计时器
 
 
-     [Header("跳跃相关")]
+    [Header("跳跃相关")]
     public AnimationCurve curve;
     public float Totaltime = 1f;
     public float fallMultiplier;
@@ -46,32 +46,19 @@ public class BaseMove : MonoBehaviour
     //public float shiftcheck = 2f;
     //public float DashSpeed;
     public AudioSource DashAudio;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public bool IsinvIncible;
-    public float InvincibleTime=2.0f;
-    public float CurrectInvincibleTime;
-=======
-    public float horizontalmove;
-
-
->>>>>>> abfd55594285412f6a1245bcdb8d8befbd469473
-
-=======
     public float horizontalmove;
     public float facedirection;
 
     private CharacterStats characterStats;
-   // public float MoveSpeed => Mathf.Abs(rigidbody_of_player.velocity.x);
-    
-    
+    // public float MoveSpeed => Mathf.Abs(rigidbody_of_player.velocity.x);
+
+
 
 
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
     }
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
 
     void Start()
     {
@@ -80,9 +67,9 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
-      //  jumpcount = 1;
+        //  jumpcount = 1;
         //Debug.Log(IsGround);
-        characterStats.MaxHealth = 10;
+        //characterStats.MaxHealth = 10;
     }
 
 
@@ -92,22 +79,11 @@ public class BaseMove : MonoBehaviour
         {
             return;
         }
-      
+
         Move();
         //Dash();
         Jump();
         SwitchAnim();
-<<<<<<< HEAD
-<<<<<<< HEAD
-        cdline();
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
-        
-        
-=======
-        //ShiftCheck();
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);       
->>>>>>> abfd55594285412f6a1245bcdb8d8befbd469473
-=======
         //shadow();
         //ShiftCheck();
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
@@ -115,7 +91,7 @@ public class BaseMove : MonoBehaviour
             StartCoroutine(Dash());
             //DashTimeLetf = Dashtime;
         }
-        
+
         //if (isDashing)
         //{
         //    if (DashTimeLetf > 0)
@@ -125,8 +101,7 @@ public class BaseMove : MonoBehaviour
         //    }
         //}
 
-        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);       
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
+        onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
     }
 
     //private void FixedUpdate()
@@ -143,7 +118,7 @@ public class BaseMove : MonoBehaviour
 
 
     private void Move()
-    {   
+    {
         horizontalmove = Input.GetAxis("Horizontal"); //定义浮点型变量horizontalmove获取Axi中Horizontal（控制移动方向，值为1，0，-1及中间小数）的数值     
         facedirection = Input.GetAxisRaw("Horizontal");//GetAxisRaw与GetAxis的区别，前者直接获取10-1三个数，后者可获取中间小数
 
@@ -154,7 +129,7 @@ public class BaseMove : MonoBehaviour
             if (!onGround)
             {
                 rigidbody_of_player.velocity = new Vector2(horizontalmove * jumpspeed, rigidbody_of_player.velocity.y);
-               
+
             }
             else
             {
@@ -169,28 +144,28 @@ public class BaseMove : MonoBehaviour
                 {
                     //rigidbody_of_player.velocity = new Vector2(3f*horizontalmove, rigidbody_of_player.velocity.y);
                     rigidbody_of_player.velocity = new Vector2(Mathf.MoveTowards(horizontalmove, 1, 4f * Time.deltaTime), rigidbody_of_player.velocity.y);
-                   
+
                 }
-               
+
             }
             //transform.localScale = new Vector3(horizontalmove, 1, 1);
             //rigidbody_of_player.velocity = new Vector2(horizontalmove * speed, rigidbody_of_player.velocity.y);
             animator_of_player.SetFloat("running", Mathf.Abs(facedirection));//让Animator中的running获取速度数值即facedirection，用mathf保证数值为正
         }
-        
+
 
         if (facedirection != 0)
         {
             transform.localScale = new Vector3(facedirection, 1, 1);//获取player中的transform中的scale这个控制方向的变量
         }
-   
+
 
     }
 
     void SwitchAnim()
     {
         //animator_of_player.SetBool("idle",false);
-        if (animator_of_player.GetBool("jumping")) 
+        if (animator_of_player.GetBool("jumping"))
         {
             if (rigidbody_of_player.velocity.y < 0)
             {
@@ -198,35 +173,21 @@ public class BaseMove : MonoBehaviour
                 animator_of_player.SetBool("falling", true);
                 animator_of_player.SetBool("idle", false);
             }
-             
+
         }
         else if (rigidbody_of_player.IsTouchingLayers(IsGround))
         {
             animator_of_player.SetBool("falling", false);
             animator_of_player.SetBool("idle", true);
-            
+
         }
     }
 
-   
+
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
-<<<<<<< HEAD
-        DashTimeLetf = Dashtime;
-        LastDash = Time.time;
-<<<<<<< HEAD
-        //anim2.SetBool("effect", true);
-        
-=======
-        CDImage.fillAmount = 1;
-        //   anim2.SetBool("effect", true);
-        Debug.Log("111111111111111");
->>>>>>> abfd55594285412f6a1245bcdb8d8befbd469473
-    }
-=======
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
 
 
         float dashingGravity = rigidbody_of_player.gravityScale;
@@ -237,7 +198,7 @@ public class BaseMove : MonoBehaviour
         //if (DashTimeLetf > 0)
         //{
         //    DashTimeLetf -= Time.deltaTime;
-       // ShadowPool.instance.GetFormPool();
+        //ShadowPool.instance.GetFormPool();
         //}
         //ShadowPool.instance.GetFormPool();
         //if (isDashing )
@@ -249,67 +210,10 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player.gravityScale = dashingGravity;
 
         isDashing = false;
-
         if (rigidbody_of_player.IsTouchingLayers(IsGround))
         {
-<<<<<<< HEAD
-          
-            if (DashTimeLetf > 0)
-            {
-
-                //transform.DOMoveX(Player.transform.position.x + 1 * rigidbody_of_player.transform.localScale.x,Dashtime);
-                Player.transform.position = new Vector2(Player.transform.position.x + 0.07f * rigidbody_of_player.transform.localScale.x, Player.transform.position.y);
-                //rigidbody_of_player.velocity = new Vector2(12f * rigidbody_of_player.transform.localScale.x, rigidbody_of_player.velocity.y);               
-                
-                animator_of_player.SetBool("shift", true);
-              //  anim2.SetBool("effect", true);
-                DashTimeLetf -= Time.deltaTime;
-               
-                ShadowPool.instance.GetFormPool();
-
-                //RaycastHit2D hit;
-
-                //Vector2 p1 = transform.position;
-                //Vector2 p2 = p1 + Vector2.up * 0.5f;
-                //if(Physics2D.CapsuleCast(p1,p2,0f,))
-                //Physics2D.CapsuleCast()
-                //if (Physics2D.CapsuleCast(p1, p2, 0f, transform.forward, out hit, 0.2f))
-                //{
-
-                //}
-                //RaycastHit2D LeftshiftCheck = Raycast(new Vector2(rigidbody_of_player.transform.position.x, 0f), Vector2.left, 0.2f, IsGround);
-                //RaycastHit2D RightshiftCheck = Raycast(new Vector2(rigidbody_of_player.transform.position.x, 0f), Vector2.right, 0.2f, IsGround);
-                //if (LeftshiftCheck || RightshiftCheck)
-                //{
-                //    rigidbody_of_player.velocity = new Vector2(0, 0);
-                //}
-            }
-            if (DashTimeLetf <= 0)
-            {
-                isDashing = false;
-<<<<<<< HEAD
-                //anim2.SetBool("effect", false);
-=======
-                Debug.Log("33333333333333");
-       //         anim2.SetBool("effect", false);
->>>>>>> abfd55594285412f6a1245bcdb8d8befbd469473
-
-                if (rigidbody_of_player.IsTouchingLayers(IsGround))
-                {
-                    animator_of_player.SetBool("shift", false);
-                    animator_of_player.SetBool("idle", true);
-                }
-                else
-                {
-                    animator_of_player.SetBool("shift", false);
-                    animator_of_player.SetBool("falling", true);
-                }
-
-            }
-=======
             animator_of_player.SetBool("shift", false);
             animator_of_player.SetBool("idle", true);
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
         }
         else
         {
@@ -318,7 +222,7 @@ public class BaseMove : MonoBehaviour
         }
         yield return new WaitForSeconds(DashCoolDown);
         canDash = true;
-       
+
 
     }
 
@@ -330,8 +234,8 @@ public class BaseMove : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space)&&jumpcount>0)
-        {          
+        if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
+        {
             StartCoroutine(StartCurve());
             //speed = jumpspeed;
             //if (!onGround)
@@ -339,12 +243,12 @@ public class BaseMove : MonoBehaviour
             //    speed = jumpspeed;
             //}
             jumpcount--;
-            animator_of_player.SetBool("jumping", true);          
+            animator_of_player.SetBool("jumping", true);
         }
         if (Input.GetKeyDown(KeyCode.Space) && jumpcount == 0 && onGround)
         {
             StartCoroutine(StartCurve());
-           // rigidbody_of_player.AddForce(new Vector2(-25f * rigidbody_of_player.transform.localScale.x, 0));
+            // rigidbody_of_player.AddForce(new Vector2(-25f * rigidbody_of_player.transform.localScale.x, 0));
             animator_of_player.SetBool("jumping", true);
         }
 
@@ -358,14 +262,14 @@ public class BaseMove : MonoBehaviour
         IEnumerator StartCurve()
         {
             float time = 0;
-           
+
             while (time <= Totaltime)
             {
                 float normalizedTime = (time / Totaltime);
                 time += Time.deltaTime;
                 float curveValue = curve.Evaluate(normalizedTime);
                 rigidbody_of_player.velocity = new Vector2(rigidbody_of_player.velocity.x, JumpForce * curveValue);
-              
+
                 animator_of_player.SetBool("jumping", true);
                 yield return null;
             }
@@ -373,10 +277,10 @@ public class BaseMove : MonoBehaviour
 
     }
 
-   
+
     //void shadow()
     //{
-        
+
     //    DashTimeLetf = Dashtime;
     //    if (isDashing)
     //    {
@@ -391,43 +295,8 @@ public class BaseMove : MonoBehaviour
     //{
     //    Vector2 pos = transform.position;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    void cdline()
-    {
-        CDImage.fillAmount = (Time.time - LastDash) / DashCoolDown;
-        HPline.fillAmount = playerdata.currenthealth / playerdata.maxhealth;
-    }
-
-    public void Isinvincible()
-    {
-        if (IsinvIncible)
-        {
-            CurrectInvincibleTime -= Time.deltaTime;
-
-        }
-        if (CurrectInvincibleTime < 0)
-        {
-            IsinvIncible = false;
-
-        }
-    }
-    public void changehp()
-    {
-        currectHealth = playerdata.currenthealth;
-        if (IsinvIncible)
-        {
-            playerdata.currenthealth = currectHealth;
-            
-        }
-    }
-
-
-=======
-=======
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
     //    RaycastHit2D hit = Physics2D.Raycast(pos , rayDiraction, length, layer);
-        
+
     //    Debug.DrawRay(pos , rayDiraction * length);
 
     //    return hit;
@@ -438,12 +307,8 @@ public class BaseMove : MonoBehaviour
     //    RaycastHit2D RightshiftCheck = Raycast( Vector2.right, 0.8f, IsGround);
     //    if (LeftshiftCheck || RightshiftCheck)
     //    {
-            
+
     //        //rigidbody_of_player.velocity = new Vector2(0, 0);
     //    }
     //}
-<<<<<<< HEAD
->>>>>>> abfd55594285412f6a1245bcdb8d8befbd469473
-=======
->>>>>>> 7bf8f79a9c553aca976b11fcf54b5b2b067607b4
 }
