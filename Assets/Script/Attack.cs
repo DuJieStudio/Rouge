@@ -12,6 +12,10 @@ public class Attack : MonoBehaviour
     //public float attackCD = 0;
     public float attackSpeed;
     public bool isAttack;
+    private int comboStep;
+    public float interval = 2f;
+    private float timer;
+
 
     void Start()
     {
@@ -29,19 +33,32 @@ public class Attack : MonoBehaviour
 
     void PlayerAttack()
     {
-     
+
         if (Input.GetKeyDown(KeyCode.J) && !isAttack)
         {
-            //anim.SetTrigger("attack");
-            ////isAttack = true;
-            //rb.velocity = new Vector2(rb.transform.localScale.x * attackSpeed, rb.velocity.y);
 
             isAttack = true;
+            comboStep++;
+            if (comboStep > 2)
+                comboStep = 1;
+
+            timer = interval;
             anim.SetTrigger("attack");
+            anim.SetInteger("comboStep", comboStep);
             float facedirection = Input.GetAxisRaw("Horizontal");
             if (facedirection != 0)
             {
                 rb.velocity = new Vector2(rb.transform.localScale.x * attackSpeed, rb.velocity.y);
+            }
+        }
+
+        if (timer != 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = 0;
+                comboStep = 0;
             }
         }
     }
