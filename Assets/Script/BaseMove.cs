@@ -49,11 +49,7 @@ public class BaseMove : MonoBehaviour
     public float horizontalmove;
     public float facedirection;
 
-    private CharacterStats characterStats;
-    // public float MoveSpeed => Mathf.Abs(rigidbody_of_player.velocity.x);
-
-
-
+    private CharacterStats characterStats;   
 
     private void Awake()
     {
@@ -67,9 +63,7 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
-        //  jumpcount = 1;
-        //Debug.Log(IsGround);
-        //characterStats.MaxHealth = 10;
+ 
     }
 
 
@@ -80,26 +74,22 @@ public class BaseMove : MonoBehaviour
             return;
         }
 
-        Move();
-        //Dash();
-        Jump();
+        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        {
+            Move();
+            
+            Jump();
+            //if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            //{
+            //    StartCoroutine(Dash());
+            //}
+        }
         SwitchAnim();
         //shadow();
-        //ShiftCheck();
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
-            //DashTimeLetf = Dashtime;
         }
-
-        //if (isDashing)
-        //{
-        //    if (DashTimeLetf > 0)
-        //    {
-        //        DashTimeLetf -= Time.deltaTime;
-        //        ShadowPool.instance.GetFormPool();
-        //    }
-        //}
 
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
     }
@@ -133,31 +123,32 @@ public class BaseMove : MonoBehaviour
             }
             else
             {
-                if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2"))
-                {
+                
+                //if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+                //{
                     rigidbody_of_player.velocity = new Vector2(horizontalmove * speed, rigidbody_of_player.velocity.y);
-                }
-                //rigidbody_of_player.velocity = new Vector2(Mathf.MoveTowards(rigidbody_of_player.velocity.x, horizontalmove * speed, 5f * Time.deltaTime), rigidbody_of_player.velocity.y);
-                //currentSpeed = Mathf.MoveTowards(currentSpeed, speed, acceration * Time.deltaTime);
+                //}
+                
 
                 if (facedirection == 0)
-                {
-                    //rigidbody_of_player.velocity = new Vector2(3f*horizontalmove, rigidbody_of_player.velocity.y);
+                {                    
                     rigidbody_of_player.velocity = new Vector2(Mathf.MoveTowards(horizontalmove, 1, 4f * Time.deltaTime), rigidbody_of_player.velocity.y);
 
                 }
 
             }
-            //transform.localScale = new Vector3(horizontalmove, 1, 1);
-            //rigidbody_of_player.velocity = new Vector2(horizontalmove * speed, rigidbody_of_player.velocity.y);
+            
             animator_of_player.SetFloat("running", Mathf.Abs(facedirection));//让Animator中的running获取速度数值即facedirection，用mathf保证数值为正
         }
 
 
-        if (facedirection != 0)
-        {
-            transform.localScale = new Vector3(facedirection, 1, 1);//获取player中的transform中的scale这个控制方向的变量
-        }
+        //if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        //{
+            if (facedirection != 0)
+            {
+                transform.localScale = new Vector3(facedirection, 1, 1);//获取player中的transform中的scale这个控制方向的变量
+            }
+        //}
 
 
     }
@@ -195,16 +186,7 @@ public class BaseMove : MonoBehaviour
 
         rigidbody_of_player.velocity = new Vector2(transform.localScale.x * DashPower, 0);
         animator_of_player.SetBool("shift", true);
-        //if (DashTimeLetf > 0)
-        //{
-        //    DashTimeLetf -= Time.deltaTime;
-        //ShadowPool.instance.GetFormPool();
-        //}
-        //ShadowPool.instance.GetFormPool();
-        //if (isDashing )
-        //{
-        //    ShadowPool.instance.GetFormPool();
-        //}
+      
         yield return new WaitForSeconds(Dashtime);
 
         rigidbody_of_player.gravityScale = dashingGravity;
@@ -233,29 +215,22 @@ public class BaseMove : MonoBehaviour
             jumpcount = 1;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
-        {
-            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2"))
+        //if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+       // {
+            if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {
-                StartCoroutine(StartCurve());
-                //speed = jumpspeed;
-                //if (!onGround)
-                //{
-                //    speed = jumpspeed;
-                //}
-
+            
+                StartCoroutine(StartCurve());               
                 jumpcount--;
+                animator_of_player.SetBool("jumping", true);               
+
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && jumpcount == 0 && onGround)
+            {
+                StartCoroutine(StartCurve());             
                 animator_of_player.SetBool("jumping", true);
             }
-        
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && jumpcount == 0 && onGround)
-        {
-            StartCoroutine(StartCurve());
-            // rigidbody_of_player.AddForce(new Vector2(-25f * rigidbody_of_player.transform.localScale.x, 0));
-            animator_of_player.SetBool("jumping", true);
-        }
+        //}
 
 
         if (rigidbody_of_player.velocity.y < 0)
@@ -296,6 +271,8 @@ public class BaseMove : MonoBehaviour
     //        }
     //    }
     //}
+
+
     //RaycastHit2D Raycast(Vector2 rayDiraction,float length,LayerMask layer)
     //{
     //    Vector2 pos = transform.position;
