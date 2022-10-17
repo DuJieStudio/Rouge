@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454a03f6aff676141b33381cae55faf0, type: 3}
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
-  MinDamage: 5
+  MinDamage: 4
   MaxDamage: 10
   CoolDown: 0
   Critical_Multiplier: 1.5

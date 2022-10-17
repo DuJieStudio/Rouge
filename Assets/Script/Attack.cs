@@ -15,6 +15,14 @@ public class Attack : MonoBehaviour
     private int comboStep;
     public float interval;
     private float timer;
+    public float damage;
+
+    private PlayerAttackStats playerAttackStats;
+
+    private void Awake()
+    {
+        playerAttackStats = GetComponent<PlayerAttackStats>();
+    }
 
 
     void Start()
@@ -22,6 +30,7 @@ public class Attack : MonoBehaviour
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         coll = GetComponent<PolygonCollider2D>();
+        damage = playerAttackStats.MinDamage;
     }
 
     
@@ -79,6 +88,8 @@ public class Attack : MonoBehaviour
             else if (transform.localScale.x < 0)
                 collision.GetComponent<Enemy_Solider>().GetHit(Vector2.left);
 
+
+            collision.GetComponent<Enemy_Solider>().TakeDamage(damage);
         }
     }
 
