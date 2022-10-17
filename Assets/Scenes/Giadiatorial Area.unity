@@ -259,7 +259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167336873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 0.3, z: 0}
+  m_LocalPosition: {x: -0.64, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1865695722}
@@ -10796,6 +10796,7 @@ GameObject:
   - component: {fileID: 1865695727}
   - component: {fileID: 1865695726}
   - component: {fileID: 1865695725}
+  - component: {fileID: 1865695728}
   m_Layer: 9
   m_Name: solider_attack1
   m_TagString: enemy
@@ -10811,7 +10812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865695721}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.937, y: -9.445, z: 0.58694184}
+  m_LocalPosition: {x: -22.5, y: -9.445, z: 0.58694184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1766999851}
@@ -10864,7 +10865,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 2.1333334}
+  m_Size: {x: 2.3703704, y: 2.3703704}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10933,7 +10934,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -10957,6 +10958,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.12691402, y: 0.1518693}
   m_Size: {x: 0.9246483, y: 1.7576222}
   m_Direction: 0
+--- !u!114 &1865695728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865695721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5775bfacdf1b20442bd916854795c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  rb: {fileID: 0}
+  isHit: 0
+  speed: 0.6
 --- !u!1 &1925126108
 GameObject:
   m_ObjectHideFlags: 0
@@ -11128,7 +11145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2032473970
 MonoBehaviour:
   m_ObjectHideFlags: 0
