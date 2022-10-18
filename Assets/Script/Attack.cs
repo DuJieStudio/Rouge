@@ -13,7 +13,7 @@ public class Attack : MonoBehaviour
     public float attackSpeed;
     public bool isAttack;
     private int comboStep;
-    public float interval = 2f;
+    public float interval;
     private float timer;
 
 
@@ -39,7 +39,7 @@ public class Attack : MonoBehaviour
 
             isAttack = true;
             comboStep++;
-            if (comboStep > 2)
+            if (comboStep > 3)
                 comboStep = 1;
 
             timer = interval;
@@ -66,5 +66,21 @@ public class Attack : MonoBehaviour
     public void AttackOver()
     {
         isAttack = false;
+      
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+            Debug.Log("111111");
+            if (transform.localScale.x > 0)
+                collision.GetComponent<Enemy_Solider>().GetHit(Vector2.right);
+            else if (transform.localScale.x < 0)
+                collision.GetComponent<Enemy_Solider>().GetHit(Vector2.left);
+
+        }
+    }
+
+
 }
