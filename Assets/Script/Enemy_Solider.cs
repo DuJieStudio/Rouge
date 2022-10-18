@@ -43,7 +43,7 @@ public class Enemy_Solider : MonoBehaviour
         {
             anim.Play("Dead");
 
-        }
+    }
     }
 
     public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向

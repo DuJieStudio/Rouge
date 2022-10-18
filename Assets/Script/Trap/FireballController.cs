@@ -7,6 +7,7 @@ public class FireballController : MonoBehaviour
     public Rigidbody2D rig;
     public PlayerData_SO playerdata;
     public LayerMask player;
+    public LayerMask ground;
     [Header("»ðÇòËÙ¶È")]
     public float bulletspeed = 5f;
 
@@ -21,8 +22,14 @@ public class FireballController : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(gameObject.transform.position, 0.2f, player))
         {
-            Destroy(GameObject.FindGameObjectWithTag("fireball"));
+            Destroy(gameObject);
         }
+        if (Physics2D.OverlapCircle(gameObject.transform.position, 0.2f, ground))
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 
 

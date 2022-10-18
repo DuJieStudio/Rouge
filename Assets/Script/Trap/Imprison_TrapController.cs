@@ -12,7 +12,7 @@ public class Imprison_TrapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainplayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -21,8 +21,8 @@ public class Imprison_TrapController : MonoBehaviour
         istrap = Physics2D.OverlapCircle(trap.transform.position, 0.2f, player);
         if (istrap)
         { 
-            mainplayer.transform.position = trap.transform.position;
-            Invoke("Destroy",5); 
+            mainplayer.transform.position =  new Vector2 (trap.transform.position.x, trap.transform.position.y+0.3f);
+            Invoke("Destroy",3); 
         }
         
 
