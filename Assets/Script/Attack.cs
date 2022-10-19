@@ -45,11 +45,14 @@ public class Attack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J) && !isAttack)
         {
+            //SoundManager.instance.Attack2Audio();
 
             isAttack = true;
             comboStep++;
             if (comboStep > 3)
                 comboStep = 1;
+            //if (comboStep == 3)
+            //    SoundManager.instance.Attack1Audio();
 
             timer = interval;
             anim.SetTrigger("attack");
