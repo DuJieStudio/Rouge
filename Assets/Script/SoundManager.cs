@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-    public static SoundManager instance;
+   // public static SoundManager instance;
 
     public AudioSource audioSource;
     [SerializeField]
     private AudioClip attack1Audio,attack2Audio, shiftAudio, runAudio,jumpAudio;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
+        //DontDestroyOnLoad(this);
     }
+    //private void Awake()
+    //{
+    //    instance = this;
+    //}
 
     public void ShiftAudio()
     {

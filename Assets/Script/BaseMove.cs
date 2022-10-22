@@ -49,9 +49,10 @@ public class BaseMove : MonoBehaviour
     public float horizontalmove;
     public float facedirection;
 
-    private CharacterStats characterStats;   
+    private CharacterStats characterStats;
 
-    private void Awake()
+    //private void Awake()
+     void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
     }
@@ -63,6 +64,7 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
+        GameManager.Instance.RigisterPlayer(characterStats);
  
     }
 
@@ -205,7 +207,8 @@ public class BaseMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {
-                SoundManager.instance.JumpAudio();
+                //SoundManager.instance.JumpAudio(); 
+                
                 StartCoroutine(StartCurve());               
                 jumpcount--;
                 animator_of_player.SetBool("jumping", true);               
@@ -215,9 +218,9 @@ public class BaseMove : MonoBehaviour
             {                
                 StartCoroutine(StartCurve());
                 animator_of_player.SetBool("jumping", true);
-                SoundManager.instance.JumpAudio();
+              //  SoundManager.instance.JumpAudio();
             }
-            //if (jumpcount == 0 && Input.GetKeyDown(KeyCode.Space)&&!onGround)
+            //if (jumpcount == 0 && Input.GetKeyDown(KeyCode.Space) && !onGround)
             //{
             //    SoundManager.instance.JumpAudio();
             //}
@@ -227,6 +230,10 @@ public class BaseMove : MonoBehaviour
         if (rigidbody_of_player.velocity.y < 0)
         {
             rigidbody_of_player.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            animator_of_player.SetBool("jumping", false);
+            animator_of_player.SetBool("falling", true);
+            animator_of_player.SetBool("idle", false);
+
         }
 
 

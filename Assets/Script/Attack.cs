@@ -85,7 +85,7 @@ public class Attack : MonoBehaviour
     {
         if (collision.CompareTag("enemy"))
         {
-            Debug.Log("111111");
+            
             if (transform.localScale.x > 0)
                 collision.GetComponent<Enemy_Solider>().GetHit(Vector2.right);
             else if (transform.localScale.x < 0)

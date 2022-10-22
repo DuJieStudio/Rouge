@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Solider : MonoBehaviour
+public class Enemy_Solider : Enemy
 {
-
-    public Animator anim;
+    
+   // public Animator anim;
     public Rigidbody2D rb;
     public bool isHit;
     private Vector2 direction;
@@ -16,14 +16,25 @@ public class Enemy_Solider : MonoBehaviour
 
     private EnemySoliderStats enemySoliderStats;
 
+    //LootSpawner lootSpawner;
+    //protected virtual void Awake()
+    //{
+    //    lootSpawner = GetComponent<LootSpawner>();
+
+    //    enemySoliderStats = GetComponent<EnemySoliderStats>();
+    //}
+
+
     private void Awake()
     {
         enemySoliderStats = GetComponent<EnemySoliderStats>();
     }
 
-    void Start()
+    protected override void Start()
     {
-        anim = transform.GetComponent<Animator>();
+        base.Start();
+        base.Awake();
+       // anim = transform.GetComponent<Animator>();
         rb = transform.GetComponent<Rigidbody2D>();
         hp = soliderdata.maxhealth;
     }
@@ -31,6 +42,7 @@ public class Enemy_Solider : MonoBehaviour
     
     void Update()
     {
+       // Debug.Log(this.transform.position);
         info = anim.GetCurrentAnimatorStateInfo(0);//持续获取动画进度
         if (isHit)
         {
@@ -39,11 +51,8 @@ public class Enemy_Solider : MonoBehaviour
                 isHit = false;
         }
 
-        if (hp <= 0)
-        {
-            anim.Play("Dead");
-
-    }
+        Dead();
+       
     }
 
     public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
@@ -59,9 +68,23 @@ public class Enemy_Solider : MonoBehaviour
         hp -= damage;
     }
 
-    public void Death()
+    public void Dead()
     {
-        GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject);
+        if (hp <= 0)
+        {
+            anim.Play("Dead");
+        }
+
+      //  lootSpawner.Spawn(transform.position);
     }
+
+    //public void Death()
+    //{
+
+    //    GetComponent<Collider2D>().enabled = false;
+    //    Destroy(gameObject);
+    //    // GameObject.Find("solider_attack1").SendMessage("fallingEquitment");
+    //    //GameObject.Find("solider_attack1").GetComponent<ItemDrop>().fallingEquitment();     
+    //    //ItemDrop.instance.fallingEquitment(this.transform.position);
+    //}
 }
