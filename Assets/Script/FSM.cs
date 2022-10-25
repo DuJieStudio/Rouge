@@ -13,7 +13,7 @@ public enum StateType   //声明枚举类型
 
 public class Parameter//新建一个类来声明敌人的各种参数
 {
-    public int health;
+   // public int health;
     public float moveSpeed;
     public float chaseSpeed;
     public float IdleTime;

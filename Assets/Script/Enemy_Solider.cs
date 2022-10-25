@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy_Solider : Enemy
 {
-    
-   // public Animator anim;
+
+    // public Animator anim;
     public Rigidbody2D rb;
     public bool isHit;
     private Vector2 direction;
@@ -13,6 +13,7 @@ public class Enemy_Solider : Enemy
     public AnimatorStateInfo info;
     public float hp;
     public SoliderData_SO soliderdata;
+    public Animator hitAnim;
 
     private EnemySoliderStats enemySoliderStats;
 
@@ -25,34 +26,37 @@ public class Enemy_Solider : Enemy
     //}
 
 
-    private void Awake()
-    {
-        enemySoliderStats = GetComponent<EnemySoliderStats>();
-    }
+    //private void Awake()
+    //{
+    //    enemySoliderStats = GetComponent<EnemySoliderStats>();
+    //}
 
-    protected override void Start()
+    //protected override void Start()
+    protected override void Awake()
     {
         base.Start();
         base.Awake();
-       // anim = transform.GetComponent<Animator>();
+        // anim = transform.GetComponent<Animator>();
         rb = transform.GetComponent<Rigidbody2D>();
         hp = soliderdata.maxhealth;
+        enemySoliderStats = GetComponent<EnemySoliderStats>();
+        hitAnim = transform.GetChild(2).GetComponent<Animator>();
     }
 
-    
+
     void Update()
     {
-       // Debug.Log(this.transform.position);
+        // Debug.Log(this.transform.position);
         info = anim.GetCurrentAnimatorStateInfo(0);//持续获取动画进度
         if (isHit)
         {
-           // rb.velocity = direction * speed;
-            if (info.normalizedTime >= 0.6f)
+            // rb.velocity = direction * speed;
+            if (info.normalizedTime >= 0.6f)//动画播到一定进度后结束受击状态
                 isHit = false;
         }
 
         Dead();
-       
+        //    Debug.Log(anim.GetBool("Hurt"));
     }
 
     public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
@@ -60,12 +64,22 @@ public class Enemy_Solider : Enemy
         transform.localScale = new Vector3(direction.x, 1, 1);
         isHit = true;
         this.direction = direction;
-        anim.SetTrigger("Hit");
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
+        {
+            anim.Play("Hurt");
+            //hitAnim.SetTrigger("Hit");
+            //hitAnim.Play("Hit");
+
+        }
     }
 
     public void TakeDamage(float damage)
     {
+        //if (hp > 0)
+        //  {
         hp -= damage;
+
+        // }
     }
 
     public void Dead()
@@ -73,11 +87,17 @@ public class Enemy_Solider : Enemy
         if (hp <= 0)
         {
             anim.Play("Dead");
-        }
+            GetComponent<Collider2D>().enabled = false;
+            rb.gravityScale = 0f;
 
-      //  lootSpawner.Spawn(transform.position);
+        }
+        //  lootSpawner.Spawn(transform.position);
     }
 
+    public void HitAnim ()
+    {
+        hitAnim.Play("Hit");
+    }
     //public void Death()
     //{
 

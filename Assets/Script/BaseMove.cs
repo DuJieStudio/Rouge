@@ -98,7 +98,10 @@ public class BaseMove : MonoBehaviour
         facedirection = Input.GetAxisRaw("Horizontal");//GetAxisRaw与GetAxis的区别，前者直接获取10-1三个数，后者可获取中间小数
 
         //rigidbody_of_player.velocity = new Vector2(horizontalmove * speed, rigidbody_of_player.velocity.y);
-        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
         {
             if (horizontalmove != 0) //角色移动
             {
@@ -131,7 +134,10 @@ public class BaseMove : MonoBehaviour
         }
 
 
-        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
         {
             if (facedirection != 0)
             {
@@ -203,7 +209,10 @@ public class BaseMove : MonoBehaviour
             jumpcount = 1;
         }
 
-        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")&& !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {
