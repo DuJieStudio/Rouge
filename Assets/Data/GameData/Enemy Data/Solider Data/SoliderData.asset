@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ed7f9ffe425d64a82ac90ad431c0b3, type: 3}
   m_Name: SoliderData
   m_EditorClassIdentifier: 
-  maxhealth: 100
+  maxhealth: 10
   currenthealth: 10
   damage: 15

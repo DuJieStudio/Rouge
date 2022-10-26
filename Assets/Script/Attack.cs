@@ -11,13 +11,18 @@ public class Attack : MonoBehaviour
     private PolygonCollider2D coll;
     //public float attackCoolDown;
     //public float attackCD = 0;
+
+    [Header("普攻相关")]
     public float attackSpeed;
     public bool isAttack;
     private int comboStep;
     public float interval;
     private float timer;
-    public float damage;
+    public float Damage;
+   
 
+    [Header("技能相关")]
+    public float skillDamage;
     public bool isGather;
     public float gatherTime;
     public bool isSkill;
@@ -38,7 +43,8 @@ public class Attack : MonoBehaviour
         anim2 = GameObject.FindGameObjectWithTag("enemy").GetComponent<Animator>();
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         coll = GetComponent<PolygonCollider2D>();
-        damage = playerAttackStats.MinDamage;
+        Damage = playerAttackStats.MinDamage;
+        skillDamage = playerAttackStats.SkillDamage;
         isGather = false;
       //  skillReady = false;
         
@@ -167,9 +173,19 @@ public class Attack : MonoBehaviour
                 if (transform.localScale.x > 0)
                     collision.GetComponent<Enemy_Solider>().GetHit(Vector2.right);
                 else if (transform.localScale.x < 0)
-                    collision.GetComponent<Enemy_Solider>().GetHit(Vector2.left);           
+                    collision.GetComponent<Enemy_Solider>().GetHit(Vector2.left);
 
-            collision.GetComponent<Enemy_Solider>().TakeDamage(damage);
+        
+            if (comboStep > 0)
+            {
+                collision.GetComponent<Enemy_Solider>().TakeDamage(Damage);             
+
+            }
+            else if (comboStep == 0)
+            {
+                collision.GetComponent<Enemy_Solider>().SkillDamage(skillDamage);
+            }
+           
         }
     }
 

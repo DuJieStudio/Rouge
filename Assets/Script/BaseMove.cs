@@ -202,7 +202,7 @@ public class BaseMove : MonoBehaviour
 
     }
 
-    void Jump()
+    public void Jump()
     {
         if (onGround)
         {
@@ -215,9 +215,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
-            {
-                //SoundManager.instance.JumpAudio(); 
-                
+            {               
+                SoundManager.Instance.JumpAudio();
                 StartCoroutine(StartCurve());               
                 jumpcount--;
                 animator_of_player.SetBool("jumping", true);               
@@ -227,7 +226,7 @@ public class BaseMove : MonoBehaviour
             {                
                 StartCoroutine(StartCurve());
                 animator_of_player.SetBool("jumping", true);
-              //  SoundManager.instance.JumpAudio();
+                SoundManager.Instance.JumpAudio();
             }
             //if (jumpcount == 0 && Input.GetKeyDown(KeyCode.Space) && !onGround)
             //{
