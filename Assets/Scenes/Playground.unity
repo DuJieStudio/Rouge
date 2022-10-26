@@ -1790,8 +1790,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -814143139
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -13723,6 +13723,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2351051435982747620, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351051435982747620, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 682494291
+      objectReference: {fileID: 0}
     - target: {fileID: 2351051436507232586, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
       propertyPath: m_Name
       value: knifetrap
@@ -13770,6 +13778,14 @@ PrefabInstance:
     - target: {fileID: 2351051436507232587, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351051437119096614, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351051437119096614, guid: 9308efa5434c5a54189df77f49d97268, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 682494291
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9308efa5434c5a54189df77f49d97268, type: 3}

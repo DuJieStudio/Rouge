@@ -165,8 +165,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1173124035
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ab8cde4a99d0a3746b6cd05e195e8e87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -349,6 +349,11 @@ MonoBehaviour:
   isAttack: 0
   interval: 0.8
   damage: 3
+  isGather: 0
+  gatherTime: 0
+  isSkill: 0
+  skillCoolDown: 0
+  skillReady: 1
 --- !u!114 &3597718226198638330
 MonoBehaviour:
   m_ObjectHideFlags: 0
