@@ -35,6 +35,20 @@ public class PlayerAttackStats : MonoBehaviour
             playerDataAttack.MaxDamage = value;
         }
     }
+    public float SkillDamage
+    {
+        get
+        {
+            if (playerDataAttack != null)
+            { return playerDataAttack.SkillDamage; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            playerDataAttack.MaxDamage = value;
+        }
+    }
 
     public float CoolDown
     {

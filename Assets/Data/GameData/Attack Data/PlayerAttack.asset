@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
   MinDamage: 4
-  MaxDamage: 10
+  MaxDamage: 8
+  SkillDamage: 10
   CoolDown: 0
   Critical_Multiplier: 1.5
   Critical_Chance: 0

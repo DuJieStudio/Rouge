@@ -74,13 +74,14 @@ public class Enemy_Solider : Enemy
     }
 
     public void TakeDamage(float damage)
-    {
-        //if (hp > 0)
-        //  {
+    {     
         hp -= damage;
-
-        // }
     }
+    public void SkillDamage(float damage)
+    {
+        hp -= damage;
+    }
+
 
     public void Dead()
     {
