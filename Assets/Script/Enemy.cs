@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public void Death()
     {
 
-        GetComponent<Collider2D>().enabled = false;
+       // GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject);
         lootSpawner.Spawn(transform.position);
         // GameObject.Find("solider_attack1").SendMessage("fallingEquitment");

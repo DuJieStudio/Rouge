@@ -8,6 +8,7 @@ public class IdleState : IState//所有状态类在这个脚本中实现
     private Parameter parameter;//添加一个属性对象来获取设置属性
 
     private float timer;//设置一个计时器
+   // public float attackInterval = 1f;
 
 
     public IdleState(FSM manager)//在构造函数中获取到状态机对象并通过状态机对象获取属性
@@ -109,7 +110,7 @@ public class ChaseState : IState//所有状态类在这个脚本中实现
 
     public void OnEnter()
     {
-        parameter.animator.Play("Walk");
+            parameter.animator.Play("Walk");
     }
 
     public void OnUpdate()
@@ -177,6 +178,8 @@ public class AttackState : IState//所有状态类在这个脚本中实现
 
     private AnimatorStateInfo info;
 
+    private float coolDown = 0;
+
     public AttackState(FSM manager)//在构造函数中获取到状态机对象并通过状态机对象获取属性
     {
         this.manager = manager;
@@ -185,12 +188,21 @@ public class AttackState : IState//所有状态类在这个脚本中实现
 
     public void OnEnter()
     {
-        parameter.animator.Play("Attack");
+
+        if(coolDown >= 1.3)
+        {
+            parameter.animator.Play("Attack");
+            coolDown = 0;
+        }
+    
     }
 
     public void OnUpdate()
     {
         info = parameter.animator.GetCurrentAnimatorStateInfo(0);
+
+        coolDown += Time.deltaTime;
+        //Debug.Log(coolDown);
 
         if (info.normalizedTime >= .95)
         {
