@@ -821,7 +821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &337374567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,8 +982,8 @@ RectTransform:
   m_Father: {fileID: 1980883958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1526,6 +1526,7 @@ MonoBehaviour:
   shiftAudio: {fileID: 8300000, guid: 148006d90382d294d9762545abfe7135, type: 3}
   runAudio: {fileID: 0}
   jumpAudio: {fileID: 8300000, guid: f4921620f69fd384c82a01bb6c13a887, type: 3}
+  skillAudio: {fileID: 0}
 --- !u!114 &611365190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,7 +1543,6 @@ MonoBehaviour:
   bag: {fileID: 11400000, guid: d8b10e8f4fdf2cc4d9d0f63a7dd3e846, type: 2}
   cni: {fileID: 337374571}
   ispick: 0
-  skillAudio: {fileID: 0}
 --- !u!1001 &714991518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2005,7 +2005,7 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.2000122, y: 0}
   m_SizeDelta: {x: 10.300002, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972027141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.89513, y: 5.0320234, z: -10}
+  m_LocalPosition: {x: -15.007545, y: 5.0491495, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337374570}
@@ -2242,7 +2242,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.2000122, y: 0}
   m_SizeDelta: {x: 10.300002, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3041,9 +3041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39734948b9263a1469d1abe9671e8c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gos:
-  - {fileID: 4223285412831143581, guid: 005920e5f6adc8147951a01ef8f07d0d, type: 3}
-  - {fileID: 1843378221679216655, guid: 2467abce6444c9c458ce153e3e42b378, type: 3}
 --- !u!1 &1565557509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,8 +3352,8 @@ RectTransform:
   m_Father: {fileID: 868355801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13131,7 +13128,13 @@ MonoBehaviour:
   attackSpeed: 1
   isAttack: 0
   interval: 0.8
-  damage: 3
+  Damage: 0
+  skillDamage: 0
+  isGather: 0
+  gatherTime: 0
+  isSkill: 0
+  skillCoolDown: 0
+  skillReady: 1
 --- !u!114 &2032473978
 MonoBehaviour:
   m_ObjectHideFlags: 0
