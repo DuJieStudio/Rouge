@@ -10,6 +10,8 @@ TagManager:
   - fireball
   - trap
   - trigger
+  - Bag
+  - Item
   layers:
   - Default
   - TransparentFX
