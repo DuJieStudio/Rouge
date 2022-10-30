@@ -84,8 +84,12 @@ public class BaseMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-          //  SoundManager.instance.ShiftAudio();
-            StartCoroutine(Dash());
+            //  SoundManager.instance.ShiftAudio();
+            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+                && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            {
+                StartCoroutine(Dash());
+            }
         }
 
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
@@ -101,7 +105,10 @@ public class BaseMove : MonoBehaviour
         if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3")
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
         {
             if (horizontalmove != 0) //½ÇÉ«ÒÆ¶¯
             {
@@ -137,7 +144,10 @@ public class BaseMove : MonoBehaviour
         if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2") 
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3") 
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
         {
             if (facedirection != 0)
             {
@@ -212,7 +222,10 @@ public class BaseMove : MonoBehaviour
         if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1") 
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3") 
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short") 
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {               

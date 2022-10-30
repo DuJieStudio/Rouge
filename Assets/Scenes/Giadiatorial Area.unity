@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972027141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.007545, y: 5.0491495, z: -10}
+  m_LocalPosition: {x: -13.777993, y: 5.0560274, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337374570}
@@ -13018,8 +13018,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039361954, y: -0.012242198}
-  m_Size: {x: 0.59526825, y: 1.6915922}
+  m_Offset: {x: 0.049425125, y: -0.04243201}
+  m_Size: {x: 0.73615265, y: 1.7519718}
   m_Direction: 0
 --- !u!212 &2032473974
 SpriteRenderer:
@@ -13133,7 +13133,7 @@ MonoBehaviour:
   isGather: 0
   gatherTime: 0
   isSkill: 0
-  skillCoolDown: 0
+  skillCoolDown: 1.5
   skillReady: 1
 --- !u!114 &2032473978
 MonoBehaviour:
