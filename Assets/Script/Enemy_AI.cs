@@ -7,24 +7,42 @@ public enum EnemyState { CloseRange ,LongRange }
 
 public class Enemy_AI : MonoBehaviour
 {
-    public EnemyState enemyState;
-    public Animator anim;
-    public Vector2 sightRadius;//Overlap检测范围
-    public Collider2D[] collider2ds;
-    public GameObject attackTarget;
- 
-    private Rigidbody2D rb;
-    public float patrolRange;
-    private Vector2 wayPoint;
-    public float cooldown = 0;
-    private float randomX;
-    private float attackTime = 2;
 
+    [Header("敌人类型")]
+    public EnemyState enemyState;
+
+    [Header("敌人识别范围")]
+    public Vector2 sightRadius;//Overlap检测范围   
+
+    [Header("敌人巡逻范围")]
+    public float patrolRange;
+    [Tooltip("巡逻点更新CD")]
+    public float cooldown = 0;//巡逻点获取时间
+    
+    [Header("敌人攻击参数")]
+    [Tooltip("攻击CD")]
+    public float attackTime = 2;
+    [Tooltip("攻击范围")]
+    public float attackRange;
+
+    [Header("绘制攻击范围参数")]
+    public Vector2 vector2;
+
+    //动画Bool值判断
     private bool isWalk;
     private bool isAttack;
-    private bool isIdle;
 
-    private AnimatorStateInfo _animationStateInfo;
+    //组件获取
+    private Vector2 wayPoint;
+    private Rigidbody2D rb;
+    private float randomX;//存放巡逻X值
+
+    [HideInInspector]
+    public GameObject attackTarget;//攻击目标
+    [HideInInspector]
+    public Animator anim;
+    [HideInInspector]
+    public Collider2D[] collider2ds;//overlap碰撞体存放
 
     void Awake()
     {
@@ -40,7 +58,8 @@ public class Enemy_AI : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log(isWalk);
+        Debug.Log(isAttack);
         cooldown += Time.deltaTime;
         SwitchStates();
         SwitchAnimations();
@@ -58,13 +77,12 @@ public class Enemy_AI : MonoBehaviour
        
         anim.SetBool("Walk", isWalk);
         anim.SetBool("Attack", isAttack);
-        anim.SetBool("Idle", isIdle);
         
     }
 
     bool FoundPlayer()
     {
-        collider2ds = Physics2D.OverlapBoxAll(transform.position, sightRadius, 20);
+        collider2ds = Physics2D.OverlapBoxAll(transform.position, sightRadius, 0);
 
         foreach (var target in collider2ds)
         {
@@ -163,48 +181,16 @@ public class Enemy_AI : MonoBehaviour
         else
         {
 
-            transform.Translate(wayPoint * Time.deltaTime * 3);
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
-            {
-                isAttack = false;
-            }
-            isWalk = true;
-            if (randomX > 0)
-            {
-                //transform.Translate(wayPoint * Time.deltaTime);
-                transform.localScale = new Vector3(-1, 1, 1);
-
-            }
-            else 
-            { 
-                transform.localScale = new Vector3(1, 1, 1);
-            }
+            PartrolMove();
 
         }
 
-        //触发攻击
-        //if (FoundPlayer() && TargetInAttackRange() == true)
-        //{
-        //    isWalk = false;
-        //    rb.velocity = new Vector2(0, 0);
-
-        //    if(attackTime <= 0)
-        //    {
-
-        //        isAttack = true;
-        //        attackTime = 2;
-        //        Debug.Log("CD归零");
-
-        //    }
-
-        //}
-
-        //攻击范围的设定和判定bool值
+        //攻击范围获取
         bool TargetInAttackRange()
         {
 
             if (attackTarget != null)
-                return Vector3.Distance(attackTarget.transform.position, transform.position) <= 1.5f;
+                return Vector3.Distance(attackTarget.transform.position, transform.position) <= attackRange;
 
             else
                 return false;
@@ -216,54 +202,72 @@ public class Enemy_AI : MonoBehaviour
     void LongRangeWay()
     {
 
+        attackTime -= Time.deltaTime;
+
+        //查找到玩家并向玩家移动
         if (FoundPlayer())
         {
 
-            if (rb.transform.position.x > attackTarget.transform.position.x)
+            //在攻击范围内
+            if (TargetInAttackRange() == true)
             {
-                transform.localScale = new Vector3(1, 1, 1);
-                rb.velocity = new Vector2(-3, 0);
+                rb.velocity = new Vector2(0, 0);
+                if (attackTime <= 0)
+                {
+
+                    isAttack = true;
+                    attackTime = 5;
+
+                }
+                else
+                {
+                    if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+                    {
+                        isAttack = false;
+                    }
+                    isWalk = false;
+                }
+
             }
-            //if (rb.transform.position.x < attackTarget.transform.position.x)
+
+            //不在攻击范围内
             else
             {
-                transform.localScale = new Vector3(-1, 1, 1);
-                rb.velocity = new Vector2(3, 0);
+                isWalk = true;
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+                {
+                    isAttack = false;
+                }
+
+                if (rb.transform.position.x > attackTarget.transform.position.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                    rb.velocity = new Vector2(-3, 0);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                    rb.velocity = new Vector2(3, 0);
+                }
+
             }
-            isWalk = true;
-            isAttack = false;
 
         }
 
+        //随机巡逻点
         else
         {
 
-            transform.Translate(wayPoint * Time.deltaTime * 5);
-            isWalk = true;
-            if (randomX > 0)
-            {
-                //transform.Translate(wayPoint * Time.deltaTime);
-                transform.localScale = new Vector3(-1, 1, 1);
-
-            }
-            else { transform.localScale = new Vector3(1, 1, 1); }
+            PartrolMove();
 
         }
 
-        if (FoundPlayer() && TargetInLongRange() == true)
-        {
-
-            rb.velocity = new Vector2(0, 0);
-            isWalk = false;
-            isAttack = true;
-
-        }
-
-        bool TargetInLongRange()
+        //攻击范围获取
+        bool TargetInAttackRange()
         {
 
             if (attackTarget != null)
-                return Vector3.Distance(attackTarget.transform.position, transform.position) <= 10;
+                return Vector3.Distance(attackTarget.transform.position, transform.position) <= attackRange;
 
             else
                 return false;
@@ -282,16 +286,37 @@ public class Enemy_AI : MonoBehaviour
 
     }
 
-    void OnDrawGizmosSelected()
+    void PartrolMove()
     {
-        // Draw a yellow cube at the transform position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector2(10,2));
+        
+        transform.Translate(wayPoint * Time.deltaTime);
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+        {
+            isAttack = false;
+        }
+        isWalk = true;
+        if (randomX > 0)
+        {
+            //transform.Translate(wayPoint * Time.deltaTime);
+            transform.localScale = new Vector3(-1, 1, 1);
+
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
     }
 
     void isattackScueed()
     {
         rb.velocity = new Vector2(0, 0);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, vector2);
     }
 
 }
