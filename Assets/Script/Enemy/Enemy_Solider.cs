@@ -14,24 +14,12 @@ public class Enemy_Solider : Enemy
     public float hp;
     public SoliderData_SO soliderdata;
     public Animator hitAnim;
+   // public GameObject floatPoint;
 
     private EnemySoliderStats enemySoliderStats;
 
-    //LootSpawner lootSpawner;
-    //protected virtual void Awake()
-    //{
-    //    lootSpawner = GetComponent<LootSpawner>();
+  
 
-    //    enemySoliderStats = GetComponent<EnemySoliderStats>();
-    //}
-
-
-    //private void Awake()
-    //{
-    //    enemySoliderStats = GetComponent<EnemySoliderStats>();
-    //}
-
-    //protected override void Start()
     protected override void Awake()
     {
         base.Start();
@@ -40,7 +28,7 @@ public class Enemy_Solider : Enemy
         rb = transform.GetComponent<Rigidbody2D>();
         hp = soliderdata.maxhealth;
         enemySoliderStats = GetComponent<EnemySoliderStats>();
-        hitAnim = transform.GetChild(2).GetComponent<Animator>();
+       // hitAnim = transform.GetChild(2).GetComponent<Animator>();
     }
 
 
@@ -74,11 +62,15 @@ public class Enemy_Solider : Enemy
     }
 
     public void TakeDamage(float damage)
-    {     
+    {
+        //GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        //gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        floatPointBase(damage);
         hp -= damage;
     }
     public void SkillDamage(float damage)
     {
+        floatPointBase(damage);
         hp -= damage;
     }
 
@@ -90,14 +82,14 @@ public class Enemy_Solider : Enemy
             anim.Play("Dead");
             GetComponent<Collider2D>().enabled = false;
             rb.gravityScale = 0f;
-
         }
         //  lootSpawner.Spawn(transform.position);
     }
 
     public void HitAnim ()
     {
-        hitAnim.Play("Hit");
+        // hitAnim.Play("Hit");
+        anim.Play("Hurt");
     }
     //public void Death()
     //{

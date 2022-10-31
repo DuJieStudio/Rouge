@@ -229,11 +229,12 @@ public class BaseMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {               
-                SoundManager.Instance.JumpAudio();
+             //   SoundManager.Instance.JumpAudio();
                 StartCoroutine(StartCurve());               
                 jumpcount--;
-                animator_of_player.SetBool("jumping", true);               
-
+                animator_of_player.SetBool("jumping", true);
+                SoundManager.Instance.JumpAudio();
+         
             }
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount == 0 && onGround)
             {                
