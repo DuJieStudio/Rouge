@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     protected Animator anim;
+    public GameObject floatPoint;
 
     LootSpawner lootSpawner;
     protected virtual void Awake()
@@ -15,6 +16,12 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         anim = GetComponent<Animator>();
+    }
+
+    public void floatPointBase(float damage)
+    {
+        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
     }
 
 
