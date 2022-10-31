@@ -211,6 +211,14 @@ public class Enemy_AI : MonoBehaviour
             //ÔÚ¹¥»÷·¶Î§ÄÚ
             if (TargetInAttackRange() == true)
             {
+                if (rb.transform.position.x > attackTarget.transform.position.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);;
+                }
                 rb.velocity = new Vector2(0, 0);
                 if (attackTime <= 0)
                 {
