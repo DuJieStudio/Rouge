@@ -6,6 +6,7 @@ public class TrapController : MonoBehaviour
 {
     public GameObject fireball;
     public GameObject createfireball;
+
     [Header("Éä»÷ÊôĞÔ")]
     public float firerate = 1f;
     public float nextfire = 0f;

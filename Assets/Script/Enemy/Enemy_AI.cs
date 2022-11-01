@@ -58,8 +58,7 @@ public class Enemy_AI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isWalk);
-        Debug.Log(isAttack);
+
         cooldown += Time.deltaTime;
         SwitchStates();
         SwitchAnimations();
