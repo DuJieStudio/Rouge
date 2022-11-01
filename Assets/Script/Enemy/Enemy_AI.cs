@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
-public enum EnemyState { CloseRange ,LongRange }
+public enum EnemyState { CloseRange ,LongRange ,TouchEnemy}
 
 public class Enemy_AI : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class Enemy_AI : MonoBehaviour
     //动画Bool值判断
     private bool isWalk;
     private bool isAttack;
+    private bool isIdle;
 
     //组件获取
     private Vector2 wayPoint;
@@ -76,6 +78,7 @@ public class Enemy_AI : MonoBehaviour
        
         anim.SetBool("Walk", isWalk);
         anim.SetBool("Attack", isAttack);
+        anim.SetBool("Idle", isIdle);
         
     }
 
@@ -113,6 +116,12 @@ public class Enemy_AI : MonoBehaviour
             case EnemyState.LongRange:
 
                 LongRangeWay();
+
+                break;
+
+            case EnemyState.TouchEnemy:
+
+                TouchRangeWay();
 
                 break;
 
@@ -283,6 +292,62 @@ public class Enemy_AI : MonoBehaviour
 
     }
 
+
+    void TouchRangeWay()
+    {               
+
+        //查找到玩家并向玩家移动
+        if (FoundPlayer())
+        {
+
+            //在攻击范围内
+            if (TargetInAttackRange() == true)
+            {
+                rb.velocity = new Vector2(0, 0);                
+                isWalk = true;
+            }
+
+            //不在攻击范围内
+            else
+            {
+                isWalk = false;
+
+                transform.DOMove(attackTarget.transform.position, 4f, false);
+                if (rb.transform.position.x > attackTarget.transform.position.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+
+            }
+        }
+
+        //随机巡逻点
+        else
+        {
+
+            PartrolMove();
+
+        }
+
+        //攻击范围获取
+        bool TargetInAttackRange()
+        {
+
+            if (attackTarget != null)
+                return Vector3.Distance(attackTarget.transform.position, transform.position) <= attackRange;
+
+            else
+                return false;
+
+        }
+
+
+    }
+
     //随机巡逻点的获取
     void GetNewWayPoint()
     {
@@ -313,12 +378,7 @@ public class Enemy_AI : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-    }
-
-    void isattackScueed()
-    {
-        rb.velocity = new Vector2(0, 0);
-    }
+    }   
 
     private void OnDrawGizmos()
     {
