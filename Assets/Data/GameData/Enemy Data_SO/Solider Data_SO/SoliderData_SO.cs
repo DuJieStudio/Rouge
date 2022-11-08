@@ -10,5 +10,6 @@ public class SoliderData_SO : ScriptableObject
     public float maxhealth;
     public float currenthealth;
     public float damage;
+    public float attackrate;
 
 }

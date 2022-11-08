@@ -51,4 +51,19 @@ public class EnemySoliderStats : MonoBehaviour
         }
 
     }
+    public float attackrate
+    {
+        get
+        {
+            if (SoliderData != null)
+            { return SoliderData.attackrate; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            SoliderData.attackrate = value;
+        }
+
+    }
 }

@@ -9,7 +9,8 @@ public class PoisonBallController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private GameObject flower;
-    private bool isStart;
+    public bool isStart;
+
     
 
     void Start()
@@ -76,5 +77,4 @@ public class PoisonBallController : MonoBehaviour
         }
             
     }
-
 }

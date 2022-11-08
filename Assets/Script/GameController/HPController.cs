@@ -15,6 +15,10 @@ public class HPController : MonoBehaviour
     public bool Isinvincible = false;//是否为无敌状态
     public float invincibletime = 1;//无敌时间
     public float invincibletimeleft = 0;//无敌时间剩余时间
+    public float ThisTimeHP;//当前时间血量
+    public float LastTimeHP;//上一间隔时血量
+    public float RateOfHP;//记录生命值的间隙
+    public float passtime;
     [Header("受击反馈")]
     public int shakerate = 10;//闪烁次数
     private float shaketime;
@@ -24,15 +28,21 @@ public class HPController : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         sprite = GetComponent<SpriteRenderer>();
         shaketime = 1f / shakerate;
-        playerdata.currenthealth = 100;
+        playerdata.currenthealth = playerdata.maxhealth;
+        RateOfHP = 0.01f;
+        ThisTimeHP = playerdata.maxhealth;
+        LastTimeHP = playerdata.maxhealth;
+        Isinvincible = false;
+        passtime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        shake();
+        IsLosingHP();
         invincible();
         changeHPline();
+        istouchingTrap();
     }
     public void shake()
     {
@@ -47,28 +57,26 @@ public class HPController : MonoBehaviour
     }
     public void invincible()
     {
-        ishurt = Physics2D.OverlapCircle(Player.transform.position, 0.5f, trap);
         if (ishurt)
         {
             if (Isinvincible == false)
             {
-                playerdata.currenthealth -= 10;
                 invincibletimeleft = invincibletime;
 
             }
-
-
-
         }
         if (invincibletimeleft > 0)
         {
             Isinvincible = true;
             invincibletimeleft -= Time.deltaTime;
+            playerdata.currenthealth = ThisTimeHP;
+            LastTimeHP = ThisTimeHP;
             shake();
         }
-        else
+        if (invincibletimeleft <= 0)
         {
             Isinvincible = false;
+            ishurt = false;
         }
     }
 
@@ -76,4 +84,47 @@ public class HPController : MonoBehaviour
     {
         HPline.fillAmount = playerdata.currenthealth / playerdata.maxhealth;
     }
+    public void IsLosingHP()
+    {
+
+        bool i = true;
+        if (ThisTimeHP < LastTimeHP && ishurt == false)
+        {
+            ishurt = true;
+        }
+        if (passtime > RateOfHP)
+        {
+            passtime = 0;
+            i = !i;
+        }
+        if (Isinvincible == false)
+        {
+            if (i == true)
+            {
+                ThisTimeHP = playerdata.currenthealth;
+
+            }
+            if (i == false)
+            {
+                LastTimeHP = playerdata.currenthealth;
+
+            }
+            passtime += 0.001f;
+        }
+
+
+
+
+
+
+
+    }
+    public void istouchingTrap()
+    {
+        if (Physics2D.OverlapCircle(Player.transform.position, 0.5f, trap) && Isinvincible == false)
+        {
+            playerdata.currenthealth -= 3;
+        }
+    }
 }
+
