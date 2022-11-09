@@ -47,7 +47,22 @@ public class Enemy_Attack : MonoBehaviour
         }
     }
     void MeleeAttack()
-    { }
+    {
+        GameObject enemyattack;
+        enemyattack = GameObject.Find("enemyAttack");
+        if (Physics2D.OverlapCircle(thisobject.transform.position, 0.8f, player))
+        {
+            if (damagetime >= attacktime)
+            {
+                playerdata.currenthealth -= damage;
+                damagetime = 0;
+
+            }
+            damagetime += Time.deltaTime;
+        }
+       
+        
+    }
     void TouchAttack()
     {
         if (Physics2D.OverlapCircle(thisobject.transform.position, 0.2f, player))

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum EnemyType { Solider, Flower, Ghost }
+public enum EnemyObject { Solider, Flower, Ghost }
 
 public class Enemy_TakeDamage : Attack
 {
 
-    public EnemyType enemyType;
+    public EnemyObject enemyType;
     public Attack GetAttack;
   //  public bool isattack;
    // public  Animator anim;
@@ -34,11 +34,11 @@ public class Enemy_TakeDamage : Attack
         {
             switch (enemyType)
             {
-                case EnemyType.Solider:
+                case EnemyObject.Solider:
                     Solide_TakeDamage();
                     break;
 
-                case EnemyType.Flower:
+                case EnemyObject.Flower:
                     Flower_TakeDamage();
                     break;
             }
