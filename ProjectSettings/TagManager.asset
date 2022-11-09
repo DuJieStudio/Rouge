@@ -12,6 +12,9 @@ TagManager:
   - trigger
   - Bag
   - Item
+  - enemyAttack
+  - playerBlock
+  - playerAttack
   layers:
   - Default
   - TransparentFX

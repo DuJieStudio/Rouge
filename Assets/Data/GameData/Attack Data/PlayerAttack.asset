@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinDamage: 4
   MaxDamage: 8
-  SkillDamage: 10
+  SkillDamage: 11
   CoolDown: 0
   Critical_Multiplier: 1.5
   Critical_Chance: 0

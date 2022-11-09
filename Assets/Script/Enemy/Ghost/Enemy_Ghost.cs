@@ -8,14 +8,14 @@ public class Enemy_Ghost : MonoBehaviour
     public GameObject Ghost;
     public GameObject startPoint;
     public float generateTime =2f;
-    private Animator anim;
+    public Animator anim;
     private Rigidbody2D rb;
     private int generatecount;
 
     void Start()
-    {
-        anim.Play("Appear");
+    {        
         anim = Ghost.GetComponent<Animator>();
+        anim.Play("Appear");
         rb = Ghost.GetComponent<Rigidbody2D>();
         generatecount = 0;
     }

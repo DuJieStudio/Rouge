@@ -84,8 +84,8 @@ public class Enemy_AI : MonoBehaviour
 
     bool FoundPlayer()
     {
-        collider2ds = Physics2D.OverlapBoxAll(transform.position, sightRadius, 0);
-
+         collider2ds = Physics2D.OverlapBoxAll(transform.position, sightRadius, 0);
+       
         foreach (var target in collider2ds)
         {
             if (target.CompareTag("Player"))
@@ -133,7 +133,7 @@ public class Enemy_AI : MonoBehaviour
     {
 
         attackTime -= Time.deltaTime;
-
+        
         //查找到玩家并向玩家移动
         if (FoundPlayer())
         {          
@@ -141,11 +141,19 @@ public class Enemy_AI : MonoBehaviour
             //在攻击范围内
             if (TargetInAttackRange() == true)
             {
-                rb.velocity = new Vector2(0, 0);
+              //  rb.velocity = new Vector2(0, 0);             
                 if (attackTime <= 0)
                 {
 
-                    isAttack = true;
+                    if (attackTarget.transform.position.x < rb.transform.position.x)
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);                                             
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);                  
+                    }
+                    isAttack = true;                 
                     attackTime = 2;
                     
                 }
@@ -153,8 +161,7 @@ public class Enemy_AI : MonoBehaviour
                 {
                     if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
                     {
-                        isAttack = false;
-                       
+                        isAttack = false;                     
                     }
                     isWalk = false;
                 }
@@ -163,23 +170,31 @@ public class Enemy_AI : MonoBehaviour
 
             //不在攻击范围内
             else
-            {
-                isWalk = true;
+            {        
+                isWalk = true;             
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
                 {
-                    isAttack = false;                                    
+                    isAttack = false;
+                    
                 }
-                
+
                 if (rb.transform.position.x > attackTarget.transform.position.x)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                    rb.velocity = new Vector2(-3, 0);
-                }
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+                        {
+                            rb.velocity = new Vector2(-3, 0);
+                        }
+                    }
                 else
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                    rb.velocity = new Vector2(3, 0);
-                }
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                    
+                        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack")&&(anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+                        {
+                            rb.velocity = new Vector2(3, 0);
+                        }
+                    }              
 
             }
 
@@ -196,15 +211,15 @@ public class Enemy_AI : MonoBehaviour
         //攻击范围获取
         bool TargetInAttackRange()
         {
-
             if (attackTarget != null)
-                return Vector3.Distance(attackTarget.transform.position, transform.position) <= attackRange;
-
+           // { if (transform.localScale.x == attackTarget.pos)
+                    return Vector3.Distance(attackTarget.transform.position, transform.position) <= attackRange;
+           //     else return false;
+           // }
             else
                 return false;
 
-        }
-
+        }      
     }
 
     void LongRangeWay()
@@ -310,9 +325,10 @@ public class Enemy_AI : MonoBehaviour
             //不在攻击范围内
             else
             {
+                isIdle = true;
                 isWalk = false;
 
-                transform.DOMove(attackTarget.transform.position, 4f, false);
+                transform.DOMove(attackTarget.transform.position, 5f, false);
                 if (rb.transform.position.x > attackTarget.transform.position.x)
                 {
                     transform.localScale = new Vector3(1, 1, 1);

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    protected Animator anim;
-    public GameObject floatPoint;
+    // public Attack GetAttack;
+
+  //  public GameObject floatPoint;
+
+
+
 
     LootSpawner lootSpawner;
     protected virtual void Awake()
@@ -14,15 +18,20 @@ public class Enemy : MonoBehaviour
     }
 
     protected virtual void Start()
-    {
-        anim = GetComponent<Animator>();
+    {      
+
     }
 
-    public void floatPointBase(float damage)
+    private void Update()
     {
-        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
-        gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+
     }
+
+    //public void floatPointBase(float damage)
+    //{
+    //    GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+    //    gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+    //}
 
 
     public void Death()
@@ -31,9 +40,52 @@ public class Enemy : MonoBehaviour
        // GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject);
         lootSpawner.Spawn(transform.position);
-        // GameObject.Find("solider_attack1").SendMessage("fallingEquitment");
-        //GameObject.Find("solider_attack1").GetComponent<ItemDrop>().fallingEquitment();     
-        //ItemDrop.instance.fallingEquitment(this.transform.position);
+     
     }
-   
+
+
+
+    //public void Solide_TakeDamage()
+    //{
+    //    Debug.Log("11111111111111");
+    //    Debug.Log(GetAttack.comboStep);
+    //    if (transform.localScale.x > 0)
+    //    {
+    //        GetComponent<Enemy_Solider>().GetHit(Vector2.right);
+    //    }
+    //    else if (transform.localScale.x < 0)
+    //    {
+    //        GetComponent<Enemy_Solider>().GetHit(Vector2.left);
+    //    }
+
+    //    if (GetAttack.comboStep > 0)
+    //    {
+    //        GetComponent<Enemy_Solider>().TakeDamage(GetAttack.Damage);
+    //    }
+    //    else if (GetAttack.comboStep == 0)
+    //    {
+    //        GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+    //    }
+    //}
+
+    //public void Flower_TakeDamage()
+    //{
+    //    if (transform.localScale.x > 0)
+    //    {
+    //        GetComponent<Enemy_Flower>().GetHit(Vector2.right);
+    //    }
+    //    else if (transform.localScale.x < 0)
+    //    {
+    //        GetComponent<Enemy_Flower>().GetHit(Vector2.left);
+    //    }
+
+    //    if (GetAttack.comboStep > 0)
+    //    {
+    //        GetComponent<Enemy_Flower>().TakeDamage(GetAttack.Damage);
+    //    }
+    //    else if (GetAttack.comboStep == 0)
+    //    {
+    //        GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+    //    }
+    //}
 }
