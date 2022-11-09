@@ -108,7 +108,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             if (horizontalmove != 0) //½ÇÉ«ÒÆ¶¯
             {
@@ -147,7 +148,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             if (facedirection != 0)
             {
@@ -225,7 +227,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short") 
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
-            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {               

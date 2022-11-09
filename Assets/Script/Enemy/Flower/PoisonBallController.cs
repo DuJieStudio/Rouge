@@ -55,26 +55,43 @@ public class PoisonBallController : MonoBehaviour
     //识别球的运动方向
     void BulletMove()
     {
-        if (flower.transform.localScale.x == 1)
-        {            
-            rb.velocity = new Vector2(-5, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector2(5, 0);
-        }
+        rb.velocity = new Vector2(- flower.transform.localScale.x * 5, 0);
+        //if (flower.transform.localScale.x == 1)
+        //{            
+        //    rb.velocity = new Vector2(-5, 0);
+        //}
+        //else
+        //{
+        //    rb.velocity = new Vector2(5, 0);
+        //}
     }
 
     //碰撞地形或玩家
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("ground"))
+
+        if (this.gameObject.tag == "enemyAttack")
         {
-            isStart = true;
-            rb.velocity = new Vector2(0, 0);
+            if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("ground"))
+            {
+                isStart = true;
+                rb.velocity = new Vector2(0, 0);
+                this.gameObject.tag = "enemy";
+            }
+            else if (collision.gameObject.CompareTag("playerBlock"))
+            {
+                this.gameObject.tag = "Item";
+                rb.velocity = new Vector2(this.transform.localScale.x * 5, 0);
+            }
         }
-            
+        else if (this.gameObject.tag == "Item")
+        {
+            if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("ground"))
+            {
+                isStart = true;
+                rb.velocity = new Vector2(0, 0);
+            }
+        }
     }
 
 }
