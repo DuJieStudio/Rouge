@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8518065164035039801}
   - component: {fileID: 8518065164035039800}
   m_Layer: 0
-  m_Name: Poison_Ball (1)
+  m_Name: Poison_Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
