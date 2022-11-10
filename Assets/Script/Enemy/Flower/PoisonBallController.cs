@@ -5,10 +5,11 @@ using UnityEngine;
 public class PoisonBallController : MonoBehaviour
 {
 
-    private float keepTime = 0;
+    public float keepTime = 0;
     private Rigidbody2D rb;
     private Animator anim;
     private GameObject flower;
+    [HideInInspector]
     public bool isStart;
 
     
@@ -16,7 +17,7 @@ public class PoisonBallController : MonoBehaviour
     void Start()
     {
 
-        flower = GameObject.Find("Flower");
+        flower = GameObject.Find("Enemy_Flower");
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         BulletMove();
@@ -56,9 +57,9 @@ public class PoisonBallController : MonoBehaviour
     //识别球的运动方向
     void BulletMove()
     {
-        rb.velocity = new Vector2(- flower.transform.localScale.x * 5, 0);
+        rb.velocity = new Vector2(-flower.transform.localScale.x * 5f, 0);
         //if (flower.transform.localScale.x == 1)
-        //{            
+        //{
         //    rb.velocity = new Vector2(-5, 0);
         //}
         //else
@@ -71,7 +72,7 @@ public class PoisonBallController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (this.gameObject.tag == "enemyAttack")
+        if (this.gameObject.CompareTag("enemyAttack"))
         {
             if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("ground"))
             {
