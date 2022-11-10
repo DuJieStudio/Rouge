@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8491940910551088855, guid: 89228b8ff7eede040995ececa3d51321, type: 3}
       propertyPath: m_Name
-      value: Trap1_4 (1)
+      value: Trap1_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89228b8ff7eede040995ececa3d51321, type: 3}
@@ -748,6 +748,10 @@ MonoBehaviour:
   Isinvincible: 0
   invincibletime: 1
   invincibletimeleft: 0
+  ThisTimeHP: 0
+  LastTimeHP: 0
+  RateOfHP: 0
+  passtime: 0
   shakerate: 10
 --- !u!1001 &917070003
 PrefabInstance:
@@ -759,6 +763,14 @@ PrefabInstance:
     - target: {fileID: 4223285412831143579, guid: 005920e5f6adc8147951a01ef8f07d0d, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223285412831143579, guid: 005920e5f6adc8147951a01ef8f07d0d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223285412831143579, guid: 005920e5f6adc8147951a01ef8f07d0d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: 6539386168640911537, guid: 005920e5f6adc8147951a01ef8f07d0d, type: 3}
       propertyPath: m_Name

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8491940910551088849}
   - component: {fileID: 8491940910551088854}
   m_Layer: 0
-  m_Name: Trap1_4 (1)
+  m_Name: Trap1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 682494291
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 6454599659669134217, guid: 380deb5ccd9e57445bc22cb0d5d91c84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
