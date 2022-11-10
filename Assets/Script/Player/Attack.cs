@@ -67,7 +67,7 @@ public class Attack : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(playerAttackStats.MinDamage);
+        
         PlayerAttack();
         gathering();
         chargeing();

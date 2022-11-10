@@ -24,6 +24,8 @@ public class Enemy_Flower : Enemy
         base.Start();
         base.Awake();
 
+        gameObject.name = "Enemy_Flower";
+
         rb = transform.GetComponent<Rigidbody2D>();
         hp = flowerData.maxhealth;
         enemyFlowerStats = GetComponent<EnemyFlowerStats>();

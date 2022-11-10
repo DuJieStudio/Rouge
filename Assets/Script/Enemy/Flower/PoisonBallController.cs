@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PoisonBallController : MonoBehaviour
 {
@@ -9,15 +10,17 @@ public class PoisonBallController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private GameObject flower;
+    private GameObject player;
     [HideInInspector]
     public bool isStart;
-
+    public Transform father;
     
-
     void Start()
     {
 
+        father = gameObject.transform.parent;
         flower = GameObject.Find("Enemy_Flower");
+        player = GameObject.Find("Player");
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         BulletMove();
@@ -57,15 +60,9 @@ public class PoisonBallController : MonoBehaviour
     //识别球的运动方向
     void BulletMove()
     {
+
         rb.velocity = new Vector2(-flower.transform.localScale.x * 5f, 0);
-        //if (flower.transform.localScale.x == 1)
-        //{
-        //    rb.velocity = new Vector2(-5, 0);
-        //}
-        //else
-        //{
-        //    rb.velocity = new Vector2(5, 0);
-        //}
+       
     }
 
     //碰撞地形或玩家
