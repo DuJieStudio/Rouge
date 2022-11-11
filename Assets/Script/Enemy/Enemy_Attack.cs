@@ -50,7 +50,7 @@ public class Enemy_Attack : MonoBehaviour
     {
         GameObject enemyattack;
         enemyattack = GameObject.Find("enemyAttack");
-        if (Physics2D.OverlapCircle(thisobject.transform.position, 0.8f, player))
+        if (Physics2D.OverlapCircle(enemyattack.transform.position, 1f, player)&&GetComponent<Enemy_Solider>().IsAttack==true)
         {
             if (damagetime >= attacktime)
             {
@@ -58,9 +58,9 @@ public class Enemy_Attack : MonoBehaviour
                 damagetime = 0;
 
             }
-            damagetime += Time.deltaTime;
+           
         }
-       
+        damagetime += Time.deltaTime;
         
     }
     void TouchAttack()
@@ -76,13 +76,6 @@ public class Enemy_Attack : MonoBehaviour
             damagetime += Time.deltaTime;
         }
 
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag =="Player")
-        {
-
-        }
     }
     void RemoteAttack()
     {
