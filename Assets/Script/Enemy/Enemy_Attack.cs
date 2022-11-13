@@ -49,19 +49,6 @@ public class Enemy_Attack : MonoBehaviour
     }
     void MeleeAttack()
     {
-        damagetime += Time.deltaTime;
-        GameObject enemyattack;
-        enemyattack = GameObject.Find("enemyAttack");
-        if (Physics2D.OverlapCircle(thisobject.transform.position, 0.8f, player)&&ismelee)
-        {
-            if (damagetime >= attacktime)
-            {              
-                playerdata.currenthealth -= damage;
-                damagetime = 0;
-
-            }
-        }
-        damagetime += Time.deltaTime;
         
     }
     void TouchAttack()
@@ -103,5 +90,13 @@ public class Enemy_Attack : MonoBehaviour
     public void endmelleeAttack()
     {
         ismelee = false;   
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")&&GameObject.Find("Enemy_Solider").GetComponent<Enemy_Solider>().IsAttack)
+        {
+            playerdata.currenthealth -= damage;
+        }
     }
 }
