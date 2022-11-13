@@ -17,6 +17,7 @@ public class Enemy_Attack : MonoBehaviour
     public GameObject thisobject;
     public LayerMask player;
     public PlayerData_SO playerdata;
+    private bool ismelee;
     public void Awake()
     {
         thisobject = this.gameObject;
@@ -48,9 +49,10 @@ public class Enemy_Attack : MonoBehaviour
     }
     void MeleeAttack()
     {
+        damagetime += Time.deltaTime;
         GameObject enemyattack;
         enemyattack = GameObject.Find("enemyAttack");
-        if (Physics2D.OverlapCircle(thisobject.transform.position, 0.8f, player))
+        if (Physics2D.OverlapCircle(thisobject.transform.position, 0.8f, player)&&ismelee)
         {
             if (damagetime >= attacktime)
             {
@@ -58,7 +60,6 @@ public class Enemy_Attack : MonoBehaviour
                 damagetime = 0;
 
             }
-            damagetime += Time.deltaTime;
         }
        
         
@@ -78,7 +79,8 @@ public class Enemy_Attack : MonoBehaviour
 
     }
     void RemoteAttack()
-    {
+    { 
+        damagetime += Time.deltaTime;
         bool isstart;
         isstart = GetComponent<PoisonBallController>().isStart;
         if (Physics2D.OverlapCircle(thisobject.transform.position, 2f, player)&&isstart)
@@ -89,8 +91,17 @@ public class Enemy_Attack : MonoBehaviour
                 damagetime = 0;
 
             }
-            damagetime += Time.deltaTime;
+           
         }
-
+        
+    }
+    public void isMeleeAttack()
+    {
+        ismelee = true;
+        
+    }
+    public void endmelleeAttack()
+    {
+        ismelee = false;   
     }
 }

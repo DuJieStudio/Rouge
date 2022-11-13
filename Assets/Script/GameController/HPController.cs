@@ -88,6 +88,12 @@ public class HPController : MonoBehaviour
     {
 
         bool i = true;
+        if (ThisTimeHP > LastTimeHP)
+        {
+            float a = ThisTimeHP;
+            ThisTimeHP = LastTimeHP;
+            LastTimeHP = a;
+        }
         if (ThisTimeHP < LastTimeHP && ishurt == false)
         {
             ishurt = true;
