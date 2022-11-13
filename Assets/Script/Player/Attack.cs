@@ -34,6 +34,11 @@ public class Attack : MonoBehaviour
     public float skillCoolDown;
     public bool skillReady = true;
 
+    public bool isSkillShort;
+    public bool isSkillLong;
+
+
+
     [Header("∏Òµ≤œ‡πÿ")]
     public bool isBlock;
 
@@ -50,8 +55,8 @@ public class Attack : MonoBehaviour
     }
 
 
-    void Start()
-   // protected virtual void Start()
+   // void Start()
+    protected virtual void Start()
     {
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         // anim2 = GameObject.FindGameObjectWithTag("enemy").GetComponent<Animator>();
@@ -155,6 +160,7 @@ public class Attack : MonoBehaviour
             comboStep = 0;
             isSkill = true;
             anim.SetTrigger("skill2");
+            isSkillLong = true;
         }
         else if (!isGather && gatherTime > 0 && gatherTime <= 1f && !isSkill && !isBlock)
         {
@@ -162,7 +168,7 @@ public class Attack : MonoBehaviour
             comboStep = 0;
             anim.SetTrigger("skill1");
             isSkill = true;
-
+            isSkillShort = true;
         }
 
     }
@@ -205,6 +211,11 @@ public class Attack : MonoBehaviour
     {
         isSkill = false;
         isAttack = false;
+        if (isSkillLong)
+            isSkillLong = false;
+        else if (isSkillShort)
+            isSkillShort = false;
+        //SkillBeginCoolDown();
     }
 
     public void AttackOver()

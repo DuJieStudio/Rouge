@@ -25,7 +25,7 @@ public class BaseMove : MonoBehaviour
     public bool onGround;
     public Transform GroundCheck;
     public float currectHealth;
-    private float shifttime;//shift计时器
+  //  private float shifttime;//shift计时器
 
 
     [Header("跳跃相关")]
@@ -59,7 +59,7 @@ public class BaseMove : MonoBehaviour
 
     void Start()
     {
-        shifttime = 0;
+      //  shifttime = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();

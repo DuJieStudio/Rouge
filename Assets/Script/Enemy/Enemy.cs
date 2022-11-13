@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     // public Attack GetAttack;
 
-  //  public GameObject floatPoint;
+    public GameObject floatPoint;
 
 
 
@@ -27,11 +27,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-    //public void floatPointBase(float damage)
-    //{
-    //    GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
-    //    gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
-    //}
+    public void floatPointBase(float damage)
+    {
+        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+    }
 
 
     public void Death()

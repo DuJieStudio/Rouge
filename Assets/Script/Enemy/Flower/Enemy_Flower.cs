@@ -56,26 +56,24 @@ public class Enemy_Flower : Enemy
 
     public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
     {
+       
         transform.localScale = new Vector3(direction.x, 1, 1);
         isHit = true;
         this.direction = direction;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {
             anim.Play("Hurt");
-            //hitAnim.SetTrigger("Hit");
-            //hitAnim.Play("Hit");
-
         }
     }
 
     public void TakeDamage(float damage)
     {     
-   //     floatPointBase(damage);
+        floatPointBase(damage);
         hp -= damage;
     }
     public void SkillDamage(float damage)
     {
-  //      floatPointBase(damage);
+        floatPointBase(damage);
         hp -= damage;
     }
 

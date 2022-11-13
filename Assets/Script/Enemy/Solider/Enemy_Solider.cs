@@ -13,7 +13,7 @@ public class Enemy_Solider : Enemy
     public AnimatorStateInfo info;
     public float hp;
     public SoliderData_SO soliderdata;
-    public bool IsAttack = false;
+    public bool IsAttack;
  
  //   public Animator hitAnim;
 
@@ -64,15 +64,21 @@ public class Enemy_Solider : Enemy
 
     public void TakeDamage(float damage)
     {
-           //floatPointBase(damage);
+        floatPointBase(damage);
 
         hp -= damage;
     }
     public void SkillDamage(float damage)
     {
-     //   floatPointBase(damage);
+        floatPointBase(damage);
         hp -= damage;
     }
+    public void Skill_longDamage(float damage)
+    {
+        floatPointBase(damage);
+        hp -= damage;
+    }
+
 
 
     public void Dead()
@@ -86,10 +92,10 @@ public class Enemy_Solider : Enemy
         //  lootSpawner.Spawn(transform.position);
     }  
 
-    public void AttackMove()
-    {
-        rb.velocity = new Vector2(rb.transform.localScale.x * -5, rb.velocity.y);
-    }
+    //public void AttackMove()
+    //{
+    //    rb.velocity = new Vector2(rb.transform.localScale.x * -5, rb.velocity.y);
+    //}
 
 
     void AttackStart()
@@ -101,11 +107,17 @@ public class Enemy_Solider : Enemy
         IsAttack = false;
     }
 
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{        
-    //    if (collision.CompareTag("playerBlock"))
-    //    {
-    //        Debug.Log("111111111111111111111111111");
-    //    }
-    //}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("playerBlock"))
+        {         
+            if (IsAttack)
+            {
+                anim.SetTrigger("Yun");
+                anim.SetBool("Attack", false);
+                //anim.SetTrigger("Yun");
+                // anim.SetBool("Attack", false);
+            }
+        }
+    }
 }

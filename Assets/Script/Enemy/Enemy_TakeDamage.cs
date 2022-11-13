@@ -5,15 +5,14 @@ using UnityEngine;
 
 public enum EnemyObject { Solider, Flower, Ghost }
 
-public class Enemy_TakeDamage : Attack
+public class Enemy_TakeDamage : MonoBehaviour
 {
 
     public EnemyObject enemyType;
     public Attack GetAttack;
-  //  public bool isattack;
-   // public  Animator anim;
- 
+    public bool isAttackLong = false;
 
+    public float useTime=0;
 
     //protected override void Start()
     //{
@@ -22,11 +21,8 @@ public class Enemy_TakeDamage : Attack
 
     void Update()
     {
-    //    isattack = GetComponent<Enemy_Solider>().IsAttack;
-     
-    //    anim = GetComponent<Enemy_Solider>().anim;
+        
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,8 +55,6 @@ public class Enemy_TakeDamage : Attack
     }
     public void Solide_TakeDamage()
     {
-        Debug.Log("11111111111111");
-        Debug.Log(GetAttack.comboStep);
         if (transform.localScale.x > 0)
         {
             GetComponent<Enemy_Solider>().GetHit(Vector2.right);
@@ -76,9 +70,38 @@ public class Enemy_TakeDamage : Attack
         }
         else if (GetAttack.comboStep == 0)
         {
-            GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+            if (GetAttack.isSkillShort)
+            {
+                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+            }
+            else if (GetAttack.isSkillLong)
+            {           
+                InvokeRepeating("SustainDamage", 0f, 0.5f);
+            }
+        }     
+    }
+
+    void SustainDamage()
+    {
+        switch (enemyType)
+        {
+            case EnemyObject.Solider:
+                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+                break;
+
+            case EnemyObject.Flower:
+                GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+                break;
+        }
+        // GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+        useTime += 1;
+        if (useTime == 5)
+        {
+            useTime = 0;
+            this.CancelInvoke();
         }
     }
+
 
     public void Flower_TakeDamage()
     {
@@ -96,8 +119,17 @@ public class Enemy_TakeDamage : Attack
             GetComponent<Enemy_Flower>().TakeDamage(GetAttack.Damage);
         }
         else if (GetAttack.comboStep == 0)
-        {
-            GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+        {           
+            if (GetAttack.isSkillShort)
+            {
+                GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+            }
+            else if (GetAttack.isSkillLong)
+            {
+                InvokeRepeating("SustainDamage", 0f, 0.5f);
+            }
         }
     }
+
+   
 }
