@@ -92,10 +92,10 @@ public class Enemy_Solider : Enemy
         //  lootSpawner.Spawn(transform.position);
     }  
 
-    //public void AttackMove()
-    //{
-    //    rb.velocity = new Vector2(rb.transform.localScale.x * -5, rb.velocity.y);
-    //}
+    public void AttackMove()
+    {
+        rb.velocity = new Vector2(rb.transform.localScale.x * -2.5f, rb.velocity.y);
+    }
 
 
     void AttackStart()
