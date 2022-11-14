@@ -12,6 +12,7 @@ public class Enemy_Attack : MonoBehaviour
     public float attacktime;//每次攻击所用时间
     public float damagetime;//受伤时间
     public float damage;
+    public int force;
     [Header("数据")]
     public SoliderData_SO Attackdata;
     public GameObject thisobject;
@@ -27,6 +28,7 @@ public class Enemy_Attack : MonoBehaviour
         playerdata = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().PlayerData;
         damagetime = attacktime;
         damage = Attackdata.damage;
+        force = Attackdata.force;
     }
     public void Update()
     {
@@ -57,7 +59,7 @@ public class Enemy_Attack : MonoBehaviour
         {
             if (damagetime >= attacktime)
             {
-                playerdata.currenthealth -= damage;
+                playerdata.currenthealth -= (force*2);
                 damagetime = 0;
                 
             }
@@ -74,7 +76,7 @@ public class Enemy_Attack : MonoBehaviour
         {
             if (damagetime >= attacktime)
             {
-                playerdata.currenthealth -= damage;
+                playerdata.currenthealth -= (0.8f*force)+Random.Range(-1,1);
                 damagetime = 0;
 
             }
@@ -96,7 +98,7 @@ public class Enemy_Attack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")&&GameObject.Find("Enemy_Solider").GetComponent<Enemy_Solider>().IsAttack)
         {
-            playerdata.currenthealth -= damage;
+            playerdata.currenthealth -= (force*1)+Random.Range(1,-2);
         }
     }
 }

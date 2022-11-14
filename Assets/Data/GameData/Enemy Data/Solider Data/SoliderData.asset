@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ed7f9ffe425d64a82ac90ad431c0b3, type: 3}
   m_Name: SoliderData
   m_EditorClassIdentifier: 
-  maxhealth: 100
-  currenthealth: 100
-  damage: 15
+  maxhealth: 40
+  currenthealth: 40
+  damage: 0
   attackrate: 1
+  force: 8
+  offset: 1

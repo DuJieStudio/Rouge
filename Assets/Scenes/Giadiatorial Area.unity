@@ -1359,7 +1359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8518065164035039776, guid: ab92a250845bf74418173495b5c9ecda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8518065164035039776, guid: ab92a250845bf74418173495b5c9ecda, type: 3}
       propertyPath: m_TagString
@@ -12568,6 +12568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Solider
       objectReference: {fileID: 0}
+    - target: {fileID: 1914241575825112836, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1914241575825113081, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -12801,7 +12805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5507479660997196008, guid: aceafebe22e44304cb240829fc717429, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.887
+      value: -11.95
       objectReference: {fileID: 0}
     - target: {fileID: 5507479660997196008, guid: aceafebe22e44304cb240829fc717429, type: 3}
       propertyPath: m_LocalPosition.y
