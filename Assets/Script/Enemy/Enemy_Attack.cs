@@ -27,7 +27,7 @@ public class Enemy_Attack : MonoBehaviour
         attacktime = 1 / attackrate;
         playerdata = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().PlayerData;
         damagetime = attacktime;
-        damage = Attackdata.damage;
+        damage = 0;
         force = Attackdata.force;
     }
     public void Update()
