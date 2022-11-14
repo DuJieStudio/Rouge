@@ -30,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824563223161869723}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.029606, y: 3.3050892, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -191,7 +191,9 @@ MonoBehaviour:
   EnemyType: 1
   attackrate: 10
   attacktime: 0
+  damagetime: 0
   damage: 0
+  force: 0
   Attackdata: {fileID: 0}
   thisobject: {fileID: 0}
   player:
