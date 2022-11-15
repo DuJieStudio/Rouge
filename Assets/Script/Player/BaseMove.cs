@@ -17,7 +17,7 @@ public class BaseMove : MonoBehaviour
     public Image CDImage;
     public Image HPline;
     public PlayerData_SO playerdata;
-    public CharacterStats Characterstats;
+  //  public CharacterStats Characterstats;
     [Header("环境检测")]
     public LayerMask IsGround;//地面图层
     public Collider2D coll;

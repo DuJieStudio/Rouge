@@ -26,10 +26,10 @@ public class Enemy_Flower : Enemy
 
         gameObject.name = "Enemy_Flower";
 
-        rb = transform.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         hp = flowerData.maxhealth;
         enemyFlowerStats = GetComponent<EnemyFlowerStats>();
-        anim = transform.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
 
@@ -68,12 +68,12 @@ public class Enemy_Flower : Enemy
 
     public void TakeDamage(float damage)
     {     
-        floatPointBase(damage);
+      //  floatPointBase(damage);
         hp -= damage;
     }
     public void SkillDamage(float damage)
     {
-        floatPointBase(damage);
+     //   floatPointBase(damage);
         hp -= damage;
     }
 

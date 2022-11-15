@@ -26,15 +26,17 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(GetAttack.comboStep);
         if (collision.gameObject.CompareTag("playerAttack"))
         {
             switch (enemyType)
             {
-                case EnemyObject.Solider:
-                    Solide_TakeDamage();
+                case EnemyObject.Solider:                  
+                    Solider_TakeDamage();
                     break;
 
                 case EnemyObject.Flower:
+                    Debug.Log("999999999888888888");
                     Flower_TakeDamage();
                     break;
             }
@@ -53,8 +55,8 @@ public class Enemy_TakeDamage : MonoBehaviour
         //    }
         //}
     }
-    public void Solide_TakeDamage()
-    {
+    public void Solider_TakeDamage()
+    { 
         if (transform.localScale.x > 0)
         {
             GetComponent<Enemy_Solider>().GetHit(Vector2.right);
@@ -66,13 +68,14 @@ public class Enemy_TakeDamage : MonoBehaviour
 
         if (GetAttack.comboStep > 0)
         {
+            
             GetComponent<Enemy_Solider>().TakeDamage(GetAttack.Damage);
         }
         else if (GetAttack.comboStep == 0)
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);                
             }
             else if (GetAttack.isSkillLong)
             {           
@@ -92,8 +95,7 @@ public class Enemy_TakeDamage : MonoBehaviour
             case EnemyObject.Flower:
                 GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
                 break;
-        }
-        // GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+        }       
         useTime += 1;
         if (useTime == 5)
         {
@@ -105,6 +107,7 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     public void Flower_TakeDamage()
     {
+        Debug.Log("123123123");
         if (transform.localScale.x > 0)
         {
             GetComponent<Enemy_Flower>().GetHit(Vector2.right);
