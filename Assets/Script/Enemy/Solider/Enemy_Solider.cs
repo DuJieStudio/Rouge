@@ -64,13 +64,12 @@ public class Enemy_Solider : Enemy
 
     public void TakeDamage(float damage)
     {
-        floatPointBase(damage);
-
+        //  floatPointBase(damage);      
         hp -= damage;
     }
     public void SkillDamage(float damage)
     {
-        floatPointBase(damage);
+       // floatPointBase(damage);
         hp -= damage;
     }
     public void Skill_longDamage(float damage)

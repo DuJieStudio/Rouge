@@ -34,11 +34,6 @@ public class knifeController : MonoBehaviour
 
             knife.transform.Translate(new Vector2(0, Mathf.Lerp(-1, 0.05f, -5)));
             Destroy(knife, 2);
-        }
-
-        
-
-
-
+        }     
     }
 }
