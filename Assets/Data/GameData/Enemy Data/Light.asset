@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ed7f9ffe425d64a82ac90ad431c0b3, type: 3}
   m_Name: Light
   m_EditorClassIdentifier: 
-  maxhealth: 50
-  currenthealth: 50
+  maxhealth: 30
+  currenthealth: 30
   attackrate: 0
   force: 0

@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ed7f9ffe425d64a82ac90ad431c0b3, type: 3}
   m_Name: Ghost
   m_EditorClassIdentifier: 
-  maxhealth: 5
-  currenthealth: 5
-  damage: 0
+  maxhealth: 10
+  currenthealth: 10
   attackrate: 10
   force: 3
-  offset: 1

@@ -1869,6 +1869,10 @@ PrefabInstance:
       value: Poison_Ball
       objectReference: {fileID: 0}
     - target: {fileID: 8518065164035039776, guid: ab92a250845bf74418173495b5c9ecda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518065164035039776, guid: ab92a250845bf74418173495b5c9ecda, type: 3}
       propertyPath: m_TagString
       value: enemyAttack
       objectReference: {fileID: 0}
@@ -2051,7 +2055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172680254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.546999, y: -0.68200004, z: -10}
+  m_LocalPosition: {x: -11.909174, y: -0.657987, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1857794901}

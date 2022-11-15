@@ -93,8 +93,9 @@ public class Enemy_Light : MonoBehaviour
     {
         if (hp <= 0)
         {
-            anim.Play("Light_Dead");
-            Destroy(thislight, 1);
+
+            anim.Play("Light_Dead");           
+            
         }
         //  lootSpawner.Spawn(transform.position);
     }
