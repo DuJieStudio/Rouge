@@ -64,7 +64,7 @@ public class BaseMove : MonoBehaviour
         rigidbody_of_player = GetComponent<Rigidbody2D>();
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
-        GameManager.Instance.RigisterPlayer(characterStats);
+        //GameManager.Instance.RigisterPlayer(characterStats);
  
     }
 
