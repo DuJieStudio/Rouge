@@ -79,11 +79,11 @@ public class PoisonBallController : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag("playerBlock"))
             {
-                this.gameObject.tag = "Item";
+                this.gameObject.tag = "playerAttack";
                 rb.velocity = new Vector2(this.transform.localScale.x * 5, 0);
             }
         }
-        else if (this.gameObject.tag == "Item")
+        else if (this.gameObject.tag == "playerAttack")
         {
             if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("ground"))
             {

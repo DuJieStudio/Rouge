@@ -13,11 +13,12 @@ public class Attack : MonoBehaviour
     private PolygonCollider2D coll;
     //public float attackCoolDown;
     //public float attackCD = 0;
-    
-   // public LayerMask IsEnemy;
+
+    // public LayerMask IsEnemy;    
 
 
     [Header("普攻相关")]
+    public float damage;
     public float attackSpeed;
     public bool isAttack;
     public int comboStep;
@@ -36,7 +37,6 @@ public class Attack : MonoBehaviour
 
     public bool isSkillShort;
     public bool isSkillLong;
-
 
 
     [Header("格挡相关")]
@@ -63,7 +63,7 @@ public class Attack : MonoBehaviour
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         coll = GetComponent<PolygonCollider2D>();
         Power = playerAttackStats.Power;
-        skillDamage = playerAttackStats.SkillDamage;
+//        skillDamage = playerAttackStats.SkillDamage;
         isGather = false;
         //  skillReady = false;
         //Debug.Log(playerAttackStats.MinDamage);

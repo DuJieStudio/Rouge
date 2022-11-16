@@ -83,13 +83,13 @@ public class Enemy_TakeDamage : MonoBehaviour
         if (GetAttack.comboStep > 0)
         {
 
-            GetComponent<Enemy_Solider>().TakeDamage(GetAttack.Damage);
+            GetComponent<Enemy_Solider>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
+                GetComponent<Enemy_Solider>().SkillDamage();
             }
             else if (GetAttack.isSkillLong)
             {
@@ -98,16 +98,24 @@ public class Enemy_TakeDamage : MonoBehaviour
         }
     }
 
-    //void SustainDamage()
-    //{
-    //    switch (enemyType)
-    //    {
-    //        case EnemyObject.Solider:
-    //            GetComponent<Enemy_Solider>().SkillDamage();
-    //            break;
+    void SustainDamage()
+    {
+        switch (enemyType)
+        {
+            case EnemyObject.Solider:
+                GetComponent<Enemy_Solider>().SkillDamage();
+                break;
 
             case EnemyObject.Flower:
-                GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+                GetComponent<Enemy_Flower>().SkillDamage();
+                break;
+
+            case EnemyObject.light:               
+                GetComponent<Enemy_Light>().SkillDamage();
+                break;
+
+            case EnemyObject.Ghost:
+                GetComponent<Ghost>().SkillDamage();
                 break;
         }
         useTime += 1;
@@ -149,74 +157,38 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     public void Ghost_TakeDamage()
     {
-        GetComponent<Enemy_Ghost>().GitHit();
+        GetComponent<Ghost>().GetHit();
 
         if (GetAttack.comboStep > 0)
         {
-            GetComponent<Enemy_Ghost>().TakeDamage();
+            GetComponent<Ghost>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent<Enemy_Ghost>().SkillDamage();
+                GetComponent<Ghost>().SkillDamage();
             }
             else if (GetAttack.isSkillLong)
             {
                 InvokeRepeating("SustainDamage", 0f, 0.5f);
             }
         }
-    }
-
-    public void Ghost_TakeDamage()
-    {
-        if (transform.localScale.x > 0)
-        {
-            GetComponent<Ghost>().GetHit(Vector2.right);
-        }
-        else if (transform.localScale.x < 0)
-        {
-            GetComponent<Ghost>().GetHit(Vector2.left);
-        }
-
-        if (GetAttack.comboStep > 0)
-        {
-            GetComponent<Ghost>().TakeDamage(GetAttack.Damage);
-        }
-        else if (GetAttack.comboStep == 0)
-        {
-            if (GetAttack.isSkillShort)
-            {
-                GetComponent<Ghost>().SkillDamage(GetAttack.skillDamage);
-            }
-            else if (GetAttack.isSkillLong)
-            {
-                InvokeRepeating("SustainDamage", 0f, 0.5f);
-            }
-        }
-
-    }
+    }   
 
     public void Light_TakeDamage()
     {
-        if (transform.localScale.x > 0)
-        {
-            GetComponent<Enemy_Light>().GetHit(Vector2.right);
-        }
-        else if (transform.localScale.x < 0)
-        {
-            GetComponent <Enemy_Light>().GetHit(Vector2.left);
-        }
+        GetComponent<Enemy_Light>().GetHit();   
 
         if (GetAttack.comboStep > 0)
         {
-            GetComponent<Enemy_Light>().TakeDamage(GetAttack.Damage);
+            GetComponent<Enemy_Light>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent < Enemy_Light>().SkillDamage(GetAttack.skillDamage);
+                GetComponent < Enemy_Light>().SkillDamage();
             }
             else if (GetAttack.isSkillLong)
             {

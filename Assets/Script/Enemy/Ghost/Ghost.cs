@@ -11,6 +11,8 @@ public class Ghost : MonoBehaviour
     public SoliderData_SO ghostdata;
     public float hp;
     public AnimatorStateInfo info;
+    public float damage;
+    public Attack GetAttack;
 
     private void Awake()
     {
@@ -18,7 +20,7 @@ public class Ghost : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         ghostdata = GetComponent<EnemySoliderStats>().SoliderData;
         hp = ghostdata.maxhealth;
-        
+        GetAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
 
     }
     // Start is called before the first frame update
@@ -36,24 +38,23 @@ public class Ghost : MonoBehaviour
         }
         Dead();
     }
-    public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
-    {
-
-        transform.localScale = new Vector3(direction.x, 1, 1);
+    public void GetHit()//用作外部调用，传入vector2用来设置击退方向
+    {      
         isHit = true;
-        this.direction = direction;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {
             anim.Play("Hurt");
         }
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage()
     {
+        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
         hp -= damage;
     }
-    public void SkillDamage(float damage)
+    public void SkillDamage()
     {
         //   floatPointBase(damage);
+        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
         hp -= damage;
  
     }

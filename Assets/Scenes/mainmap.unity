@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 887062569438998907, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.53
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 887062569438998907, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: m_LocalPosition.y
@@ -581,6 +581,14 @@ PrefabInstance:
       propertyPath: Ghost
       value: 
       objectReference: {fileID: 6387442430631358736, guid: cd356962891078f469b3fad97c64458e, type: 3}
+    - target: {fileID: 5507479660997196015, guid: aceafebe22e44304cb240829fc717429, type: 3}
+      propertyPath: GetAttack
+      value: 
+      objectReference: {fileID: 2110333663}
+    - target: {fileID: 5507479660997196015, guid: aceafebe22e44304cb240829fc717429, type: 3}
+      propertyPath: lightdata
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c7b5571c51fa144f8e3f1f18fd70aa6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aceafebe22e44304cb240829fc717429, type: 3}
 --- !u!1001 &213574365
@@ -702,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
-  GetAttack: {fileID: 0}
+  GetAttack: {fileID: 2110333663}
   isAttackLong: 0
   useTime: 0
 --- !u!1 &307088714
@@ -2099,7 +2107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172680254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.909174, y: -0.657987, z: -10}
+  m_LocalPosition: {x: 0.027078062, y: -0.68200004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1857794901}
@@ -3317,7 +3325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591842729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.546999, y: -0.68200004, z: -10}
+  m_LocalPosition: {x: 0.027078062, y: -0.68200004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1369643127}

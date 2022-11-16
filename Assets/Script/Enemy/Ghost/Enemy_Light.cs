@@ -18,6 +18,8 @@ public class Enemy_Light : MonoBehaviour
     public float hp;
     public AnimatorStateInfo info;
 
+    public Attack GetAttack;
+    public float damage;
 
     void Start()
     {    
@@ -69,23 +71,21 @@ public class Enemy_Light : MonoBehaviour
         
         
     }
-    public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
-    {
-
-        transform.localScale = new Vector3(direction.x, 1, 1);
-        isHit = true;
-        this.direction = direction;
-
-            anim.Play("Light_Hurt");
+    public void GetHit()//用作外部调用，传入vector2用来设置击退方向
+    {      
+        isHit = true;      
+        anim.Play("Light_Hurt");
         
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage()
     {
+        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);       
         hp -= damage;
     }
-    public void SkillDamage(float damage)
+    public void SkillDamage()
     {
         //   floatPointBase(damage);
+        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
         hp -= damage;
 
     }
@@ -93,9 +93,7 @@ public class Enemy_Light : MonoBehaviour
     {
         if (hp <= 0)
         {
-
-            anim.Play("Light_Dead");           
-            
+            anim.Play("Light_Dead");                       
         }
         //  lootSpawner.Spawn(transform.position);
     }

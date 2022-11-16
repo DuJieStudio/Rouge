@@ -22,10 +22,10 @@ public class PickUPItem : MonoBehaviour
     {
         if (collision.gameObject.tag=="Item")
         {
+            
 
-           
             thisitem = collision.gameObject.GetComponent<ChooseData>().item;
-            AddItem();
+            AddItem();     
             
 
         }
