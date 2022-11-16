@@ -14,6 +14,12 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     public float useTime = 0;
 
+
+
+    //public SoliderData_SO LightData;
+    //private EnemySoliderStats LightStats;
+    //public float Hp_Light;
+
     //protected override void Start()
     //{
     //    base.Start();
@@ -29,7 +35,7 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(GetAttack.comboStep);
+       // Debug.Log(GetAttack.comboStep);
         if (collision.gameObject.CompareTag("playerAttack"))
         {
             switch (enemyType)
@@ -92,13 +98,13 @@ public class Enemy_TakeDamage : MonoBehaviour
         }
     }
 
-    void SustainDamage()
-    {
-        switch (enemyType)
-        {
-            case EnemyObject.Solider:
-                GetComponent<Enemy_Solider>().SkillDamage(GetAttack.skillDamage);
-                break;
+    //void SustainDamage()
+    //{
+    //    switch (enemyType)
+    //    {
+    //        case EnemyObject.Solider:
+    //            GetComponent<Enemy_Solider>().SkillDamage();
+    //            break;
 
             case EnemyObject.Flower:
                 GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
@@ -126,13 +132,34 @@ public class Enemy_TakeDamage : MonoBehaviour
 
         if (GetAttack.comboStep > 0)
         {
-            GetComponent<Enemy_Flower>().TakeDamage(GetAttack.Damage);
+            GetComponent<Enemy_Flower>().TakeDamage();
+        }
+        else if (GetAttack.comboStep == 0)
+        {           
+            if (GetAttack.isSkillShort)
+            {
+                GetComponent<Enemy_Flower>().SkillDamage();
+            }
+            else if (GetAttack.isSkillLong)
+            {
+                InvokeRepeating("SustainDamage", 0f, 0.5f);
+            }
+        }
+    }
+
+    public void Ghost_TakeDamage()
+    {
+        GetComponent<Enemy_Ghost>().GitHit();
+
+        if (GetAttack.comboStep > 0)
+        {
+            GetComponent<Enemy_Ghost>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent<Enemy_Flower>().SkillDamage(GetAttack.skillDamage);
+                GetComponent<Enemy_Ghost>().SkillDamage();
             }
             else if (GetAttack.isSkillLong)
             {

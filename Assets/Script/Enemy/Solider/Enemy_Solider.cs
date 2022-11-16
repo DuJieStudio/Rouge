@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,9 @@ public class Enemy_Solider : Enemy
     public float hp;
     public SoliderData_SO soliderdata;
     public bool IsAttack;
- 
+
+    public Attack GetAttack;
+    public float damage;
  //   public Animator hitAnim;
 
    // public GameObject floatPoint;
@@ -60,25 +63,23 @@ public class Enemy_Solider : Enemy
         {
             anim.Play("Hurt");
         }
+        Debug.Log("3212353452345");
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage()
     {
-        //  floatPointBase(damage);      
-        hp -= damage;
-    }
-    public void SkillDamage(float damage)
-    {
-       // floatPointBase(damage);
-        hp -= damage;
-    }
-    public void Skill_longDamage(float damage)
-    {
-        floatPointBase(damage);
-        hp -= damage;
+        //  floatPointBase(damage);  
+         damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
+         hp -= damage;
+       
     }
 
-
+    public void SkillDamage()
+    {
+        // floatPointBase(damage);
+        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+        hp -= damage;
+    } 
 
     public void Dead()
     {
@@ -88,7 +89,6 @@ public class Enemy_Solider : Enemy
             GetComponent<Collider2D>().enabled = false;
             rb.gravityScale = 0f;
         }
-        //  lootSpawner.Spawn(transform.position);
     }  
 
     public void AttackMove()

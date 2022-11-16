@@ -46,7 +46,7 @@ public class PlayerAttackStats : MonoBehaviour
         }
         set
         {
-            playerDataAttack.MaxDamage = value;
+            playerDataAttack.SkillDamage = value;
         }
     }
 
@@ -62,6 +62,21 @@ public class PlayerAttackStats : MonoBehaviour
         set
         {
             playerDataAttack.CoolDown = value;
+        }
+    }
+
+    public float Power
+    {
+        get
+        {
+            if (playerDataAttack != null)
+            { return playerDataAttack.Power; }
+            else
+            { return 0; }
+        }
+        set
+        {
+            playerDataAttack.Power = value;
         }
     }
 }

@@ -11,4 +11,5 @@ public class PlayerDataofAttack_SO : ScriptableObject
     public float CoolDown;
     public float Critical_Multiplier;
     public float Critical_Chance;
+    public float Power;
 }

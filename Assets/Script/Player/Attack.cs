@@ -23,7 +23,7 @@ public class Attack : MonoBehaviour
     public int comboStep;
     public float interval;
     private float timer;
-    public float Damage;
+    public float Power;
 
 
     [Header("技能相关")]
@@ -62,7 +62,7 @@ public class Attack : MonoBehaviour
         // anim2 = GameObject.FindGameObjectWithTag("enemy").GetComponent<Animator>();
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         coll = GetComponent<PolygonCollider2D>();
-        Damage = playerAttackStats.MinDamage;
+        Power = playerAttackStats.Power;
         skillDamage = playerAttackStats.SkillDamage;
         isGather = false;
         //  skillReady = false;
@@ -78,7 +78,8 @@ public class Attack : MonoBehaviour
         chargeing();
         skillAttack();
         Block();
-     
+        Special_Long();
+
         //    SimpleRays();
         //AttackCheck();
     }
@@ -128,6 +129,15 @@ public class Attack : MonoBehaviour
             isBlock = true;
         }
        
+    }
+
+    void Special_Long()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            anim.Play("special_long");
+        }
+
     }
 
     void gathering()
