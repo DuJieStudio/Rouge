@@ -18,3 +18,4 @@ MonoBehaviour:
   CoolDown: 0
   Critical_Multiplier: 1.5
   Critical_Chance: 0
+  Power: 10

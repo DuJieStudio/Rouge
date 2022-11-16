@@ -18,6 +18,9 @@ public class Enemy_Flower : Enemy
     private EnemyFlowerStats enemyFlowerStats;
     public Animator anim;
 
+    public Attack GetAttack;
+    public float damage;
+
 
     protected override void Awake()
     {
@@ -66,14 +69,16 @@ public class Enemy_Flower : Enemy
         }
     }
 
-    public void TakeDamage(float damage)
-    {     
-      //  floatPointBase(damage);
+    public void TakeDamage()
+    {
+        //  floatPointBase(damage);
+        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
         hp -= damage;
     }
-    public void SkillDamage(float damage)
+    public void SkillDamage()
     {
-     //   floatPointBase(damage);
+        //   floatPointBase(damage);
+        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
         hp -= damage;
     }
 
@@ -85,7 +90,6 @@ public class Enemy_Flower : Enemy
             anim.Play("Dead");
             GetComponent<Collider2D>().enabled = false;
             rb.gravityScale = 0f;
-        }
-        //  lootSpawner.Spawn(transform.position);
+        }    
     }
 }
