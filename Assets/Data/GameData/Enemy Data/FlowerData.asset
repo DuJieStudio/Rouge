@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e033c96b0ca7cf94ca540451ae1931d0, type: 3}
   m_Name: FlowerData
   m_EditorClassIdentifier: 
-  maxhealth: 10
-  currenthealth: 10
+  maxhealth: 40
+  currenthealth: 40
   damage: 5

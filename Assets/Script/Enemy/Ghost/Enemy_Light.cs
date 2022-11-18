@@ -23,6 +23,7 @@ public class Enemy_Light : MonoBehaviour
 
     void Start()
     {    
+
         thislight = this.gameObject;     
         anim = thislight.GetComponent<Animator>();
         anim.Play("Appear");
@@ -30,9 +31,6 @@ public class Enemy_Light : MonoBehaviour
         generatecount = 0;
         lightdata = GetComponent<EnemySoliderStats>().SoliderData;
         hp = lightdata.maxhealth;
-        
-
-        
         
     }
 
@@ -68,8 +66,7 @@ public class Enemy_Light : MonoBehaviour
             generatecount += 1;
         }
 
-        
-        
+             
     }
     public void GetHit()//用作外部调用，传入vector2用来设置击退方向
     {      
@@ -91,9 +88,16 @@ public class Enemy_Light : MonoBehaviour
     }
     public void Dead()
     {
+
         if (hp <= 0)
         {
-            anim.Play("Light_Dead");                       
+            anim.Play("Light_Dead");
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light_Dead") && (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f))
+            {
+                anim.enabled = false;
+                this.enabled = false;
+            }
+
         }
         //  lootSpawner.Spawn(transform.position);
     }
