@@ -10,6 +10,8 @@ public class HPController : MonoBehaviour
     public GameObject Player;
     public PlayerData_SO playerdata;
     public SpriteRenderer sprite;
+    public Text MaxHP;
+    public Text CurrentHP;
     [Header("无敌时间参数")]
     public bool ishurt;
     public bool Isinvincible = false;//是否为无敌状态
@@ -29,10 +31,13 @@ public class HPController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         shaketime = 1f / shakerate;
         playerdata.currenthealth = playerdata.maxhealth;
+        CurrentHP = GameObject.Find("CurrentHP").GetComponent<Text>();
+        MaxHP = GameObject.Find("MaxHP").GetComponent<Text>();
         RateOfHP = 0.01f;
         ThisTimeHP = playerdata.maxhealth;
         LastTimeHP = playerdata.maxhealth;
         Isinvincible = false;
+        MaxHP.text = playerdata.maxhealth.ToString();
         passtime = 0;
     }
 
@@ -83,6 +88,7 @@ public class HPController : MonoBehaviour
     public void changeHPline()
     {
         HPline.fillAmount = playerdata.currenthealth / playerdata.maxhealth;
+        CurrentHP.text = playerdata.currenthealth.ToString();
     }
     public void IsLosingHP()
     {
