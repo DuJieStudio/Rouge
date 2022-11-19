@@ -13,7 +13,7 @@ public class BaseMove : MonoBehaviour
     public float jumpspeed;
     private Rigidbody2D rigidbody_of_player;
     private Animator animator_of_player;
-    public Animator anim2;
+    public Animator anim_effect;
     public Image CDImage;
     public Image HPline;
     public PlayerData_SO playerdata;
@@ -65,6 +65,7 @@ public class BaseMove : MonoBehaviour
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
         //GameManager.Instance.RigisterPlayer(characterStats);
+        anim_effect = transform.GetChild(3).GetComponent<Animator>();
  
     }
 
@@ -81,16 +82,17 @@ public class BaseMove : MonoBehaviour
         SwitchAnim();
         //shadow();
 
+        Shitf();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            //  SoundManager.instance.ShiftAudio();
-            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
-                && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
-            {
-                StartCoroutine(Dash());
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        //{
+        //    //  SoundManager.instance.ShiftAudio();
+        //    if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+        //        && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+        //    {
+        //        StartCoroutine(Dash());
+        //    }
+        //}
 
         onGround = Physics2D.OverlapCircle(GroundCheck.position, 0.2f, IsGround);
     }
@@ -181,6 +183,20 @@ public class BaseMove : MonoBehaviour
         }
     }
 
+
+    private void Shitf()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            //  SoundManager.instance.ShiftAudio();
+            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+                && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            {
+                StartCoroutine(Dash());
+                anim_effect.Play("shift_effect");
+            }
+        }
+    }
 
     private IEnumerator Dash()
     {

@@ -7,6 +7,7 @@ public class Enemy_Solider : Enemy
 {
 
     public Animator anim;
+    public Animator anim_attack;
     public Rigidbody2D rb;
     public bool isHit;
     private Vector2 direction;
@@ -31,6 +32,7 @@ public class Enemy_Solider : Enemy
         base.Start();
         base.Awake();
         anim = transform.GetComponent<Animator>();
+        anim_attack = transform.GetChild(1).GetComponent<Animator>();
         rb = transform.GetComponent<Rigidbody2D>();
         hp = soliderdata.maxhealth;
         enemySoliderStats = GetComponent<EnemySoliderStats>();
@@ -62,8 +64,8 @@ public class Enemy_Solider : Enemy
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {
             anim.Play("Hurt");
-        }
-        Debug.Log("3212353452345");
+            anim_attack.Play("solider_effect");
+        }     
     }
 
     public void TakeDamage()

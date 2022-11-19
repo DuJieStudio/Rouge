@@ -8,7 +8,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public AudioSource audioSource;
     [SerializeField]
-    private AudioClip attack1Audio,attack2Audio, shiftAudio, runAudio,jumpAudio,skillAudio;
+    private AudioClip attack1Audio,attack2Audio, shiftAudio, runAudio,jumpAudio,skillAudio,skill_Long;
 
 
     protected override void Awake()
@@ -54,6 +54,12 @@ public class SoundManager : Singleton<SoundManager>
     public void SkillAudio()
     {
         audioSource.clip = skillAudio;
+        audioSource.Play();
+    }
+
+    public void Skill_Long()
+    {
+        audioSource.clip = skill_Long;
         audioSource.Play();
     }
 }
