@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-public enum EnemyObject { Solider, Flower, Ghost,light}
+public enum EnemyObject { Solider, Flower, Ghost, light }
 
 public class Enemy_TakeDamage : MonoBehaviour
 {
