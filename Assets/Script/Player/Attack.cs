@@ -44,9 +44,13 @@ public class Attack : MonoBehaviour
 
     public PlayerAttackStats playerAttackStats;
 
-  //  public RaycastHit2D[] hitInfo;
+    public Cinemachine.CinemachineCollisionImpulseSource MyInpulse;
+  //  public void GenerateImpulse(Vector3 velocity);
+  //  public void GenerateImpulse(Vector3 position,Vector3 velocity);
 
-   // public Collider2D rayColl;
+    //  public RaycastHit2D[] hitInfo;
+
+    // public Collider2D rayColl;
 
     private void Awake()
    // protected virtual void Awake()
@@ -67,8 +71,18 @@ public class Attack : MonoBehaviour
         isGather = false;
         //  skillReady = false;
         //Debug.Log(playerAttackStats.MinDamage);
-    }
 
+        MyInpulse = GetComponent<Cinemachine.CinemachineCollisionImpulseSource>();
+    }
+    public void GenerateImpulse()
+    {      
+        Debug.Log("121212121");
+    }
+    //public void GenerateImpulse(float duration, float strength)
+    //{
+    //    GenerateImpulse(duration,strength);
+    //    Debug.Log("2323232323");
+    //}
 
     void Update()
     {
@@ -84,13 +98,15 @@ public class Attack : MonoBehaviour
         //AttackCheck();
     }
 
+    
+
     void PlayerAttack()
     {
 
         if (Input.GetKeyDown(KeyCode.J) && !isAttack && !isBlock)
         {
             //SoundManager.instance.Attack2Audio();
-
+         
             isAttack = true;
             //    isGather = true;
             isSkill = true;
@@ -239,6 +255,11 @@ public class Attack : MonoBehaviour
         isBlock = false;
     }
 
+    //public void GenerateImpulse(float duration, float strength)
+    //{
+    //    MyInpulse.GenerateImpulse();
+    //    Debug.Log("2323232323");
+    //}
 
     //void SimpleRays()
     //{
@@ -292,7 +313,7 @@ public class Attack : MonoBehaviour
     //public void Solide_TakeDamage()
     //{
     //    Debug.Log("11111111111111");
-       
+
     //    if (transform.localScale.x > 0)
     //    {
     //        GetComponent<Enemy_Solider>().GetHit(Vector2.right);

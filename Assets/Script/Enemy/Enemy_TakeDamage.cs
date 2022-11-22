@@ -36,6 +36,9 @@ public class Enemy_TakeDamage : MonoBehaviour
        // Debug.Log(GetAttack.comboStep);
         if (collision.gameObject.CompareTag("playerAttack"))
         {
+            // GetAttack.MyInpulse.GenerateImpulse();
+            //  CameraShaker.Instance.CameraShake(1f, 1f);
+            CameraShaker.Instance.ShakeCamera(1.5f,0.15f, 0.15f);
             switch (enemyType)
             {
                 case EnemyObject.Solider:
@@ -52,6 +55,7 @@ public class Enemy_TakeDamage : MonoBehaviour
                     Light_TakeDamage();
                     break;
             }
+           
         }
         //else if (collision.gameObject.CompareTag("playerBlock"))
         //{
