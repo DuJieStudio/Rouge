@@ -41,6 +41,7 @@ public class Ghost : MonoBehaviour
     public void GetHit()//用作外部调用，传入vector2用来设置击退方向
     {      
         isHit = true;
+        GetComponent<CreatHPBAR>().setHit(true);
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {
             anim.Play("Hurt");

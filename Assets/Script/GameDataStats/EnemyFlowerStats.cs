@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFlowerStats : MonoBehaviour
 {
-    public FlowerData_SO FlowerData;
+    public SoliderData_SO FlowerData;
 
     public float MaxHealth
     {
@@ -36,18 +36,4 @@ public class EnemyFlowerStats : MonoBehaviour
         }
     }
 
-    public float Damage
-    {
-        get
-        {
-            if (FlowerData != null)
-            { return FlowerData.damage; }
-            else
-            { return 0; }
-        }
-        set
-        {
-            FlowerData.damage = value;
-        }
-    }
 }

@@ -60,6 +60,7 @@ public class Enemy_Solider : Enemy
     {
         transform.localScale = new Vector3(direction.x, 1, 1);
         isHit = true;
+        GetComponent<CreatHPBAR>().setHit(true);
         this.direction = direction;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {

@@ -12,7 +12,7 @@ public class Enemy_Flower : Enemy
     public AnimatorStateInfo info;
     private Vector2 direction;
 
-    public FlowerData_SO flowerData;
+    public SoliderData_SO FlowerData;
     public float hp;
     public Rigidbody2D rb;
     private EnemyFlowerStats enemyFlowerStats;
@@ -30,7 +30,7 @@ public class Enemy_Flower : Enemy
         gameObject.name = "Enemy_Flower";
 
         rb = gameObject.GetComponent<Rigidbody2D>();
-        hp = flowerData.maxhealth;
+        hp = FlowerData.maxhealth;
         enemyFlowerStats = GetComponent<EnemyFlowerStats>();
         anim = gameObject.GetComponent<Animator>();
     }
@@ -43,7 +43,9 @@ public class Enemy_Flower : Enemy
         {
             // rb.velocity = direction * speed;
             if (info.normalizedTime >= 0.6f)//动画播到一定进度后结束受击状态
+            {
                 isHit = false;
+            }
         }
 
         Dead();
@@ -62,10 +64,13 @@ public class Enemy_Flower : Enemy
        
         transform.localScale = new Vector3(direction.x, 1, 1);
         isHit = true;
+        GetComponent<CreatHPBAR>().setHit(true);
         this.direction = direction;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
         {
+            
             anim.Play("Hurt");
+
         }
     }
 

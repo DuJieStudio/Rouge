@@ -70,7 +70,8 @@ public class Enemy_Light : MonoBehaviour
     }
     public void GetHit()//用作外部调用，传入vector2用来设置击退方向
     {      
-        isHit = true;      
+        isHit = true;
+        GetComponent<CreatHPBAR>().setHit(true);
         anim.Play("Light_Hurt");
         
     }
