@@ -40,8 +40,7 @@ public class Enemy_Flower : Enemy
     {
         info = anim.GetCurrentAnimatorStateInfo(0);//持续获取动画进度
         if (isHit)
-        {
-            // rb.velocity = direction * speed;
+        {          
             if (info.normalizedTime >= 0.6f)//动画播到一定进度后结束受击状态
             {
                 isHit = false;
