@@ -12,7 +12,14 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     public float useTime = 0;
 
-
+    private void FixedUpdate()
+    {
+        if (GetAttack.ffTimer > 0)
+        {
+            GetAttack.ffTimer -= Time.deltaTime;
+            Time.timeScale = Mathf.Lerp(0.5f, 1f, (1 - (GetAttack.ffTimer / GetAttack.ffTimerTotal)));
+        }
+    }
 
     //public SoliderData_SO LightData;
     //private EnemySoliderStats LightStats;
@@ -35,10 +42,9 @@ public class Enemy_TakeDamage : MonoBehaviour
     {
        // Debug.Log(GetAttack.comboStep);
         if (collision.gameObject.CompareTag("playerAttack"))
-        {
-            // GetAttack.MyInpulse.GenerateImpulse();
-            //  CameraShaker.Instance.CameraShake(1f, 1f);
-            CameraShaker.Instance.ShakeCamera(1.5f,0.15f, 0.15f);
+        {           
+            //CameraShaker.Instance.ShakeCamera(1.5f,0.15f, 0.15f);
+            //GetAttack.FrameFrozen(0.5f);
             switch (enemyType)
             {
                 case EnemyObject.Solider:
@@ -55,7 +61,8 @@ public class Enemy_TakeDamage : MonoBehaviour
                     Light_TakeDamage();
                     break;
             }
-           
+            CameraShaker.Instance.ShakeCamera(1.5f, 0.15f, 0.15f);
+            GetAttack.FrameFrozen(0.5f);
         }
         //else if (collision.gameObject.CompareTag("playerBlock"))
         //{
@@ -84,7 +91,7 @@ public class Enemy_TakeDamage : MonoBehaviour
 
         if (GetAttack.comboStep > 0)
         {
-
+            Debug.Log(GetAttack.comboStep);
             GetComponent<Enemy_Solider>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)

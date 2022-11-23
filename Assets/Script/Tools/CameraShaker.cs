@@ -63,4 +63,18 @@ public class CameraShaker : MonoBehaviour
         }
        
     }
+
+
+    //public void HitPause(float duration)
+    //{
+    //    StartCoroutine(Pause(duration));
+    //}
+
+    //IEnumerator Pause(float duration)//อฃถู
+    //{
+    //    float pauseTime = duration / 60f;
+    //    Time.timeScale = 0;
+    //    yield return new WaitForSecondsRealtime(pauseTime);
+    //    Time.timeScale = 1;     
+    //}
 }

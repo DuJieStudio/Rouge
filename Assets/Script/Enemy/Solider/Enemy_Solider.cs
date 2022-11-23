@@ -36,7 +36,7 @@ public class Enemy_Solider : Enemy
         rb = transform.GetComponent<Rigidbody2D>();
         hp = soliderdata.maxhealth;
         enemySoliderStats = GetComponent<EnemySoliderStats>();
-
+        GetAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
     }
 
 
@@ -71,15 +71,16 @@ public class Enemy_Solider : Enemy
 
     public void TakeDamage()
     {
-        //  floatPointBase(damage);  
+         floatPointBase(damage);  
          damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
          hp -= damage;
-       
+        Debug.Log("767676");
+
     }
 
     public void SkillDamage()
     {
-        // floatPointBase(damage);
+        floatPointBase(damage);
         damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
         hp -= damage;
     } 
@@ -112,7 +113,7 @@ public class Enemy_Solider : Enemy
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("playerBlock"))
-        {         
+        {
             if (IsAttack)
             {
                 anim.SetTrigger("Yun");

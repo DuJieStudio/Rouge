@@ -33,6 +33,7 @@ public class Enemy_Flower : Enemy
         hp = FlowerData.maxhealth;
         enemyFlowerStats = GetComponent<EnemyFlowerStats>();
         anim = gameObject.GetComponent<Animator>();
+        GetAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
     }
 
 
@@ -75,13 +76,13 @@ public class Enemy_Flower : Enemy
 
     public void TakeDamage()
     {
-        //  floatPointBase(damage);
+        floatPointBase(damage);
         damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
         hp -= damage;
     }
     public void SkillDamage()
     {
-        //   floatPointBase(damage);
+        floatPointBase(damage);
         damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
         hp -= damage;
     }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
-    
 
     private Animator anim;
     // private Animator anim2;
@@ -15,6 +14,7 @@ public class Attack : MonoBehaviour
     //public float attackCD = 0;
 
     // public LayerMask IsEnemy;    
+    public float ffTimer, ffTimerTotal;
 
 
     [Header("∆’π•œ‡πÿ")]
@@ -55,7 +55,7 @@ public class Attack : MonoBehaviour
     private void Awake()
    // protected virtual void Awake()
     {
-        playerAttackStats = GetComponent<PlayerAttackStats>();       
+        playerAttackStats = GetComponent<PlayerAttackStats>();
     }
 
 
@@ -78,10 +78,14 @@ public class Attack : MonoBehaviour
     {      
         Debug.Log("121212121");
     }
-    //public void GenerateImpulse(float duration, float strength)
+ 
+    //private void FixedUpdate()
     //{
-    //    GenerateImpulse(duration,strength);
-    //    Debug.Log("2323232323");
+    //    if (ffTimer > 0)
+    //    {
+    //        ffTimer -= Time.deltaTime;
+    //        Time.timeScale = Mathf.Lerp(0.5f, 1f, (1 - (ffTimer / ffTimerTotal)));
+    //    }
     //}
 
     void Update()
@@ -253,6 +257,12 @@ public class Attack : MonoBehaviour
     public void BlockOver()
     {
         isBlock = false;
+    }
+
+    public void FrameFrozen(float time)
+    {
+        ffTimer = time;
+        ffTimerTotal = time;     
     }
 
     //public void GenerateImpulse(float duration, float strength)

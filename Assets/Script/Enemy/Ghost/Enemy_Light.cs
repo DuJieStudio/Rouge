@@ -31,7 +31,8 @@ public class Enemy_Light : MonoBehaviour
         generatecount = 0;
         lightdata = GetComponent<EnemySoliderStats>().SoliderData;
         hp = lightdata.maxhealth;
-        
+        GetAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
+
     }
 
     void Update()
