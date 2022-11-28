@@ -88,7 +88,7 @@ public class HPController : MonoBehaviour
     public void changeHPline()
     {
         HPline.fillAmount = playerdata.currenthealth / playerdata.maxhealth;
-        CurrentHP.text = playerdata.currenthealth.ToString();
+        CurrentHP.text =  ((int)playerdata.currenthealth).ToString();
     }
     public void IsLosingHP()
     {
