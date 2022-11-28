@@ -39,12 +39,15 @@ public class Ghost : MonoBehaviour
         Dead();
     }
     public void GetHit()//用作外部调用，传入vector2用来设置击退方向
-    {      
-        isHit = true;
-        GetComponent<CreatHPBAR>().setHit(true);
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
+    {
+        if (hp > 0)
         {
-            anim.Play("Hurt");
+            isHit = true;
+            GetComponent<CreatHPBAR>().setHit(true);
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
+            {
+                anim.Play("Hurt");
+            }
         }
     }
     public void TakeDamage()
@@ -54,16 +57,20 @@ public class Ghost : MonoBehaviour
     }
     public void SkillDamage()
     {
-        //   floatPointBase(damage);
-        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
-        hp -= damage;
- 
+        if (hp > 0)
+        {
+            //floatPointBase(damage);
+            damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+            hp -= damage;
+        }
     }
     public void Dead()
     {
         if (hp <= 0)
         {
             anim.Play("Dead");
+            GetComponent<BoxCollider2D>().enabled = false;
+            this.gameObject.tag = "Untagged";
             Destroy(thisghost, 0.5f);
         }
         //  lootSpawner.Spawn(transform.position);

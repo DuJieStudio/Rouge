@@ -56,17 +56,19 @@ public class Enemy_Solider : Enemy
         //    Debug.Log(anim.GetBool("Hurt"));
     }
 
-    public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
+    public void GetHit()
     {
-        transform.localScale = new Vector3(direction.x, 1, 1);
-        isHit = true;
-        GetComponent<CreatHPBAR>().setHit(true);
-        this.direction = direction;
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
+        if (hp > 0)
         {
-            anim.Play("Hurt");
-            anim_attack.Play("solider_effect");
-        }     
+            isHit = true;
+            GetComponent<CreatHPBAR>().setHit(true);
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
+            {
+                anim.Play("Hurt");
+                anim_attack.Play("solider_effect");
+            }
+        }
     }
 
     public void TakeDamage()
@@ -74,15 +76,17 @@ public class Enemy_Solider : Enemy
          floatPointBase(damage);  
          damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
          hp -= damage;
-        Debug.Log("767676");
-
     }
 
     public void SkillDamage()
     {
-        floatPointBase(damage);
-        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
-        hp -= damage;
+        if (hp > 0)
+        {
+            floatPointBase(damage);
+            damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+            hp -= damage;
+        }
+
     } 
 
     public void Dead()
@@ -91,6 +95,7 @@ public class Enemy_Solider : Enemy
         {
             anim.Play("Dead");
             GetComponent<Collider2D>().enabled = false;
+            this.gameObject.tag = "Untagged";
             rb.gravityScale = 0f;
         }
     }  

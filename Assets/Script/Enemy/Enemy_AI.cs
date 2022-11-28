@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public enum EnemyState { CloseRange ,LongRange ,TouchEnemy}
+public enum EnemyState { CloseRange ,LongRange ,TouchEnemy,Null}
+public enum EnemyName {Solider,Flower,Ghost,Light}
 
 public class Enemy_AI : MonoBehaviour
 {
 
     [Header("敌人类型")]
     public EnemyState enemyState;
-
+    public EnemyName enemyName;
     [Header("敌人识别范围")]
     public Vector2 sightRadius;//Overlap检测范围   
 
@@ -28,7 +29,7 @@ public class Enemy_AI : MonoBehaviour
 
     [Header("绘制攻击范围参数")]
     public Vector2 vector2;
-
+  
     //动画Bool值判断
     private bool isWalk;
     private bool isAttack;
@@ -123,6 +124,9 @@ public class Enemy_AI : MonoBehaviour
 
                 TouchRangeWay();
 
+                break;
+
+            case EnemyState.Null:
                 break;
 
         } 

@@ -40,27 +40,28 @@ public class Enemy_TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       // Debug.Log(GetAttack.comboStep);
+        // Debug.Log(GetAttack.comboStep);
         if (collision.gameObject.CompareTag("playerAttack"))
-        {           
-            //CameraShaker.Instance.ShakeCamera(1.5f,0.15f, 0.15f);
-            //GetAttack.FrameFrozen(0.5f);
-            switch (enemyType)
-            {
-                case EnemyObject.Solider:
-                    Solider_TakeDamage();
-                    break;
+        {
+            CameraShaker.Instance.ShakeCamera(1.5f, 0.15f, 0.15f);
+            GetAttack.FrameFrozen(0.5f);
 
-                case EnemyObject.Flower:
-                    Flower_TakeDamage();
-                    break;
-                case EnemyObject.Ghost:
-                    Ghost_TakeDamage();
-                    break;
-                case EnemyObject.light:
-                    Light_TakeDamage();
-                    break;
-            }
+            //switch (enemyType)
+            //{
+            //    //case EnemyObject.Solider:
+            //    //    Solider_TakeDamage();
+            //    //    break;
+
+            //    case EnemyObject.Flower:
+            //        Flower_TakeDamage();
+            //        break;
+            //    case EnemyObject.Ghost:
+            //        Ghost_TakeDamage();
+            //        break;
+            //    case EnemyObject.light:
+            //        Light_TakeDamage();
+            //        break;
+            //}
             CameraShaker.Instance.ShakeCamera(1.5f, 0.15f, 0.15f);
             GetAttack.FrameFrozen(0.5f);
         }
@@ -80,14 +81,14 @@ public class Enemy_TakeDamage : MonoBehaviour
     }
     public void Solider_TakeDamage()
     {
-        if (transform.localScale.x > 0)
-        {
-            GetComponent<Enemy_Solider>().GetHit(Vector2.right);
-        }
-        else if (transform.localScale.x < 0)
-        {
-            GetComponent<Enemy_Solider>().GetHit(Vector2.left);
-        }
+        //   if (transform.localScale.x > 0)
+        //   {
+        GetComponent<Enemy_Solider>().GetHit();
+        //  }
+        //   else if (transform.localScale.x < 0)
+        //   {
+        //        GetComponent<Enemy_Solider>().GetHit();
+        //   }
 
         if (GetAttack.comboStep > 0)
         {
@@ -119,7 +120,7 @@ public class Enemy_TakeDamage : MonoBehaviour
                 GetComponent<Enemy_Flower>().SkillDamage();
                 break;
 
-            case EnemyObject.light:               
+            case EnemyObject.light:
                 GetComponent<Enemy_Light>().SkillDamage();
                 break;
 
@@ -140,11 +141,11 @@ public class Enemy_TakeDamage : MonoBehaviour
     {
         if (transform.localScale.x > 0)
         {
-            GetComponent<Enemy_Flower>().GetHit(Vector2.right);
+            GetComponent<Enemy_Flower>().GetHit();
         }
         else if (transform.localScale.x < 0)
         {
-            GetComponent<Enemy_Flower>().GetHit(Vector2.left);
+            GetComponent<Enemy_Flower>().GetHit();
         }
 
         if (GetAttack.comboStep > 0)
@@ -152,7 +153,7 @@ public class Enemy_TakeDamage : MonoBehaviour
             GetComponent<Enemy_Flower>().TakeDamage();
         }
         else if (GetAttack.comboStep == 0)
-        {           
+        {
             if (GetAttack.isSkillShort)
             {
                 GetComponent<Enemy_Flower>().SkillDamage();
@@ -183,11 +184,11 @@ public class Enemy_TakeDamage : MonoBehaviour
                 InvokeRepeating("SustainDamage", 0f, 0.5f);
             }
         }
-    }   
+    }
 
     public void Light_TakeDamage()
     {
-        GetComponent<Enemy_Light>().GetHit();   
+        GetComponent<Enemy_Light>().GetHit();
 
         if (GetAttack.comboStep > 0)
         {
@@ -197,7 +198,7 @@ public class Enemy_TakeDamage : MonoBehaviour
         {
             if (GetAttack.isSkillShort)
             {
-                GetComponent < Enemy_Light>().SkillDamage();
+                GetComponent<Enemy_Light>().SkillDamage();
             }
             else if (GetAttack.isSkillLong)
             {

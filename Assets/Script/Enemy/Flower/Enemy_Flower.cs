@@ -59,18 +59,14 @@ public class Enemy_Flower : Enemy
 
     }
 
-    public void GetHit(Vector2 direction)//用作外部调用，传入vector2用来设置击退方向
+    public void GetHit()//用作外部调用，传入vector2用来设置击退方向
     {
        
-        transform.localScale = new Vector3(direction.x, 1, 1);
         isHit = true;
-        GetComponent<CreatHPBAR>().setHit(true);
-        this.direction = direction;
+        GetComponent<CreatHPBAR>().setHit(true);     
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") == false)
-        {
-            
+        {           
             anim.Play("Hurt");
-
         }
     }
 
