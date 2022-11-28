@@ -37,7 +37,6 @@ public class CharacterStats : MonoBehaviour
 
         }
     }
-
     public float BaseDefence
     {
         get
@@ -66,6 +65,7 @@ public class CharacterStats : MonoBehaviour
             PlayerData.moveSpeed = value;
         }
     }
+
     public PlayerDataofAttack_SO Attackdata;
     public float MinDamage
     {
@@ -137,4 +137,6 @@ public class CharacterStats : MonoBehaviour
             PlayerData.maxhealth = value;
         }
     }
+
+   // public 
 }

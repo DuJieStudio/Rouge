@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 7683124985556456947}
   - component: {fileID: 926862260912585773}
   - component: {fileID: 6695084901244392605}
-  - component: {fileID: 3816080872288971378}
   - component: {fileID: 3155648238207783042}
   - component: {fileID: 6434600411091937677}
   m_Layer: 9
@@ -201,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 2
+  enemyName: 2
   sightRadius: {x: 30, y: 10}
   patrolRange: 1
   cooldown: 2
@@ -247,22 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoliderData: {fileID: 11400000, guid: 8f94f168ff4b73141ab1ab2c975f72d3, type: 2}
---- !u!114 &3816080872288971378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387442430631358736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0567d5af1dc271c4ead40b31a48a799e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: 2
-  GetAttack: {fileID: 0}
-  isAttackLong: 0
-  useTime: 0
 --- !u!114 &3155648238207783042
 MonoBehaviour:
   m_ObjectHideFlags: 0

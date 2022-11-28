@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4924529958936678331}
   - component: {fileID: 2179121343314326582}
   - component: {fileID: 2179121343314326577}
-  - component: {fileID: 2179121343314326583}
   - component: {fileID: 2179121343314326580}
+  - component: {fileID: 7842036864537859721}
   m_Layer: 0
   m_Name: Enemy_Light
   m_TagString: Untagged
@@ -190,22 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoliderData: {fileID: 11400000, guid: 2c7b5571c51fa144f8e3f1f18fd70aa6, type: 2}
---- !u!114 &2179121343314326583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5932283881973084247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0567d5af1dc271c4ead40b31a48a799e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: 3
-  GetAttack: {fileID: 0}
-  isAttackLong: 0
-  useTime: 0
 --- !u!114 &2179121343314326580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +208,29 @@ MonoBehaviour:
   createpoint: {fileID: 0}
   ishit: 0
   hiddentime: 0
+--- !u!114 &7842036864537859721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932283881973084247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb736999bd891934faf16e41ced9fb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: 3
+  enemyName: 3
+  sightRadius: {x: 0, y: 0}
+  patrolRange: 0
+  cooldown: 0
+  attackTime: 0
+  attackRange: 0
+  vector2: {x: 0, y: 0}
+  attackTarget: {fileID: 0}
+  anim: {fileID: 0}
+  collider2ds: []
 --- !u!1 &5932283883784195801
 GameObject:
   m_ObjectHideFlags: 0

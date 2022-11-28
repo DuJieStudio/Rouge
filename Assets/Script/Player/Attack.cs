@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
-
     private Animator anim;
     // private Animator anim2;
     public Rigidbody2D rb;
@@ -16,7 +15,6 @@ public class Attack : MonoBehaviour
     // public LayerMask IsEnemy;    
     public float ffTimer, ffTimerTotal;
 
-
     [Header("普攻相关")]
     public float damage;
     public float attackSpeed;
@@ -26,7 +24,7 @@ public class Attack : MonoBehaviour
     private float timer;
     public float Power;
 
-
+ 
     [Header("技能相关")]
     public float skillDamage;
     public bool isGather;
@@ -98,11 +96,11 @@ public class Attack : MonoBehaviour
         Block();
         Special_Long();
 
+       
         //    SimpleRays();
         //AttackCheck();
-    }
-
-    
+        
+    }  
 
     void PlayerAttack()
     {
@@ -265,6 +263,7 @@ public class Attack : MonoBehaviour
         ffTimerTotal = time;     
     }
 
+   
     //public void GenerateImpulse(float duration, float strength)
     //{
     //    MyInpulse.GenerateImpulse();

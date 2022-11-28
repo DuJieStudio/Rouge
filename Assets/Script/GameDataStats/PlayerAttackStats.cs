@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerAttackStats : MonoBehaviour
 {
     public PlayerDataofAttack_SO playerDataAttack;
+    //public SoliderData_SO SoliderData;
 
     public float MinDamage
     {
@@ -79,4 +81,16 @@ public class PlayerAttackStats : MonoBehaviour
             playerDataAttack.Power = value;
         }
     }
+
+    //public void SoliderTakeDamage(PlayerAttackStats attacker,EnemySoliderStats health)
+    //{
+    //    int damage = attacker.normalDamage();
+    //    health.CurrentHealth -= damage;
+    //}
+
+    //private int normalDamage()
+    //{
+    //    float coreDamage = 1f * Power + UnityEngine.Random.Range(0, 4);
+    //    return (int)coreDamage;
+    //}
 }

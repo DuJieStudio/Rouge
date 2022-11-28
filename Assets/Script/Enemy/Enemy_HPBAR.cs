@@ -26,20 +26,20 @@ public class Enemy_HPBAR : MonoBehaviour
     }
     void getdata()
     { 
-        if (thisgameobject.GetComponent<Enemy_TakeDamage>().enemyType==EnemyObject.light)
+        if (thisgameobject.GetComponent<Enemy_AI>().enemyName== EnemyName.Light)
         {
             currenthp = thisgameobject.GetComponent<Enemy_Light>().hp;
 
         }
-        if (thisgameobject.GetComponent<Enemy_TakeDamage>().enemyType == EnemyObject.Flower)
+        if (thisgameobject.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)
         {    currenthp = thisgameobject.GetComponent<Enemy_Flower>().hp;
 
         }
-        if (thisgameobject.GetComponent<Enemy_TakeDamage>().enemyType == EnemyObject.Solider)
+        if (thisgameobject.GetComponent<Enemy_AI>().enemyName == EnemyName.Solider)
         {   currenthp = thisgameobject.GetComponent<Enemy_Solider>().hp;
 
         }
-        if (thisgameobject.GetComponent<Enemy_TakeDamage>().enemyType == EnemyObject.Ghost)
+        if (thisgameobject.GetComponent<Enemy_AI>().enemyName == EnemyName.Ghost)
         {   currenthp = thisgameobject.GetComponent<Ghost>().hp;
 
         }
