@@ -50,7 +50,7 @@ public class UIController : MonoBehaviour
     }
     public  void quitgame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        
         UnityEngine.Application.Quit();
     }
     public void backmenu()
