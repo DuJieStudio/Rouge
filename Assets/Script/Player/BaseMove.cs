@@ -111,7 +111,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
-             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("special_long"))
         {
             if (horizontalmove != 0) //½ÇÉ«ÒÆ¶¯
             {
@@ -151,7 +152,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
-             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("special_long"))
         {
             if (facedirection != 0)
             {
@@ -189,8 +191,15 @@ public class BaseMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             //  SoundManager.instance.ShiftAudio();
-            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
-                && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2"))
+            if (!animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack1")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack2")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("attack3")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_short")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
+            && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("special_long"))
             {
                 StartCoroutine(Dash());
                 anim_effect.Play("shift_effect");
@@ -244,7 +253,8 @@ public class BaseMove : MonoBehaviour
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("skill_long")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge")
             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("charge2")
-             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block"))
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("block")
+             && !animator_of_player.GetCurrentAnimatorStateInfo(0).IsName("special_long"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && jumpcount > 0)
             {               

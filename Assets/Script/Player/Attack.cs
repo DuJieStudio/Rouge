@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
+
+    public GameObject Specical;
+    public GameObject SpecialStartPoint;
     private Animator anim;
     // private Animator anim2;
     public Rigidbody2D rb;
@@ -35,6 +38,10 @@ public class Attack : MonoBehaviour
 
     public bool isSkillShort;
     public bool isSkillLong;
+
+    [Header("special相关")]
+    public bool isSpecial;
+    public bool SpecialReady;
 
 
     [Header("格挡相关")]
@@ -67,6 +74,7 @@ public class Attack : MonoBehaviour
         Power = playerAttackStats.Power;
 //        skillDamage = playerAttackStats.SkillDamage;
         isGather = false;
+        isSpecial = false;
         //  skillReady = false;
         //Debug.Log(playerAttackStats.MinDamage);
 
@@ -141,21 +149,12 @@ public class Attack : MonoBehaviour
 
     void Block()
     {
-        if (Input.GetKeyDown(KeyCode.H) && !isBlock && !isAttack)
+        if (Input.GetKeyDown(KeyCode.H) && !isBlock && !isAttack )
         {
             anim.Play("block");
             isBlock = true;
         }
        
-    }
-
-    void Special_Long()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            anim.Play("special_long");
-        }
-
     }
 
     void gathering()
@@ -190,7 +189,7 @@ public class Attack : MonoBehaviour
             anim.SetTrigger("skill2");
             isSkillLong = true;
         }
-        else if (!isGather && gatherTime > 0 && gatherTime <= 1f && !isSkill && !isBlock)
+        else if (!isGather && gatherTime > 0 && gatherTime <= 1f && !isSkill && !isBlock )
         {
             gatherTime = 0;
             comboStep = 0;
@@ -257,12 +256,34 @@ public class Attack : MonoBehaviour
         isBlock = false;
     }
 
-    public void FrameFrozen(float time)
+    public void FrameFrozen(float time)//攻击时间缩放
     {
         ffTimer = time;
         ffTimerTotal = time;     
     }
 
+
+    void Special_Long()
+    {
+        if (Input.GetKeyDown(KeyCode.L)&& !isSpecial && !isAttack && !isBlock)
+        {
+            anim.Play("special_long");
+            SpecialReady = false;
+            isAttack = true;
+            isSpecial = true;
+        }
+
+    }
+    void SpecialOver()
+    {
+        isAttack = false;
+        isSpecial = false;
+    }
+
+    void StartSpecial()
+    {
+         Instantiate(Specical, SpecialStartPoint.transform.position, transform.rotation);
+    }
    
     //public void GenerateImpulse(float duration, float strength)
     //{

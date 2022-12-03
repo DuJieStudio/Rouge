@@ -31,7 +31,7 @@ AnimationClip:
       value: {fileID: -5415880012136380307, guid: f7c46c4d905208141935e93157486ef8, type: 3}
     - time: 0.28333333
       value: {fileID: -4700287756804845497, guid: 19e75490bf96dba47be6e1df021cdbb0, type: 3}
-    - time: 0.36666667
+    - time: 0.35
       value: {fileID: 735840223115361554, guid: 4d2b985ef9c1a154fa0ce38060ff993b, type: 3}
     - time: 0.41666666
       value: {fileID: -1710656625148991774, guid: e537e16760d20434ba2a3a9693940da6, type: 3}
@@ -92,4 +92,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.36666667
+    functionName: StartSpecial
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.56666666
+    functionName: SpecialOver
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

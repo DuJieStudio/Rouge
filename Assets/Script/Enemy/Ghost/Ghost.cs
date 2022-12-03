@@ -52,8 +52,11 @@ public class Ghost : MonoBehaviour
     }
     public void TakeDamage()
     {
-        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
-        hp -= damage;
+        if (hp > 0)
+        {
+            damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
+            hp -= damage;
+        }
     }
     public void SkillDamage()
     {
@@ -64,6 +67,17 @@ public class Ghost : MonoBehaviour
             hp -= damage;
         }
     }
+    public void SpecialDamage()
+    {
+        if (hp > 0)
+        {
+            //floatPointBase(damage);
+            damage = 1;
+            hp -= damage;
+        }
+    }
+
+
     public void Dead()
     {
         if (hp <= 0)
