@@ -49,6 +49,8 @@ public class PlayerAttackCheck : MonoBehaviour
     void Update()
     {
         CheckRange();
+       // OnDrawGizmos();
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene(0);

@@ -70,24 +70,42 @@ public class Enemy_Light : MonoBehaviour
              
     }
     public void GetHit()//用作外部调用，传入vector2用来设置击退方向
-    {      
-        isHit = true;
-        GetComponent<CreatHPBAR>().setHit(true);
-        anim.Play("Light_Hurt");
-        
+    {
+        if (hp > 0)
+        {
+            isHit = true;
+            GetComponent<CreatHPBAR>().setHit(true);
+            anim.Play("Light_Hurt");
+        }
     }
     public void TakeDamage()
     {
-        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);       
-        hp -= damage;
+        if (hp > 0)
+        {
+            damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
+            hp -= damage;
+        }
     }
     public void SkillDamage()
     {
-        //   floatPointBase(damage);
-        damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
-        hp -= damage;
-
+        if (hp > 0)
+        {
+            //   floatPointBase(damage);
+            damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+            hp -= damage;
+        }
     }
+    public void SpecialDamage()
+    {
+        if (hp > 0)
+        {
+            //floatPointBase(damage);
+            damage = 1;
+            hp -= damage;
+        }
+    }
+
+
     public void Dead()
     {
 
