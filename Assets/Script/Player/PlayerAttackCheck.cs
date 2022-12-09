@@ -11,6 +11,7 @@ public class PlayerAttackCheck : MonoBehaviour
     public float coolDownTime=4f;
     public Attack GetAttack;
     //  public Collider2D[] collider2ds;//overlapÅö×²Ìå´æ·Å
+ 
 
     [Header("ÆÕÍ¨¹¥»÷·¶Î§Ïà¹Ø")]
     public float x_normal;//ÆÕ¹¥·¶Î§ÖÐÐÄÐÞÕý
@@ -49,12 +50,9 @@ public class PlayerAttackCheck : MonoBehaviour
     void Update()
     {
         CheckRange();
-       // OnDrawGizmos();
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SceneManager.LoadScene(0);
-        }
+      //  collider2ds = Physics2D.OverlapBoxAll(normalattack, normalAttackCheck, 0);
+         //OnDrawGizmos();
 
         if (useTime != 0)
         {
@@ -65,7 +63,11 @@ public class PlayerAttackCheck : MonoBehaviour
                 useTime = 0;
             }
         }
-       
+        else if (useTime == 0)
+        {
+            coolDownTime = 4f;
+        }
+
     }
     private void OnDrawGizmos()
     {
@@ -90,7 +92,6 @@ public class PlayerAttackCheck : MonoBehaviour
             skillLattack = new Vector3(transform.position.x - x_skillL, transform.position.y + y_skillL, transform.position.z);
         }
     }
-
 
     public void NormalAttack()
     {
@@ -120,7 +121,7 @@ public class PlayerAttackCheck : MonoBehaviour
                     Target.GetComponent<Enemy_Light>().TakeDamage();
                     Target.GetComponent<Enemy_Light>().GetHit();
                 }
-                CameraShaker.Instance.ShakeCamera(1.5f, 0.15f, 0.15f);
+                CameraShaker.Instance.ShakeCamera(1f, 1.2f, 0.15f);
                 GetAttack.FrameFrozen(0.5f);
             }
         }
@@ -155,6 +156,8 @@ public class PlayerAttackCheck : MonoBehaviour
                     Target.GetComponent<Enemy_Light>().SkillDamage();
                     Target.GetComponent<Enemy_Light>().GetHit();
                 }
+                CameraShaker.Instance.ShakeCamera(1.5f, 2f, 0.3f);
+                GetAttack.FrameFrozen(0.55f);
             }
         }
     }
@@ -162,10 +165,15 @@ public class PlayerAttackCheck : MonoBehaviour
 
     public void SkillLongAttack()
     {
-        InvokeRepeating("SkillLongDamage", 0f, 0.2f);
+        collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0);
+        CameraShaker.Instance.ShakeCamera(2f, 2.5f, 0.3f);
+        GetAttack.FrameFrozen(0.55f);
+
+        InvokeRepeating("SkillLongDamage", 0f, 0.3f);
+
     }
 
-    void SkillLongDamage()
+    private void SkillLongDamage()
     {
         useTime += 1;
         if (useTime == 5)
@@ -174,9 +182,11 @@ public class PlayerAttackCheck : MonoBehaviour
             this.CancelInvoke();
         }
 
-        collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0);
+        //collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0);
+
         foreach (var target in collider2ds_skillL)
         {
+           
             if (target.CompareTag("enemy"))
             {
                 Target = target.gameObject;
@@ -185,18 +195,19 @@ public class PlayerAttackCheck : MonoBehaviour
                 {
                     Target.GetComponent<Enemy_Solider>().SkillDamage();
                     Target.GetComponent<Enemy_Solider>().GetHit();
-                    Debug.Log("1111111111111");
+
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)
                 {
                     Target.GetComponent<Enemy_Flower>().SkillDamage();
                     Target.GetComponent<Enemy_Flower>().GetHit();
+
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Ghost)
                 {
                     Target.GetComponent<Ghost>().SkillDamage();
                     Target.GetComponent<Ghost>().GetHit();
-                    Debug.Log("222222222222222");
+
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Light)
                 {

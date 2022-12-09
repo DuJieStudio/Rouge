@@ -80,19 +80,21 @@ public class Attack : MonoBehaviour
 
         MyInpulse = GetComponent<Cinemachine.CinemachineCollisionImpulseSource>();
     }
-    public void GenerateImpulse()
-    {      
-        Debug.Log("121212121");
-    }
- 
-    //private void FixedUpdate()
-    //{
-    //    if (ffTimer > 0)
-    //    {
-    //        ffTimer -= Time.deltaTime;
-    //        Time.timeScale = Mathf.Lerp(0.5f, 1f, (1 - (ffTimer / ffTimerTotal)));
-    //    }
+    //public void GenerateImpulse()
+    //{      
+    //    Debug.Log("121212121");
     //}
+
+    public void FixedUpdate()
+    {
+        
+        if (ffTimer > 0)
+        {
+            Debug.Log("121212121");
+            ffTimer -= Time.deltaTime;
+            Time.timeScale = Mathf.Lerp(0.5f, 1f, (1 - (ffTimer / ffTimerTotal)));
+        }
+    }
 
     void Update()
     {

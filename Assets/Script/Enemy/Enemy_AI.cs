@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using DG.Tweening;
 
 public enum EnemyState { CloseRange ,LongRange ,TouchEnemy,Null}
-public enum EnemyName {Solider,Flower,Ghost,Light}
+public enum EnemyName {Solider,Flower,Ghost,Light,Null}
 
 public class Enemy_AI : MonoBehaviour
 {

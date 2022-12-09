@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySoliderStats : MonoBehaviour
 {
     public SoliderData_SO SoliderData;
+    //public PlayerData_SO PlayerData;
 
     public float MaxHealth
     {
@@ -66,4 +67,6 @@ public class EnemySoliderStats : MonoBehaviour
         }
 
     }
+
+   
 }

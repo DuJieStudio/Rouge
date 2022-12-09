@@ -65,7 +65,7 @@ public class BaseMove : MonoBehaviour
         animator_of_player = GetComponent<Animator>();
         speed = playerdata.moveSpeed;
         //GameManager.Instance.RigisterPlayer(characterStats);
-        anim_effect = transform.GetChild(3).GetComponent<Animator>();
+        anim_effect = transform.GetChild(2).GetComponent<Animator>();
  
     }
 

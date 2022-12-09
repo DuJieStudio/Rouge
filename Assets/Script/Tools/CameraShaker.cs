@@ -8,6 +8,7 @@ public class CameraShaker : MonoBehaviour
     public static CameraShaker Instance { get; private set; }
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
+    private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;///
     public  float shakeTimer;
     public  float shakeTimerTotal;
     public float startingIntensity;
@@ -47,6 +48,7 @@ public class CameraShaker : MonoBehaviour
             shakeTimer -= Time.deltaTime;
             //      if (shakeTimer <= 0f)
             //      {
+
             CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
                 cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
