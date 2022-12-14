@@ -3708,7 +3708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172680254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3618402, y: -2.121035, z: -10}
+  m_LocalPosition: {x: 13.500534, y: -2.2240367, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1857794901}
@@ -5690,7 +5690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591842729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3456535, y: -3.4, z: -10}
+  m_LocalPosition: {x: 13.485654, y: -3.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1369643127}
@@ -42226,7 +42226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3405075511824902495, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3405075511824902562, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
       propertyPath: m_RootOrder
@@ -42234,7 +42234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3405075511824902562, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3
+      value: -18.8
       objectReference: {fileID: 0}
     - target: {fileID: 3405075511824902562, guid: 04620ece69f841543ab2c69aa7a0d6cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -42490,7 +42490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592039423122753568, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.37
+      value: 9.51
       objectReference: {fileID: 0}
     - target: {fileID: 8592039423122753568, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: m_LocalPosition.y
@@ -42539,6 +42539,10 @@ PrefabInstance:
     - target: {fileID: 8592039423122753575, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: normalAttackCheck
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592039423122753582, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
+      propertyPath: SpecialReady
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8592039423122753583, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: HPline

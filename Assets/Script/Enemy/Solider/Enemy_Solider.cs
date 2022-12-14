@@ -18,7 +18,7 @@ public class Enemy_Solider : Enemy
     public bool IsAttack;
 
     public Attack GetAttack;
-    public float damage;
+ //   public float damage;//ÊÕµ½µÄÉËº¦
  //   public Animator hitAnim;
 
    // public GameObject floatPoint;
@@ -71,27 +71,32 @@ public class Enemy_Solider : Enemy
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
         if (hp > 0)
         {
             floatPointBase(damage);
-            damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
+          //  damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
             hp -= damage;
         }
     }
 
-    public void SkillDamage()
+    public void SkillDamage(float damage)
     {
         if (hp > 0)
         {
             floatPointBase(damage);
-            damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+        //    damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
             hp -= damage;
         }
     }
+    //public void floatPointBase(float damage)
+    //{
+    //    GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+    //    gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+    //}
 
-    public void SpecialDamage()
+    public void SpecialDamage(float damage)
     {
         if (hp > 0)
         {

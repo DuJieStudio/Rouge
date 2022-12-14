@@ -37,7 +37,7 @@ public class SpecialLong : MonoBehaviour
                 Target = target.gameObject;
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Solider)
                 {
-                    Target.GetComponent<Enemy_Solider>().SpecialDamage();
+                   // Target.GetComponent<Enemy_Solider>().SpecialDamage();
                     Target.GetComponent<Enemy_Solider>().GetHit();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)

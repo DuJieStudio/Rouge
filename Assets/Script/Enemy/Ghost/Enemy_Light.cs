@@ -78,20 +78,20 @@ public class Enemy_Light : MonoBehaviour
             anim.Play("Light_Hurt");
         }
     }
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
         if (hp > 0)
         {
-            damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
+    //        damage = 1f * GetAttack.Power + UnityEngine.Random.Range(0, 4);
             hp -= damage;
         }
     }
-    public void SkillDamage()
+    public void SkillDamage(float damage)
     {
         if (hp > 0)
         {
             //   floatPointBase(damage);
-            damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+       //     damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
             hp -= damage;
         }
     }

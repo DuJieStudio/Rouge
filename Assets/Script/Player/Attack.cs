@@ -12,8 +12,8 @@ public class Attack : MonoBehaviour
     // private Animator anim2;
     public Rigidbody2D rb;
     private PolygonCollider2D coll;
-    //public float attackCoolDown;
-    //public float attackCD = 0;
+
+    public PlayerAttackCheck GetCheck;
 
     // public LayerMask IsEnemy;    
     public float ffTimer, ffTimerTotal;
@@ -50,12 +50,7 @@ public class Attack : MonoBehaviour
     public PlayerAttackStats playerAttackStats;
 
     public Cinemachine.CinemachineCollisionImpulseSource MyInpulse;
-  //  public void GenerateImpulse(Vector3 velocity);
-  //  public void GenerateImpulse(Vector3 position,Vector3 velocity);
-
-    //  public RaycastHit2D[] hitInfo;
-
-    // public Collider2D rayColl;
+  
 
     private void Awake()
    // protected virtual void Awake()
@@ -76,14 +71,11 @@ public class Attack : MonoBehaviour
         isGather = false;
         isSpecial = false;
         //  skillReady = false;
-        //Debug.Log(playerAttackStats.MinDamage);
-
+        //Debug.Log(playerAttackStats.MinDamage);   
+        GetCheck = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackCheck>();
         MyInpulse = GetComponent<Cinemachine.CinemachineCollisionImpulseSource>();
     }
-    //public void GenerateImpulse()
-    //{      
-    //    Debug.Log("121212121");
-    //}
+    
 
     public void FixedUpdate()
     {
@@ -106,10 +98,9 @@ public class Attack : MonoBehaviour
         Block();
         Special_Long();
 
-       
+        isSpecialReady();
         //    SimpleRays();
-        //AttackCheck();
-        
+        //AttackCheck();       
     }  
 
     void PlayerAttack()
@@ -267,7 +258,7 @@ public class Attack : MonoBehaviour
 
     void Special_Long()
     {
-        if (Input.GetKeyDown(KeyCode.L)&& !isSpecial && !isAttack && !isBlock)
+        if (Input.GetKeyDown(KeyCode.L)&& !isSpecial && !isAttack && !isBlock && SpecialReady)
         {
             anim.Play("special_long");
             SpecialReady = false;
@@ -286,7 +277,15 @@ public class Attack : MonoBehaviour
     {
          Instantiate(Specical, SpecialStartPoint.transform.position, transform.rotation);
     }
-   
+
+    public void isSpecialReady()
+    {       
+        if (GetCheck.totalDamage > 30)
+        {
+            SpecialReady = true;
+        }
+    }
+
     //public void GenerateImpulse(float duration, float strength)
     //{
     //    MyInpulse.GenerateImpulse();

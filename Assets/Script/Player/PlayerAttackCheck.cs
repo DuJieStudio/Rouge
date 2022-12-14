@@ -11,7 +11,10 @@ public class PlayerAttackCheck : MonoBehaviour
     public float coolDownTime=4f;
     public Attack GetAttack;
     //  public Collider2D[] collider2ds;//overlapÅö×²Ìå´æ·Å
- 
+    
+    public float totalDamage;//ÀÛ¼ÆÉËº¦
+    public float test;
+   
 
     [Header("ÆÕÍ¨¹¥»÷·¶Î§Ïà¹Ø")]
     public float x_normal;//ÆÕ¹¥·¶Î§ÖÐÐÄÐÞÕý
@@ -49,10 +52,15 @@ public class PlayerAttackCheck : MonoBehaviour
 
     void Update()
     {
-        CheckRange();
+        CheckRange();     
+        test = Normal_Damage();
+        //  collider2ds = Physics2D.OverlapBoxAll(normalattack, normalAttackCheck, 0);
+        //OnDrawGizmos();
 
-      //  collider2ds = Physics2D.OverlapBoxAll(normalattack, normalAttackCheck, 0);
-         //OnDrawGizmos();
+        AboutSpecialReady();
+        Debug.Log(GetAttack.SpecialReady);
+
+
 
         if (useTime != 0)
         {
@@ -103,23 +111,27 @@ public class PlayerAttackCheck : MonoBehaviour
                 Target = target.gameObject;
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Solider)
                 {
-                    Target.GetComponent<Enemy_Solider>().TakeDamage();
+                    Target.GetComponent<Enemy_Solider>().TakeDamage(Normal_Damage());
                     Target.GetComponent<Enemy_Solider>().GetHit();
+                    totalDamage += Normal_Damage();            
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)
                 {
-                    Target.GetComponent<Enemy_Flower>().TakeDamage();
+                    Target.GetComponent<Enemy_Flower>().TakeDamage(Normal_Damage());
                     Target.GetComponent<Enemy_Flower>().GetHit();
+                    totalDamage += Normal_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Ghost)
                 {
-                    Target.GetComponent<Ghost>().TakeDamage();
+                    Target.GetComponent<Ghost>().TakeDamage(Normal_Damage());
                     Target.GetComponent<Ghost>().GetHit();
+                    totalDamage += Normal_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Light)
                 {
-                    Target.GetComponent<Enemy_Light>().TakeDamage();
+                    Target.GetComponent<Enemy_Light>().TakeDamage(Normal_Damage());
                     Target.GetComponent<Enemy_Light>().GetHit();
+                    totalDamage += Normal_Damage();
                 }
                 CameraShaker.Instance.ShakeCamera(1f, 1.2f, 0.15f);
                 GetAttack.FrameFrozen(0.5f);
@@ -138,23 +150,28 @@ public class PlayerAttackCheck : MonoBehaviour
 
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Solider)
                 {
-                    Target.GetComponent<Enemy_Solider>().SkillDamage();
+                    Target.GetComponent<Enemy_Solider>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Solider>().GetHit();
+
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)
                 {
-                    Target.GetComponent<Enemy_Flower>().SkillDamage();
+                    Target.GetComponent<Enemy_Flower>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Flower>().GetHit();
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Ghost)
                 {
-                    Target.GetComponent<Ghost>().SkillDamage();
+                    Target.GetComponent<Ghost>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Ghost>().GetHit();
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Light)
                 {
-                    Target.GetComponent<Enemy_Light>().SkillDamage();
+                    Target.GetComponent<Enemy_Light>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Light>().GetHit();
+                    totalDamage += Skill_Damage();
                 }
                 CameraShaker.Instance.ShakeCamera(1.5f, 2f, 0.3f);
                 GetAttack.FrameFrozen(0.55f);
@@ -182,8 +199,6 @@ public class PlayerAttackCheck : MonoBehaviour
             this.CancelInvoke();
         }
 
-        //collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0);
-
         foreach (var target in collider2ds_skillL)
         {
            
@@ -193,28 +208,50 @@ public class PlayerAttackCheck : MonoBehaviour
 
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Solider)
                 {
-                    Target.GetComponent<Enemy_Solider>().SkillDamage();
+                    Target.GetComponent<Enemy_Solider>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Solider>().GetHit();
-
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Flower)
                 {
-                    Target.GetComponent<Enemy_Flower>().SkillDamage();
+                    Target.GetComponent<Enemy_Flower>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Flower>().GetHit();
-
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Ghost)
                 {
-                    Target.GetComponent<Ghost>().SkillDamage();
+                    Target.GetComponent<Ghost>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Ghost>().GetHit();
-
+                    totalDamage += Skill_Damage();
                 }
                 if (Target.GetComponent<Enemy_AI>().enemyName == EnemyName.Light)
                 {
-                    Target.GetComponent<Enemy_Light>().SkillDamage();
+                    Target.GetComponent<Enemy_Light>().SkillDamage(Skill_Damage());
                     Target.GetComponent<Enemy_Light>().GetHit();
+                    totalDamage += Skill_Damage();
                 }                              
             }       
         }   
+    }
+
+
+    private float Normal_Damage()
+    {
+        float damage = 1f * GetAttack.Power + Random.Range(0, 4);
+        return damage;
+    }
+
+    private float Skill_Damage()
+    {
+        float damage = 1.5f * GetAttack.Power + UnityEngine.Random.Range(-3, 3);
+        return damage;
+    }
+
+    public void AboutSpecialReady()
+    {
+        if (GetAttack.SpecialReady == true)
+        {
+            totalDamage = 0;
+        }
     }
 }
