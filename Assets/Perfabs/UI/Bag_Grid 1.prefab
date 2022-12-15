@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 29.4, y: -31.2}
-  m_SizeDelta: {x: 16.49, y: 17.89}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8410950362161463839
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.3820755, g: 1, b: 0.46204215, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -66,19 +66,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MinSize: 0
+    m_MaxSize: 60
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00
+  m_Text: E
 --- !u!1 &8410950362619760266
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8410950362619760374}
   - component: {fileID: 8410950362619760265}
   - component: {fileID: 8410950362619760264}
-  - component: {fileID: 4176669816098898862}
+  - component: {fileID: 662673113854196732}
   m_Layer: 4
   m_Name: Bag_Grid 1
   m_TagString: Untagged
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4176669816098898862}
+      - m_Target: {fileID: 662673113854196732}
         m_TargetAssemblyTypeName: GridController, Assembly-CSharp
         m_MethodName: changetext
         m_Mode: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4176669816098898862
+--- !u!114 &662673113854196732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,8 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemSprite: {fileID: 8410950362619760265}
-  Itemcount: {fileID: 8410950362161463838}
   ThisGrid: {fileID: 0}
   item: {fileID: 0}
-  bag: {fileID: 0}
+  bag: {fileID: 11400000, guid: d8b10e8f4fdf2cc4d9d0f63a7dd3e846, type: 2}
   iteminfo: {fileID: 0}
+  equip: {fileID: 8410950362161463824}
+  isequip: 0

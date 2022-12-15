@@ -6,43 +6,50 @@ public class PickUPItem : MonoBehaviour
 {
     public Item_SO thisitem;
     public Bag bag;
-    public CreatNewItem cni;
     public bool ispick=false;
+    public GameObject PlaceOFGird;
+    public GameObject gridPerfab;
+    public GameObject pre_grid;
 
     public void Start()
     {
-        for (int i = 0; i< 7; i++)
+        for (int i = 0; i<=bag.itemlist.Count-1; i++)
         {
-            thisitem = bag.itemlist[i];
-            cni.CreatGrid();
+            if (bag.itemlist[i] != null)
+            { thisitem = bag.itemlist[i]; }
+            if (thisitem != null)
+            { CreateGrid();} 
         }
+        
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag=="Item")
+        if (collision.gameObject.tag=="Item"&&bag.itemlist.Count<6)
         {
             
 
             thisitem = collision.gameObject.GetComponent<ChooseData>().item;
-            AddItem();     
+            AddItem();
+            Destroy(collision.gameObject);
             
 
         }
     } 
     public void AddItem()
     {
-        if (!bag.itemlist.Contains(thisitem))
-        {
+
             bag.itemlist.Add(thisitem);
-            cni.CreatGrid();
-            
-        }
-        else
-        {
-            thisitem.ItemCount +=1;
-            
-        }
+            CreateGrid();
+
+        
+
+    }
+    public void CreateGrid()
+    {
+        pre_grid = Instantiate(gridPerfab, PlaceOFGird.transform.position, Quaternion.identity);
+        pre_grid.GetComponent<GridController>().item = thisitem;
+        pre_grid.transform.SetParent(PlaceOFGird.transform, false);
 
     }
    

@@ -6,44 +6,51 @@ using UnityEngine.UI;
 public class GridController : MonoBehaviour
 {
     public Image ItemSprite;
-    public Text Itemcount;
     public GameObject ThisGrid;
     public Item_SO item;
     public Bag bag;
     public Text iteminfo;
-
-    public void Awake()
-    {
-        ThisGrid = this.gameObject;
-        item = GameObject.FindGameObjectWithTag("Player").GetComponent<PickUPItem>().thisitem;
-        iteminfo =GameObject.Find("Iteminfo").GetComponent<Text>();
-        bag = GameObject.FindGameObjectWithTag("Player").GetComponent<PickUPItem>().bag;
-    }
+    public GameObject equip;
+    public bool isequip;
     public void Start()
     {
-          ItemSprite.sprite = item.ItemSprite;
-            Itemcount.text = item.ItemCount.ToString();
-        
+        ThisGrid = this.gameObject;
+        iteminfo =GameObject.Find("Iteminfo").GetComponent<Text>();
+        bag = GameObject.FindGameObjectWithTag("Player").GetComponent<PickUPItem>().bag;
+        ItemSprite.sprite = item.ItemSprite;
+        isequip = false;
     }
     // Update is called once per frame
     public void Update()
     {
-        ItemSprite.sprite = item.ItemSprite;
-        Itemcount.text = item.ItemCount.ToString();
-        
-        
+        equipitem();
+
+
+
 
     }
     public void changetext()
     {
         iteminfo.text = item.ItemInfo;
-        GameObject.Find("Bag").GetComponent<DestoryItem>().destroyitem = item;
-        GameObject.Find("Bag").GetComponent<DestoryItem>().destroythisgrid = ThisGrid;
+        GameObject.Find("Bag").GetComponent<ChooseItem>().item = item;
+        GameObject.Find("Bag").GetComponent<ChooseItem>().thisgrid = ThisGrid;
+        isequip = !isequip;
     }
-    public void destoryitem()
+    //public void destoryitem()
+    //{
+    //    Destroy(ThisGrid);
+    //    bag.itemlist.Remove(item);
+    //}
+    public void equipitem()
     {
-        Destroy(ThisGrid);
-        bag.itemlist.Remove(item);
+        if (isequip)
+        {
+            equip.SetActive(true);
+        }
+        else
+        {
+            equip.SetActive(false);
+        }
     }
 
 }
