@@ -6,6 +6,7 @@ using UnityEngine;
 public class Item_SO : ScriptableObject
 {
     public string ItemName;
+    public int ID;
     public Sprite ItemSprite;
     [TextArea]
     public string ItemInfo;

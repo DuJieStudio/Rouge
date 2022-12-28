@@ -23,7 +23,6 @@ public class GridController : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        equipitem();
 
 
 
@@ -35,6 +34,7 @@ public class GridController : MonoBehaviour
         GameObject.Find("Bag").GetComponent<ChooseItem>().item = item;
         GameObject.Find("Bag").GetComponent<ChooseItem>().thisgrid = ThisGrid;
         isequip = !isequip;
+        equipitem();
     }
     //public void destoryitem()
     //{
@@ -46,10 +46,56 @@ public class GridController : MonoBehaviour
         if (isequip)
         {
             equip.SetActive(true);
+            additemdata();
         }
         else
         {
             equip.SetActive(false);
+            removeitemdata();
+        }
+    }
+    public void additemdata()
+    {
+        if (item.ID == 0)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power += 1;
+        }
+        if (item.ID == 1)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().MaxHealth += 10;
+
+        }
+        if (item.ID == 2)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().MoveSpeed += 0.1f;
+        }
+        if (item.ID == 3)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage += 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage += 1;
+        }
+        
+
+    }
+    public void removeitemdata()
+    {
+        if (item.ID == 0)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power -= 1;
+        }
+        if (item.ID == 1)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().MaxHealth -= 10;
+
+        }
+        if (item.ID == 2)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().MoveSpeed -= 0.1f;
+        }
+        if (item.ID == 3)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage -= 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage -= 1;
         }
     }
 
