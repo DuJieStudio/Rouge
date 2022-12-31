@@ -37,7 +37,7 @@ public class CreatHPBAR : MonoBehaviour
             ishit = false;
             hiddentime = 0;
         }
-        if(hiddentime>=3)
+        if(hiddentime>=3&&HPBar!=null)
         {
             HPBar.SetActive(false);
             ishit = false;

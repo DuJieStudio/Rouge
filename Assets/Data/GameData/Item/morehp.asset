@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9783608d70eb164582ef3c70ea795d5, type: 3}
-  m_Name: Gold
+  m_Name: morehp
   m_EditorClassIdentifier: 
-  ItemName: gold
-  ItemSprite: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  ItemInfo: "\u6709\u94B1\u5C31\u662F\u529B\u91CF\uFF0C\u589E\u52A0\u529B\u91CF"
+  ItemName: "\u751F\u547D\u661F"
+  ID: 1
+  ItemSprite: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  ItemInfo: "\u589E\u52A0\u6700\u5927\u751F\u547D"

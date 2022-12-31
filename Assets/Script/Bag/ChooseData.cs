@@ -28,16 +28,6 @@ public class ChooseData : MonoBehaviour
         }
     }
 
-    public int ItemCount
-    {
-        get
-        {
-            if (item != null)
-            { return item.ItemCount; }
-            else
-            { return 0; }
-        }
-    }
 
 
     public string ItemInfo
@@ -51,15 +41,6 @@ public class ChooseData : MonoBehaviour
         }
     }
 
-    public bool equip
-    {
-        get
-        {
-            if (item != null)
-            { return item.equip; }
-            else
-            { return false; }
-        }
-    }
+
 
 }

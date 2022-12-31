@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8553f38746c49134ba9c9d92f2e3ca85, type: 3}
-  m_Name: BAG
+  m_Script: {fileID: 11500000, guid: 3e7bd76b59bed554a93aacc0fa60c1e8, type: 3}
+  m_Name: itempool
   m_EditorClassIdentifier: 
   itemlist:
-  - {fileID: 11400000, guid: cdce29bf59f9a0a4685ac1741705a13a, type: 2}
   - {fileID: 11400000, guid: f851312d5b9dd6147bf2330cde956df7, type: 2}
-  - {fileID: 11400000, guid: f851312d5b9dd6147bf2330cde956df7, type: 2}
-  - {fileID: 11400000, guid: f851312d5b9dd6147bf2330cde956df7, type: 2}
+  - {fileID: 11400000, guid: 25e017c7814730c4188ac4ae16e28877, type: 2}
   - {fileID: 11400000, guid: 15783964ca63765458b81e4321d5f826, type: 2}
   - {fileID: 11400000, guid: cdce29bf59f9a0a4685ac1741705a13a, type: 2}

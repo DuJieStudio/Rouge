@@ -6,11 +6,9 @@ using UnityEngine;
 public class Item_SO : ScriptableObject
 {
     public string ItemName;
+    public int ID;
     public Sprite ItemSprite;
-    public int ItemCount;
     [TextArea]
     public string ItemInfo;
-    public bool equip;
-
 }
     
