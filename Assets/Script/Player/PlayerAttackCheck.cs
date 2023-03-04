@@ -14,7 +14,8 @@ public class PlayerAttackCheck : MonoBehaviour
     
     public float totalDamage;//ÀÛ¼ÆÉËº¦
     public float test;
-   
+    public LayerMask trap;
+
 
     [Header("ÆÕÍ¨¹¥»÷·¶Î§Ïà¹Ø")]
     public float x_normal;//ÆÕ¹¥·¶Î§ÖÐÐÄÐÞÕý
@@ -103,7 +104,7 @@ public class PlayerAttackCheck : MonoBehaviour
 
     public void NormalAttack()
     {
-        collider2ds = Physics2D.OverlapBoxAll(normalattack, normalAttackCheck, 0);
+        collider2ds = Physics2D.OverlapBoxAll(normalattack, normalAttackCheck, 0,trap);
         foreach (var target in collider2ds)
         {
             if (target.CompareTag("enemy"))
@@ -141,7 +142,7 @@ public class PlayerAttackCheck : MonoBehaviour
 
     public void SkillShortAttack()
     {
-        collider2ds_skillS = Physics2D.OverlapBoxAll(skillSattack, skillSAttackCheck, 0);
+        collider2ds_skillS = Physics2D.OverlapBoxAll(skillSattack, skillSAttackCheck, 0,trap);
         foreach (var target in collider2ds_skillS)
         {
             if (target.CompareTag("enemy"))
@@ -182,7 +183,7 @@ public class PlayerAttackCheck : MonoBehaviour
 
     public void SkillLongAttack()
     {
-        collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0);
+        collider2ds_skillL = Physics2D.OverlapBoxAll(skillLattack, skillLAttackCheck, 0,trap);
         CameraShaker.Instance.ShakeCamera(2f, 2.5f, 0.3f);
         GetAttack.FrameFrozen(0.55f);
 

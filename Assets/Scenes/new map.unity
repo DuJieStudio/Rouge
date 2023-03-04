@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1021828957}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -337,7 +337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &206002369
 MonoBehaviour:
@@ -649,10 +649,18 @@ PrefabInstance:
     - target: {fileID: 887062569438998910, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: coll
       value: 
-      objectReference: {fileID: 1021828955}
+      objectReference: {fileID: 0}
     - target: {fileID: 887062569438998910, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
       propertyPath: IsGround.m_Bits
       value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592039423122753568, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592039423122753583, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
@@ -1483,16 +1491,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6704112725675503000, guid: 55f9a30481c346a49b32ebba6dfd5b81, type: 3}
   m_PrefabInstance: {fileID: 189788703}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1021828955 stripped
-CapsuleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 887062569438998905, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
-  m_PrefabInstance: {fileID: 698691954}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1021828957 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 887062569438998907, guid: a713d79bbf41df54aa29797712f47a54, type: 3}
-  m_PrefabInstance: {fileID: 698691954}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1120254033
 PrefabInstance:

@@ -58,7 +58,8 @@ public class GridController : MonoBehaviour
     {
         if (item.ID == 0)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power += 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power += 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.Power += 1;
         }
         if (item.ID == 1)
         {
@@ -71,8 +72,10 @@ public class GridController : MonoBehaviour
         }
         if (item.ID == 3)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage += 1;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage += 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage += 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage += 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.MinDamage += 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.MaxDamage += 1;
         }
         
 
@@ -81,7 +84,8 @@ public class GridController : MonoBehaviour
     {
         if (item.ID == 0)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power -= 1;
+            // GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.Power -= 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.Power -= 1;
         }
         if (item.ID == 1)
         {
@@ -94,8 +98,10 @@ public class GridController : MonoBehaviour
         }
         if (item.ID == 3)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage -= 1;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage -= 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MinDamage -= 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>().Attackdata.MaxDamage -= 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.MinDamage -= 1;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackStats>().playerDataAttack.MaxDamage -= 1;
         }
     }
 
